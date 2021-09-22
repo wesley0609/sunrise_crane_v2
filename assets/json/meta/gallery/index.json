@@ -1,0 +1,150 @@
+{
+    "title": "工程展示",
+    "information": {
+        "title": "起重工程專業展示",
+        "subtitle": "gallery",
+        "description": "桃園吊車起重工程，吊裝平台、設備搬運"
+    },
+    "gallery": [
+        {
+            "title": "太平洋氣門",
+            "subtitle": "3000噸沖壓機組裝",
+            "src": "gallery01.jpg"
+        },
+        {
+            "title": "YKK",
+            "subtitle": "設備搬運組裝",
+            "src": "gallery02.jpg"
+        },
+        {
+            "title": "迪斯科高科技",
+            "subtitle": "高科技精密設備搬運",
+            "src": "gallery03.jpg"
+        },
+        {
+            "title": "台灣高鐵",
+            "subtitle": "軌道修復車吊車搬運",
+            "src": "gallery04.jpg"
+        },
+        {
+            "title": "精碟科技",
+            "subtitle": "設備 Move Out 吊車搬運",
+            "src": "gallery05.jpg"
+        },
+        {
+            "title": "搬運06",
+            "subtitle": "06",
+            "src": "gallery06.jpg"
+        },
+        {
+            "title": "迪斯科高科技",
+            "subtitle": "高科技精密設備搬運",
+            "src": "gallery07.jpg"
+        },
+        {
+            "title": "台灣豪雅光電",
+            "subtitle": "設備吊車搬運",
+            "src": "gallery08.jpg"
+        },
+        {
+            "title": "台灣豪雅光電",
+            "subtitle": "設備吊車搬運",
+            "src": "gallery09.jpg"
+        },
+        {
+            "title": "搬運10",
+            "subtitle": "10",
+            "src": "gallery10.jpg"
+        },
+        {
+            "title": "HYUNDAI 現代汽車",
+            "subtitle": "展示車運搬組裝",
+            "src": "gallery11.jpg"
+        },
+        {
+            "title": "國家高速網路與計算中心",
+            "subtitle": "超級電腦搬移",
+            "src": "gallery12.jpg"
+        },
+        {
+            "title": "聯合再生能源",
+            "subtitle": "設備吊車搬運 Move In",
+            "src": "gallery13.jpg"
+        },
+        {
+            "title": "搬運14",
+            "subtitle": "14",
+            "src": "gallery14.jpg"
+        },
+        {
+            "title": "搬運15",
+            "subtitle": "15",
+            "src": "gallery15.jpg"
+        },
+        {
+            "title": "太平洋氣門",
+            "subtitle": "3000噸沖壓機組裝",
+            "src": "gallery16.jpg"
+        },
+        {
+            "title": "太平洋氣門",
+            "subtitle": "3000噸沖壓機組裝",
+            "src": "gallery17.jpg"
+        },
+        {
+            "title": "台達電",
+            "subtitle": "設備吊車搬運",
+            "src": "gallery18.jpg"
+        },
+        {
+            "title": "台灣四葉食品",
+            "subtitle": "設備吊車搬運",
+            "src": "gallery19.jpg"
+        },
+        {
+            "title": "台灣豪雅光電",
+            "subtitle": "設備吊車搬運",
+            "src": "gallery20.jpg"
+        },
+        {
+            "title": "搬運21",
+            "subtitle": "21",
+            "src": "gallery21.jpg"
+        },
+        {
+            "title": "太平洋氣門",
+            "subtitle": "3000噸沖壓機組裝",
+            "src": "gallery22.jpg"
+        },
+        {
+            "title": "台灣高鐵",
+            "subtitle": "軌道修復車吊車搬運",
+            "src": "gallery23.jpg"
+        },
+        {
+            "title": "搬運24",
+            "subtitle": "24",
+            "src": "gallery24.jpg"
+        },
+        {
+            "title": "台灣高鐵",
+            "subtitle": "軌道修復車吊車搬運",
+            "src": "gallery25.jpg"
+        },
+        {
+            "title": "鴻海富士康南崁廠",
+            "subtitle": "氣墊搬運",
+            "src": "gallery26.jpg"
+        },
+        {
+            "title": "鴻海富士康南崁廠",
+            "subtitle": "氣墊搬運",
+            "src": "gallery27.jpg"
+        },
+        {
+            "title": "台達電",
+            "subtitle": "設備吊車搬運",
+            "src": "gallery28.jpg"
+        }
+    ]
+}

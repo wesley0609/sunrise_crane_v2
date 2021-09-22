@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_40" data-name="Rectangle 40" width="24" height="24" transform="translate(1176 903)" fill="#161616"/>
+    </clipPath>
+  </defs>
+  <g id="mobile_phone" transform="translate(-1176 -903)" clip-path="url(#clip-path)">
+    <path id="ic_phone_iphone_24px" d="M12.665,1H6.825A1.826,1.826,0,0,0,5,2.825V15.236a1.826,1.826,0,0,0,1.825,1.825h5.84a1.826,1.826,0,0,0,1.825-1.825V2.825A1.826,1.826,0,0,0,12.665,1ZM9.745,16.331a1.1,1.1,0,1,1,1.1-1.1A1.094,1.094,0,0,1,9.745,16.331Zm3.285-2.92H6.46V3.19h6.57Z" transform="translate(1177.973 905.969)" fill="#161616"/>
+  </g>
+</svg>

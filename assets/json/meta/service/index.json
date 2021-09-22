@@ -1,0 +1,52 @@
+{
+    "title": "服務項目",
+    "information": {
+        "title": "日陽起重服務項目",
+        "subtitle": "service",
+        "description": "吊裝、搬運、安裝、定位、貨櫃裝卸"
+    },
+    "service": [
+        {
+            "title": "無塵室設備 Move In / Move Out",
+            "description": "無塵室精密機械設備 Move In、Move Out，設備搬運、氣墊搬運，設備定位。",
+            "src": "service01.png",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "重型機械搬運、精密儀器搬運",
+            "description": "(一般 / 特殊)精密儀器搬運、重型機械設備，吊車搬運、起重機搬運、定位。",
+            "src": "service02.png",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "設備組裝、定位、拆卸",
+            "description": "機械設備到場組裝，(堆高機 / 吊掛)定位，設備拆卸，二手設備買賣、拆卸。",
+            "src": "service03.png",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "貨櫃裝櫃、卸櫃",
+            "description": "(設備 / 物品)裝箱、木箱包裝、鋁箔真空包裝、裝櫃、(設備 / 物品)卸櫃、木箱拆卸、定位。",
+            "src": "service04.png",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "整廠搬遷、木箱包裝、運輸",
+            "description": "整廠設備、貨物搬遷，設備包裝、木箱包裝，歐翼車、氣墊車、平板車運輸。",
+            "src": "service05.png",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "藝術品運輸、細部搬運",
+            "description": "精密物品、貴重物品以及藝術品各式車種運送、搬運、定位。",
+            "src": "service06.png",
+            "href": "/service",
+            "as": "/service"
+        }
+    ]
+}

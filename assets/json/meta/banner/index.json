@@ -1,0 +1,54 @@
+{
+    "home": [
+        {
+            "title": "最安全的施工方式",
+            "subtitle": "『安全、效率、專業』",
+            "src": "banner01.jpg"
+        },
+        {
+            "title": "最有效率的履行合約",
+            "subtitle": "『安全、效率、專業』",
+            "src": "banner02.jpg"
+        },
+        {
+            "title": "最專業的技術",
+            "subtitle": "『安全、效率、專業』",
+            "src": "banner03.jpg"
+        }
+    ],
+    "about": {
+        "title": "關於我們",
+        "subtitle": "about",
+        "src": "index.jpg",
+        "href": "/about",
+        "as": "/about"
+    },
+    "service": {
+        "title": "服務項目",
+        "subtitle": "service",
+        "src": "index.jpg",
+        "href": "/service",
+        "as": "/service"
+    },
+    "gallery": {
+        "title": "工程展示",
+        "subtitle": "gallery",
+        "src": "index.jpg",
+        "href": "/gallery",
+        "as": "/gallery"
+    },
+    "faq": {
+        "title": "常見問答",
+        "subtitle": "faq",
+        "src": "index.jpg",
+        "href": "/faq",
+        "as": "/faq"
+    },
+    "contact": {
+        "title": "聯絡我們",
+        "subtitle": "contact",
+        "src": "index.jpg",
+        "href": "/contact",
+        "as": "/contact"
+    }
+}

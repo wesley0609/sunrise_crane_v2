@@ -1,0 +1,34 @@
+{
+    "menu": [
+        {
+            "title": "首頁",
+            "href": "/",
+            "as": "/"
+        },
+        {
+            "title": "關於我們",
+            "href": "/about",
+            "as": "/about"
+        },
+        {
+            "title": "服務項目",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "工程展示",
+            "href": "/gallery",
+            "as": "/gallery"
+        },
+        {
+            "title": "常見問答",
+            "href": "/faq",
+            "as": "/faq"
+        },
+        {
+            "title": "聯絡我們",
+            "href": "/contact",
+            "as": "/contact"
+        }
+    ]
+}
