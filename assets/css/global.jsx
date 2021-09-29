@@ -42,6 +42,7 @@ const App = () => {
                         outline: none;
                         cursor: pointer;
                         padding: 0;
+                        color: var(--black);
                         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
                     }
 
