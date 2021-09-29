@@ -129,8 +129,6 @@ const App = (props) => {
                             width: 80%;
                             display: flex;
                             flex-direction: row;
-                            justify-content: center;
-                            align-items: center;
                             position: relative;
 
                             @media screen and (max-width: 768px){
@@ -161,7 +159,7 @@ const App = (props) => {
                             }
 
                             .right_section{
-                                width: 60%;
+                                flex: 1;
                                 background-color: var(--white);
                                 box-shadow: 0px 3px 20px #0000000d;
                                 display: flex;

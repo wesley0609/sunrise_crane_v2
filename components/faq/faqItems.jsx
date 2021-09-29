@@ -144,14 +144,21 @@ const App = (props) => {
                                 flex-wrap: wrap;
                                 justify-content: center;
                                 align-items: center;
+                                box-shadow: 0px 6px 30px #0000000d;
+                                background-color: var(--white);
+                                padding-top: 10px;
+                                padding-bottom: 25px;
+                                padding-left: 30px;
+                                padding-right: 30px;
+
+                                @media screen and (max-width: 768px){
+                                    padding-left: 20px;
+                                    padding-right: 20px;
+                                }
 
                                 .faq_item{
                                     width: 100%;
-                                    margin-top: 10px;
-                                    margin-bottom: 10px;
-                                    box-shadow: 0px 0px 10px #0000001a;
-                                    border-radius: 3px;
-                                    background-color: var(--white);
+                                    border-bottom: 1px solid #e1e1e1;
 
                                     .question_section{
                                         display: inline-flex;
@@ -159,7 +166,7 @@ const App = (props) => {
                                         width: 100%;
                                         cursor: pointer;
                                         user-select: none;
-                                        padding: 15px 25px;
+                                        padding: 15px 0px;
                                         text-align: left;
 
                                         .question{
@@ -170,7 +177,7 @@ const App = (props) => {
                                         .icon{
                                             position: absolute;
                                             top: 50%;
-                                            right: 25px;
+                                            right: 0;
                                             transform: translateY(-50%);
                                             width: 22px;
                                             height: 22px;
@@ -181,9 +188,9 @@ const App = (props) => {
                                         font-size: 14px;
                                         line-height: 25px;
                                         padding-top: 5px;
-                                        padding-bottom: 30px;
-                                        padding-left: 40px;
-                                        padding-right: 40px;
+                                        padding-bottom: 20px;
+                                        padding-left: 15px;
+                                        padding-right: 30px;
                                         color: #4b4b4b;
                                         display: none;
                                     }
