@@ -194,6 +194,11 @@ const App = (props) => {
                                 justify-content: space-between;
                                 align-items: center;
 
+                                &:after{
+                                    content: "";
+                                    flex: auto;
+                                }
+
                                 &.placeholder{
                                     .gallery_item{
                                         .gallery_text{

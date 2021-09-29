@@ -96,6 +96,11 @@ const App = (props) => {
                                 justify-content: space-between;
                                 align-items: stretch;
 
+                                &:after{
+                                    content: "";
+                                    flex: auto;
+                                }
+
                                 .service_item{
                                     width: 31.33%;
                                     margin-top: 10px;
