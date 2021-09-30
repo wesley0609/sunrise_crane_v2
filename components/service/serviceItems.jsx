@@ -139,6 +139,7 @@ const App = (props) => {
 
                                         .title{
                                             font-weight: bold;
+                                            line-height: 25px;
                                         }
 
                                         .description{

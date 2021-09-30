@@ -7,8 +7,8 @@
     },
     "service": [
         {
-            "title": "無塵室設備 Move In / Move Out",
-            "description": "無塵室精密機械設備 Move In、Move Out，設備搬運、氣墊搬運，設備定位。",
+            "title": "設備 Move In / Move Out / Remove",
+            "description": "無塵室精密機械設備 Move In、Move Out、Remove，設備搬運、氣墊搬運，設備定位。",
             "src": "service01.png",
             "href": "/service",
             "as": "/service"
