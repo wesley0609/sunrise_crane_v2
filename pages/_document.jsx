@@ -12,7 +12,7 @@ export default class App extends Document{
         return (
             <Html dir="ltr" lang="zh-Hant-TW" prefix="og: http://ogp.me/ns#">
                 <Head>
-                    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=optional" />
+                    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:wght@400;700&display=optional" />
                 </Head>
                 
                 <body>

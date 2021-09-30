@@ -1,8 +1,7 @@
 
 import { connect } from "react-redux";
-import { useEffect, useMemo, useCallback } from "react";
+import { useMemo, useCallback } from "react";
 import Link from "next/link";
-import LazyLoad from "lazyload";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
@@ -51,22 +50,12 @@ const App = (props) => {
         gaEvent.footer.clickContact(item);
     }, []);
 
-    useEffect(() => {
-        let images = document.querySelectorAll(".logo_section .logo");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
-    }, []);
-
     return (
         <>
             <footer className="footer_section">
                 <Link href="/" as="/">
                     <a className="logo_section" title={pkg.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="300" height="77" data-src={require("../../public/logo.svg")} src={require("../../assets/image/poster/default.png")} alt={`${pkg.siteName}｜${pkg.enName}`} />
+                        <img className="logo" width="300" height="77" src={require("../../public/logo.svg")} alt={`${pkg.siteName}｜${pkg.enName}`} />
                     </a>
                 </Link>
 
