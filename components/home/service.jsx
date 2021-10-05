@@ -6,6 +6,7 @@ import Link from "next/link";
 import Glide from "@glidejs/glide";
 import LazyLoad from "lazyload";
 
+import tools from "../../assets/js/tools/index.js";
 import gaEvent from "../../assets/js/ga/index.js";
 
 const mapStateToProps = (state) => {
@@ -32,6 +33,60 @@ const App = (props) => {
         
         return 4;
     }, [props.deviceType]);
+
+    const serviceItemTouchHandler = useMemo(() => {
+        let target = null;
+        let pos1 = 0;
+        let pos2 = 0;
+
+        return {
+            start(event){
+                target = event.target;
+                target = target.parentNode;
+                pos1 = event.touches[0].clientY;
+
+                while(true){
+                    if(target.nodeType == 9){
+                        break;
+                    }
+
+                    let scrollable = tools.isScrollable(target);
+
+                    if(scrollable.vertical){
+                        break;
+                    }
+                    else{
+                        target = target.parentNode;
+                    }
+                }
+            },
+            move(event){
+                pos2 = event.touches[0].clientY;
+                        
+                let y = pos1 - pos2;
+                let to = 0;
+                
+                if(target.nodeType == 9){
+                    to = scrollY + y;
+
+                    scroll({
+                        top: to,
+                        left: 0
+                    });
+                }
+                else{
+                    to = target.scrollTop + y;
+
+                    target.scroll({
+                        top: to,
+                        left: 0
+                    });
+                }
+
+                pos1 = pos2;
+            }
+        };
+    }, []);
 
     const serviceItemClickHandler = useCallback((event, item) => {
         gaEvent.home.clickService(item);
@@ -91,7 +146,7 @@ const App = (props) => {
                                 props.service.map((item, index) => {
                                     return (
                                         <Link href={item.href} as={item.as} key={index}>
-                                            <a className="service_item glide__slide" title={item.title} target="_self" onClick={(event) => serviceItemClickHandler(event, item)}>
+                                            <a className="service_item glide__slide" title={item.title} target="_self" onClick={(event) => serviceItemClickHandler(event, item)} onTouchStart={serviceItemTouchHandler.start} onTouchMove={serviceItemTouchHandler.move}>
                                                 <div className="poster_section">
                                                     <div className="padding_box"></div>
                                                     <img className="poster" width="380" height="250" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
