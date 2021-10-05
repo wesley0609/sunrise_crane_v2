@@ -6,6 +6,8 @@ import Glide from "@glidejs/glide";
 import LazyLoad from "lazyload";
 import _ from "lodash";
 
+import tools from "../../assets/js/tools/index.js";
+
 const mapStateToProps = (state) => {
     return {
         deviceType: state.deviceType
@@ -47,6 +49,60 @@ const App = (props) => {
     const posterSectionWidth = useMemo(() => {
         return `${100 / perView}%`;
     }, [perView]);
+
+    const clientItemTouchHandler = useMemo(() => {
+        let target = null;
+        let pos1 = 0;
+        let pos2 = 0;
+
+        return {
+            start(event){
+                target = event.target;
+                target = target.parentNode;
+                pos1 = event.touches[0].clientY;
+
+                while(true){
+                    if(target.nodeType == 9){
+                        break;
+                    }
+
+                    let scrollable = tools.isScrollable(target);
+
+                    if(scrollable.vertical){
+                        break;
+                    }
+                    else{
+                        target = target.parentNode;
+                    }
+                }
+            },
+            move(event){
+                pos2 = event.touches[0].clientY;
+                        
+                let y = pos1 - pos2;
+                let to = 0;
+                
+                if(target.nodeType == 9){
+                    to = scrollY + y;
+
+                    scroll({
+                        top: to,
+                        left: 0
+                    });
+                }
+                else{
+                    to = target.scrollTop + y;
+
+                    target.scroll({
+                        top: to,
+                        left: 0
+                    });
+                }
+
+                pos1 = pos2;
+            }
+        };
+    }, []);
 
     useEffect(() => {
         glide.current = new Glide(".client_list_section", {
@@ -98,7 +154,7 @@ const App = (props) => {
                             {
                                 meta.map((item, index) => {
                                     return (
-                                        <div className="client_item glide__slide" key={index}>
+                                        <div className="client_item glide__slide" onTouchStart={clientItemTouchHandler.start} onTouchMove={clientItemTouchHandler.move} key={index}>
                                             <div className="client_group">
                                                 {
                                                     item.map((_item, _index) => {
