@@ -101,7 +101,7 @@ const App = (props) => {
                                 padding-bottom: 0;
                             }
 
-                            @media screen and (max-width: 411px){
+                            @media screen and (max-width: 414px){
                                 padding-top: 30px;
                             }
 
@@ -112,7 +112,7 @@ const App = (props) => {
                                     font-size: 30px;
                                     line-height: 50px;
 
-                                    @media screen and (max-width: 411px){
+                                    @media screen and (max-width: 414px){
                                         font-size: 28px;
                                     }
                                 }

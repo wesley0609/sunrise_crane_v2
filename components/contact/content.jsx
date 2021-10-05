@@ -110,7 +110,7 @@ const App = (props) => {
                         padding-bottom: 40px;
                         position: relative;
 
-                        @media screen and (max-width: 411px){
+                        @media screen and (max-width: 414px){
                             padding-top: 20px;
                             padding-bottom: 0;
                         }
@@ -187,7 +187,7 @@ const App = (props) => {
                                         padding-bottom: 10px;
                                         border-bottom: 1px solid #b1b1b1;
 
-                                        @media screen and (max-width: 411px){
+                                        @media screen and (max-width: 414px){
                                             font-size: 20px;
                                         }
                                     }
@@ -217,7 +217,7 @@ const App = (props) => {
                                                 width: 20px;
                                                 height: 20px;
 
-                                                @media screen and (max-width: 411px){
+                                                @media screen and (max-width: 414px){
                                                     width: 16px;
                                                     height: 16px;
                                                 }
@@ -226,7 +226,7 @@ const App = (props) => {
                                             .title{
                                                 margin-left: 6px;
 
-                                                @media screen and (max-width: 411px){
+                                                @media screen and (max-width: 414px){
                                                     font-size: 14px;
                                                     margin-left: 4px;
                                                 }
@@ -237,7 +237,7 @@ const App = (props) => {
                                             }
 
                                             .content{
-                                                @media screen and (max-width: 411px){
+                                                @media screen and (max-width: 414px){
                                                     font-size: 14px;
                                                 }
                                             }

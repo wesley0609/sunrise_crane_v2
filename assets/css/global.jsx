@@ -14,7 +14,7 @@ const App = () => {
                         --background-gray: #f7f7f7;
                         --content-font-size: 16px;
 
-                        @media screen and (max-width: 411px){
+                        @media screen and (max-width: 414px){
                             --content-font-size: 15px;
                         }
                     }

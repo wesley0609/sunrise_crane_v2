@@ -18,7 +18,7 @@ const app = () => {
                     });
                 };
 
-                if(resize.width <= 411){
+                if(resize.width <= 414){
                     dispatch("mobile");
                 }
                 else if(resize.width <= 768){

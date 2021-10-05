@@ -72,7 +72,7 @@ const App = (props) => {
                             color: var(--white);
                             font-size: 22px;
 
-                            @media screen and (max-width: 411px){
+                            @media screen and (max-width: 414px){
                                 font-size: 20px;
                             }
                         }
@@ -82,7 +82,7 @@ const App = (props) => {
                             font-size: 30px;
                             line-height: 60px;
 
-                            @media screen and (max-width: 411px){
+                            @media screen and (max-width: 414px){
                                 font-size: 28px;
                             }
                         }

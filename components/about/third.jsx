@@ -76,7 +76,7 @@ const App = (props) => {
                         padding-top: 60px;
                         padding-bottom: 60px;
 
-                        @media screen and (max-width: 411px){
+                        @media screen and (max-width: 414px){
                             padding-top: 30px;
                             padding-bottom: 30px;
                         }
@@ -93,7 +93,7 @@ const App = (props) => {
                                 color: var(--white);
                                 line-height: 50px;
 
-                                @media screen and (max-width: 411px){
+                                @media screen and (max-width: 414px){
                                     font-size: 28px;
                                 }
                             }
@@ -126,7 +126,7 @@ const App = (props) => {
                                     margin-left: 5%;
                                     margin-right: 5%;
 
-                                    @media screen and (max-width: 411px){
+                                    @media screen and (max-width: 414px){
                                         width: 30%;
                                         margin-top: 5%;
                                         margin-bottom: 5%;

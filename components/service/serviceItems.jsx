@@ -66,7 +66,7 @@ const App = (props) => {
                         padding-bottom: 40px;
                         position: relative;
 
-                        @media screen and (max-width: 411px){
+                        @media screen and (max-width: 414px){
                             padding-top: 20px;
                             padding-bottom: 20px;
                         }
@@ -124,7 +124,7 @@ const App = (props) => {
                                         width: 48%;
                                     }
 
-                                    @media screen and (max-width: 411px){
+                                    @media screen and (max-width: 414px){
                                         width: 98%;
                                     }
 

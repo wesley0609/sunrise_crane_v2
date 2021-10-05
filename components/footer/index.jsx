@@ -140,7 +140,7 @@ const App = (props) => {
                         justify-content: center;
                         align-items: center;
 
-                        @media screen and (max-width: 411px){
+                        @media screen and (max-width: 414px){
                             padding-top: 30px;
                             padding-left: 5px;
                             padding-right: 5px;
@@ -151,7 +151,7 @@ const App = (props) => {
                             width: 300px;
                             height: 77px;
 
-                            @media screen and (max-width: 411px){
+                            @media screen and (max-width: 414px){
                                 width: 272px;
                                 height: 70px;
                             }
@@ -166,7 +166,7 @@ const App = (props) => {
                         .content_section{
                             margin-top: 35px;
 
-                            @media screen and (max-width: 411px){
+                            @media screen and (max-width: 414px){
                                 margin-top: 20px;
                             }
 

@@ -150,7 +150,7 @@ const App = (props) => {
                                         justify-content: center;
                                         align-items: center;
 
-                                        @media screen and (max-width: 411px){
+                                        @media screen and (max-width: 414px){
                                             left: 5%;
                                         }
 
@@ -160,7 +160,7 @@ const App = (props) => {
                                                 font-size: 35px;
                                                 line-height: 60px;
 
-                                                @media screen and (max-width: 411px){
+                                                @media screen and (max-width: 414px){
                                                     font-size: 18px;
                                                 }
                                             }
@@ -170,7 +170,7 @@ const App = (props) => {
                                                 font-size: 18px;
                                                 line-height: 40px;
 
-                                                @media screen and (max-width: 411px){
+                                                @media screen and (max-width: 414px){
                                                     display: none;
                                                 }
                                             }
@@ -218,7 +218,7 @@ const App = (props) => {
                                 justify-content: center;
                                 align-items: center;
 
-                                @media screen and (max-width: 411px){
+                                @media screen and (max-width: 414px){
                                     height: 30px;
                                 }
 
@@ -230,7 +230,7 @@ const App = (props) => {
                                     justify-content: center;
                                     align-items: center;
 
-                                    @media screen and (max-width: 411px){
+                                    @media screen and (max-width: 414px){
                                         width: 15px;
                                         height: 15px;
                                     }
@@ -242,7 +242,7 @@ const App = (props) => {
                                         border: 1px solid var(--white);
                                         background-color: transparent;
 
-                                        @media screen and (max-width: 411px){
+                                        @media screen and (max-width: 414px){
                                             width: 8px;
                                             height: 8px;
                                         }
