@@ -50,7 +50,7 @@ const App = ({Component, pageProps, ...etc}) => {
                 <meta name="author" content={pkg.author} key="author" />
                 <meta name="keywords" content={pkg.keywords.join(",")} key="keywords" />
                 <meta name="theme-color" content="#121212" key="themeColor" />
-                <meta name="facebook-domain-verification" content="uyi1j776sso8cvux0tdjxdonic7l21" />
+                <meta property="fb:app_id" content="3115592912095632" />
                 <meta property="og:url" content={pkg.siteUrl} key="og:url" />
                 <meta property="og:type" content="website" key="og:type" />
                 <meta property="og:title" content={pkg.title} key="og:title" />
