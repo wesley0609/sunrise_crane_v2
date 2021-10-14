@@ -50,6 +50,7 @@ const App = ({Component, pageProps, ...etc}) => {
                 <meta name="author" content={pkg.author} key="author" />
                 <meta name="keywords" content={pkg.keywords.join(",")} key="keywords" />
                 <meta name="theme-color" content="#121212" key="themeColor" />
+                <meta property="fb:app_id" content="104715908664040" />
                 <meta property="og:url" content={pkg.siteUrl} key="og:url" />
                 <meta property="og:type" content="website" key="og:type" />
                 <meta property="og:title" content={pkg.title} key="og:title" />
