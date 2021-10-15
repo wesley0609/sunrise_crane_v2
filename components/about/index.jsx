@@ -19,14 +19,14 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     return (
         <>
-            <div className="banner_section">
+            <main className="banner_section">
                 <h1 className="ssr_only">{props.about.title}</h1>
                 <Banner banner={props.banner} />
                 <First about={props.about} />
                 <Second about={props.about} />
                 <Third about={props.about} />
                 <Fourth about={props.about} />
-            </div>
+            </main>
 
             <style jsx>
                 {`

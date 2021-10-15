@@ -17,12 +17,12 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     return (
         <>
-            <div className="service_section">
+            <main className="service_section">
                 <h1 className="ssr_only">{props.service.title}</h1>
                 <Banner banner={props.banner} />
                 <Information information={props.service.information} />
                 <ServiceItems service={props.service.service} />
-            </div>
+            </main>
 
             <style jsx>
                 {`

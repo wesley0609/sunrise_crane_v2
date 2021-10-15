@@ -18,13 +18,13 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     return (
         <>
-            <div className="contact_section">
+            <main className="contact_section">
                 <h1 className="ssr_only">{props.contact.title}</h1>
                 <Banner banner={props.banner} />
                 <Information information={props.contact.information} />
                 <Content contact={props.contact.contact} />
                 <Map contact={props.contact.contact} />
-            </div>
+            </main>
 
             <style jsx>
                 {`

@@ -21,14 +21,14 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     return (
         <>
-            <div className="home_section">
+            <main className="home_section">
                 <h1 className="ssr_only">{pkg.siteName}</h1>
                 <Banner banner={props.banner} />
                 <Service homeService={props.home["service"]} service={props.service} />
                 <About homeAbout={props.home["about"]} />
                 <Gallery homeGallery={props.home["gallery"]} />
                 <Client homeClient={props.home["client"]} client={props.client} />
-            </div>
+            </main>
 
             <style jsx>
                 {`
