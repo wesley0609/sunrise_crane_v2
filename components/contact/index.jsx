@@ -29,7 +29,7 @@ const App = (props) => {
             <style jsx>
                 {`
                     .contact_section{
-                        display: block;
+                        overflow: hidden;
                     }
                 `}
             </style>

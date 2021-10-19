@@ -31,7 +31,7 @@ const App = (props) => {
             <style jsx>
                 {`
                     .about_section{
-                        display: block;
+                        overflow: hidden;
                     }
                 `}
             </style>
