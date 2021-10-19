@@ -33,7 +33,7 @@ const App = (props) => {
             <style jsx>
                 {`
                     .home_section{
-                        display: block;
+                        overflow: hidden;
                     }
                 `}
             </style>

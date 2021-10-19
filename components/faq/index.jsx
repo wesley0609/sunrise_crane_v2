@@ -27,7 +27,7 @@ const App = (props) => {
             <style jsx>
                 {`
                     .faq_section{
-                        display: block;
+                        overflow: hidden;
                     }
                 `}
             </style>
