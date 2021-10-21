@@ -10,6 +10,7 @@ import store from "../redux/store.js";
 import plugins from "../plugins/index.js";
 
 import pkg from "../package.json";
+import theme from "../assets/json/style/theme.json";
 
 import GlobalStyle from "../assets/css/global.jsx";
 import Loading from "../components/loading/index.jsx";
@@ -49,7 +50,7 @@ const App = ({Component, pageProps, ...etc}) => {
                 <meta name="description" content={pkg.description} key="description" />
                 <meta name="author" content={pkg.author} key="author" />
                 <meta name="keywords" content={pkg.keywords.join(",")} key="keywords" />
-                <meta name="theme-color" content="#121212" key="themeColor" />
+                <meta name="theme-color" content={theme["--black"]} key="themeColor" />
                 <meta property="fb:app_id" content="3115592912095632" key="fb:app_id" />
                 <meta property="og:url" content={pkg.siteUrl} key="og:url" />
                 <meta property="og:type" content="website" key="og:type" />

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { useMemo } from "react";
 import NextNprogress from "nextjs-progressbar";
 
+import theme from "../../assets/json/style/theme.json";
+
 const mapStateToProps = (state) => {
     return {};
 };
@@ -14,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     const setting = useMemo(() => {
         return {
-            color: "#ff6700",
+            color: theme["--primary"],
             height: 2,
             options: {
                 showSpinner: false

@@ -1,17 +1,19 @@
 
+import theme from "../json/style/theme.json";
+
 const App = () => {
     return (
         <>
             <style jsx global>
                 {`
                     :root{
-                        --primary: #ff6700;
-                        --primary-light: #ff9a55;
-                        --black: #121212;
-                        --white: #ffffff;
-                        --gray: #767676;
-                        --text-background-gray: #f9f9fa;
-                        --background-gray: #f7f7f7;
+                        --primary: ${theme["--primary"]};
+                        --primary-light: ${theme["--primary-light"]};
+                        --black: ${theme["--black"]};
+                        --white: ${theme["--white"]};
+                        --gray: ${theme["--gray"]};
+                        --text-background-gray: ${theme["--text-background-gray"]};
+                        --background-gray: ${theme["--background-gray"]};
                         --content-font-size: 16px;
 
                         @media screen and (max-width: 414px){
