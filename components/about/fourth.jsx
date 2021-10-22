@@ -120,6 +120,7 @@ const App = (props) => {
                                 .content{
                                     line-height: 30px;
                                     margin-top: 20px;
+                                    color: var(--black-light);
                                 }
                             }
 

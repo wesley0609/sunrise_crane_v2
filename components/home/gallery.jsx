@@ -210,6 +210,7 @@ const App = (props) => {
                                 .description_section{
                                     margin-top: 20px;
                                     line-height: 30px;
+                                    color: var(--black-light);
                                 }
 
                                 .more_link{

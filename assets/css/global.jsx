@@ -10,6 +10,7 @@ const App = () => {
                         --primary: ${theme["--primary"]};
                         --primary-light: ${theme["--primary-light"]};
                         --black: ${theme["--black"]};
+                        --black-light: ${theme["--black-light"]};
                         --white: ${theme["--white"]};
                         --gray: ${theme["--gray"]};
                         --text-background-gray: ${theme["--text-background-gray"]};

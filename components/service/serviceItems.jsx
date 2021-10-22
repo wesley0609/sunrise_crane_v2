@@ -147,6 +147,7 @@ const App = (props) => {
                                             line-height: 25px;
                                             margin-top: 25px;
                                             margin-bottom: 25px;
+                                            color: var(--black-light);
                                         }
                                     }
                                 }

@@ -183,6 +183,7 @@ const App = (props) => {
                                 .content_section{
                                     line-height: 30px;
                                     margin-top: 20px;
+                                    color: var(--black-light);
                                 }
                             }
                         }

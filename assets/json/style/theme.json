@@ -2,6 +2,7 @@
     "--primary": "#ff6700",
     "--primary-light": "#ff9a55",
     "--black": "#121212",
+    "--black-light": "#4b4b4b",
     "--white": "#ffffff",
     "--gray": "#767676",
     "--text-background-gray": "#f9f9fa",
