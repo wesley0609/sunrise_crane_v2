@@ -15,21 +15,21 @@
         },
         {
             "title": "重型機械搬運、精密儀器搬運",
-            "description": "(一般 / 特殊)精密儀器搬運、重型機械設備，吊車搬運、起重機搬運、定位。",
+            "description": "（一般 / 特殊）精密儀器搬運、重型機械設備，吊車搬運、起重機搬運、定位。",
             "src": "service02.png",
             "href": "/service",
             "as": "/service"
         },
         {
             "title": "設備組裝、定位、拆卸",
-            "description": "機械設備到場組裝，(堆高機 / 吊掛)定位，設備拆卸，二手設備買賣、拆卸。",
+            "description": "機械設備到場組裝，（堆高機 / 吊掛）定位，設備拆卸，二手設備買賣、拆卸。",
             "src": "service03.png",
             "href": "/service",
             "as": "/service"
         },
         {
             "title": "貨櫃裝櫃、卸櫃",
-            "description": "(設備 / 物品)裝箱、木箱包裝、鋁箔真空包裝、裝櫃、(設備 / 物品)卸櫃、木箱拆卸、定位。",
+            "description": "（設備 / 物品）裝箱、木箱包裝、鋁箔真空包裝、裝櫃、（設備 / 物品）卸櫃、木箱拆卸、定位。",
             "src": "service04.png",
             "href": "/service",
             "as": "/service"
