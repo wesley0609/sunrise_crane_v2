@@ -164,6 +164,7 @@ const App = (props) => {
 
                                     .content_list{
                                         line-height: 30px;
+                                        color: var(--black-light);
                                     }
                                 }
                             }

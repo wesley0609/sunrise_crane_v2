@@ -192,6 +192,7 @@ const App = (props) => {
                         .description_section{
                             width: 70%;
                             line-height: 30px;
+                            color: var(--black-light);
 
                             @media screen and (max-width: 768px){
                                 margin-top: 20px;

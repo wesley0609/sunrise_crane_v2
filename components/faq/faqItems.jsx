@@ -191,7 +191,7 @@ const App = (props) => {
                                         padding-bottom: 20px;
                                         padding-left: 15px;
                                         padding-right: 30px;
-                                        color: #4b4b4b;
+                                        color: var(--black-light);
                                         display: none;
                                     }
                                 }
