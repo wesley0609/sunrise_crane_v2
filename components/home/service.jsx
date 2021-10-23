@@ -94,7 +94,7 @@ const App = (props) => {
                                             <a className="service_item glide__slide" title={item.title} target="_self" onClick={(event) => serviceItemClickHandler(event, item)}>
                                                 <div className="poster_section">
                                                     <div className="padding_box"></div>
-                                                    <img className="poster" width="380" height="250" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
+                                                    <img className="poster" width="256" height="256" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
                                                 </div>
                                                 
                                                 <h3 className="des_section">{item.title}</h3>
@@ -240,9 +240,11 @@ const App = (props) => {
 
                                         .poster_section{
                                             position: relative;
+                                            margin-left: 18%;
+                                            margin-right: 18%;
 
                                             .padding_box{
-                                                padding-bottom: 65.79%;
+                                                padding-bottom: 100%;
                                             }
 
                                             .poster{

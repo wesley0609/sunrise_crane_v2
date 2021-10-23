@@ -1,12 +1,14 @@
 
 import { connect } from "react-redux";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo, useCallback } from "react";
 import PropTypes from "prop-types";
 import Glide from "@glidejs/glide";
 import LazyLoad from "lazyload";
 
 const mapStateToProps = (state) => {
-    return {};
+    return {
+        deviceType: state.deviceType
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -15,6 +17,34 @@ const mapDispatchToProps = (dispatch) => {
 
 const App = (props) => {
     const glide = useRef(null);
+
+    const imageSize = useMemo(() => {
+        let size = {
+            width: 1920,
+            height: 680,
+            paddingBottom: "35.42%"
+        };
+
+        if(props.deviceType == "mobile"){
+            size = {
+                width: 795,
+                height: 955,
+                paddingBottom: "120.13%"
+            };
+        }
+
+        return size;
+    }, [props.deviceType]);
+
+    const getBannerImage = useCallback((item) => {
+        let src = require(`../../assets/image/home/banner/pc/${item.src}`);
+
+        if(props.deviceType == "mobile"){
+            src = require(`../../assets/image/home/banner/mobile/${item.src}`);
+        }
+
+        return src;
+    }, [props.deviceType]);
 
     useEffect(() => {
         glide.current = new Glide(".banner_section", {
@@ -39,7 +69,7 @@ const App = (props) => {
         return () => {
             glide.current.destroy();
         };
-    }, []);
+    }, [props.deviceType]);
 
     return (
         <>
@@ -51,14 +81,12 @@ const App = (props) => {
                                 return (
                                     <div className="banner_item glide__slide" key={index}>
                                         <div className="padding_box"></div>
-                                        <img className="banner_image" width="1920" height="680" data-src={require(`../../assets/image/home/banner/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
+                                        <img className="banner_image" width={imageSize.width} height={imageSize.height} data-src={getBannerImage(item)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
                                         <div className="filter_box"></div>
 
-                                        <div className="banner_text_container">
-                                            <div className="banner_text">
-                                                <div className="title">{item.title}</div>
-                                                <div className="subtitle">{item.subtitle}</div>
-                                            </div>
+                                        <div className="banner_text">
+                                            <div className="title">{item.title}</div>
+                                            <div className="subtitle">{item.subtitle}</div>
                                         </div>
                                     </div>
                                 );
@@ -118,7 +146,7 @@ const App = (props) => {
                                     position: relative;
 
                                     .padding_box{
-                                        padding-bottom: 35.42%;
+                                        padding-bottom: ${imageSize.paddingBottom};
                                     }
 
                                     .banner_image{
@@ -140,7 +168,7 @@ const App = (props) => {
                                         opacity: .8;
                                     }
 
-                                    .banner_text_container{
+                                    .banner_text{
                                         position: absolute;
                                         top: 0;
                                         left: 15%;
@@ -148,32 +176,21 @@ const App = (props) => {
                                         display: flex;
                                         flex-direction: column;
                                         justify-content: center;
-                                        align-items: center;
 
                                         @media screen and (max-width: 414px){
                                             left: 5%;
                                         }
 
-                                        .banner_text{
-                                            .title{
-                                                color: var(--white);
-                                                font-size: 35px;
-                                                line-height: 60px;
+                                        .title{
+                                            color: var(--white);
+                                            font-size: 35px;
+                                            line-height: 60px;
+                                        }
 
-                                                @media screen and (max-width: 414px){
-                                                    font-size: 18px;
-                                                }
-                                            }
-
-                                            .subtitle{
-                                                color: var(--white);
-                                                font-size: 18px;
-                                                line-height: 40px;
-
-                                                @media screen and (max-width: 414px){
-                                                    display: none;
-                                                }
-                                            }
+                                        .subtitle{
+                                            color: var(--white);
+                                            font-size: 18px;
+                                            line-height: 40px;
                                         }
                                     }
                                 }

@@ -40,7 +40,7 @@ const App = (props) => {
                             props.service.map((item, index) => {
                                 return (
                                     <div className="service_item" onClick={(event) => serviceItemClickHandler(event, item)} key={index}>
-                                        <img className="poster_section" width="380" height="250" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
+                                        <img className="poster_section" width="256" height="256" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
 
                                         <div className="content_section">
                                             <h2 className="title">{item.title}</h2>
@@ -130,8 +130,9 @@ const App = (props) => {
 
                                     .poster_section{
                                         display: block;
-                                        width: 100%;
+                                        width: 65%;
                                         height: auto;
+                                        margin: 0 auto;
                                     }
 
                                     .content_section{
