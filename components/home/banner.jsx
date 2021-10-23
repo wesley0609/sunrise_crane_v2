@@ -185,12 +185,21 @@ const App = (props) => {
                                             color: var(--white);
                                             font-size: 35px;
                                             line-height: 60px;
+
+                                            @media screen and (max-width: 414px){
+                                                font-size: 30px;
+                                                line-height: 40px;
+                                            }
                                         }
 
                                         .subtitle{
                                             color: var(--white);
                                             font-size: 18px;
                                             line-height: 40px;
+
+                                            @media screen and (max-width: 414px){
+                                                font-size: 16px;
+                                            }
                                         }
                                     }
                                 }
