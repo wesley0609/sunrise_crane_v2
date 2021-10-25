@@ -228,7 +228,7 @@ const App = (props) => {
                                     align-items: center;
 
                                     .service_item{
-                                        touch-action: none;
+                                        touch-action: pan-y;
 
                                         @media screen and (min-width: 769px){
                                             &:hover{

@@ -239,7 +239,7 @@ const App = (props) => {
                                     align-items: center;
 
                                     .client_item{
-                                        touch-action: none;
+                                        touch-action: pan-y;
 
                                         .client_group{
                                             display: flex;

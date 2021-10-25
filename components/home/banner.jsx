@@ -142,7 +142,7 @@ const App = (props) => {
                                 .banner_item{
                                     width: 100%;
                                     display: inline-block;
-                                    touch-action: none;
+                                    touch-action: pan-y;
                                     position: relative;
 
                                     .padding_box{
