@@ -26,7 +26,7 @@ const App = (props) => {
     }, [props.color]);
 
     const linkClickHandler = useCallback((event, item) => {
-        gaEvent.breadcrumb.clickLink(props.router, item)
+        gaEvent.breadcrumb.clickLink(props.router, item);
     }, [props.router]);
 
     return (

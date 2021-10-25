@@ -1,7 +1,7 @@
 
 ## site url
 
-> https://www.sunrise-crane.com.tw
+> https://www.sunrise-crane.com.tw/
 
 ## node.js version
 
