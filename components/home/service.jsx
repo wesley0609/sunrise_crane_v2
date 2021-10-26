@@ -94,7 +94,7 @@ const App = (props) => {
                                             <a className="service_item glide__slide" title={item.title} target="_self" onClick={(event) => serviceItemClickHandler(event, item)}>
                                                 <div className="poster_section">
                                                     <div className="padding_box"></div>
-                                                    <img className="poster" width="256" height="256" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
+                                                    <img className="poster" width="150" height="150" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
                                                 </div>
                                                 
                                                 <h3 className="des_section">{item.title}</h3>
