@@ -66,7 +66,7 @@ const App = ({Component, pageProps, ...etc}) => {
                 <link rel="shortcut icon" type="image/png" size="48x48" href="/favicon.png" key="shortcutIcon" />
                 <link rel="icon" type="image/png" size="192x192" href="/icon/icon@192.png" key="icon" />
                 <link rel="apple-touch-icon" type="image/png" size="512x512" href="/icon/icon@512.png" key="appleTouchIcon" />
-                <script type="text/javascript" charSet="utf-8" dangerouslySetInnerHTML={head.alexa} key="alexa"></script>
+                <script type="text/javascript" dangerouslySetInnerHTML={head.alexa} key="alexa"></script>
             </Head>
 
             <GlobalStyle {...pageProps} />
