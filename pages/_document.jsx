@@ -2,6 +2,7 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import head from "../assets/js/head/index.js";
+import body from "../assets/js/body/index.js";
 
 import pkg from "../package.json";
 import theme from "../assets/json/style/theme.json";
@@ -37,6 +38,8 @@ export default class App extends Document{
                 </Head>
                 
                 <body>
+                    <noscript dangerouslySetInnerHTML={body.gtm}></noscript>
+                    <noscript dangerouslySetInnerHTML={body.alexa}></noscript>
                     <Main />
                     <NextScript />
                 </body>
