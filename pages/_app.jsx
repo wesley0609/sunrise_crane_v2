@@ -4,6 +4,7 @@ import "normalize.css";
 import { Provider } from "react-redux";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 import store from "../redux/store.js";
 import plugins from "../plugins/index.js";
@@ -39,6 +40,10 @@ const App = ({Component, pageProps, ...etc}) => {
 
     return (
         <Provider store={store}>
+            <Head>
+                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+            </Head>
+
             <GlobalStyle {...pageProps} />
             <Loading {...pageProps} />
             <Header {...pageProps} />

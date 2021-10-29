@@ -2,7 +2,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import head from "../assets/js/head/index.js";
-import body from "../assets/js/body/index.js";
 
 import pkg from "../package.json";
 import theme from "../assets/json/style/theme.json";
@@ -18,7 +17,6 @@ export default class App extends Document{
         return (
             <Html dir="ltr" lang="zh-Hant-TW" prefix="og: http://ogp.me/ns#">
                 <Head>
-                    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
                     <meta name="author" content={pkg.author} />
                     <meta name="keywords" content={pkg.keywords.join(",")} />
                     <meta name="theme-color" content={theme["--black"]} />
@@ -38,8 +36,6 @@ export default class App extends Document{
                 </Head>
                 
                 <body>
-                    <noscript dangerouslySetInnerHTML={body.gtm}></noscript>
-                    <noscript dangerouslySetInnerHTML={body.alexa}></noscript>
                     <Main />
                     <NextScript />
                 </body>
