@@ -50,6 +50,12 @@ const App = (props) => {
     return (
         <>
             <Head>
+                <title key="title">{seo.home.getTitle()}</title>
+                <meta name="description" content={seo.home.getDescription()} key="description" />
+                <meta property="og:url" content={seo.home.getUrl()} key="og:url" />
+                <meta property="og:title" content={seo.home.getTitle()} key="og:title" />
+                <meta property="og:description" content={seo.home.getDescription()} key="og:description" />
+                <link rel="canonical" href={seo.home.getUrl()} key="canonical" />
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.home.getOrganization()} key="Organization"></script>
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.home.getBreadcrumbList()} key="BreadcrumbList"></script>
             </Head>
