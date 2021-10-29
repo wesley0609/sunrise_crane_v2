@@ -4,7 +4,6 @@ import { useEffect, useMemo } from "react";
 import Head from "next/head";
 
 import seo from "../assets/js/seo/index.js";
-import head from "../assets/js/head/index.js";
 
 import bannerMeta from "../assets/json/meta/banner/index.json";
 import homeMeta from "../assets/json/meta/home/index.json";
@@ -53,7 +52,6 @@ const App = (props) => {
             <Head>
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.home.getOrganization()} key="Organization"></script>
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.home.getBreadcrumbList()} key="BreadcrumbList"></script>
-                <script type="text/javascript" dangerouslySetInnerHTML={head.alexa} key="alexa"></script>
             </Head>
 
             <Home banner={meta.banner} service={meta.service} home={meta.home} client={meta.client} />
