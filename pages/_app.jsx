@@ -49,7 +49,6 @@ const App = ({Component, pageProps, ...etc}) => {
                 <meta property="og:url" content={pkg.siteUrl} key="og:url" />
                 <meta property="og:title" content={pkg.title} key="og:title" />
                 <meta property="og:description" content={pkg.description} key="og:description" />
-                <link rel="canonical" href={pkg.siteUrl} key="canonical" />
             </Head>
 
             <GlobalStyle {...pageProps} />
