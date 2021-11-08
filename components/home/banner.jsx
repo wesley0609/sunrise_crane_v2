@@ -19,31 +19,27 @@ const App = (props) => {
     const glide = useRef(null);
 
     const imageSize = useMemo(() => {
-        let size = {
-            width: 1920,
-            height: 680,
-            paddingBottom: "35.42%"
-        };
-
         if(props.deviceType == "mobile"){
-            size = {
+            return {
                 width: 795,
                 height: 955,
                 paddingBottom: "120.13%"
             };
         }
 
-        return size;
+        return {
+            width: 1920,
+            height: 680,
+            paddingBottom: "35.42%"
+        };
     }, [props.deviceType]);
 
     const getBannerImage = useCallback((item) => {
-        let src = require(`../../assets/image/home/banner/pc/${item.src}`);
-
         if(props.deviceType == "mobile"){
-            src = require(`../../assets/image/home/banner/mobile/${item.src}`);
+            return require(`../../assets/image/home/banner/mobile/${item.src}`);
         }
 
-        return src;
+        return require(`../../assets/image/home/banner/pc/${item.src}`);
     }, [props.deviceType]);
 
     useEffect(() => {
