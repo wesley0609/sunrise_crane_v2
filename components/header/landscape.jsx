@@ -40,7 +40,7 @@ const App = (props) => {
             <div className="header_content">
                 <Link href="/" as="/">
                     <a className="logo_section" title={pkg.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={`${pkg.siteName}｜${pkg.enName}`} />
+                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={`${pkg.siteName} - ${pkg.enName}`} />
                     </a>
                 </Link>
 

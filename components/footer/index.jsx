@@ -55,7 +55,7 @@ const App = (props) => {
             <footer className="footer_section">
                 <Link href="/" as="/">
                     <a className="logo_section" title={pkg.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="300" height="77" src={require("../../public/logo.svg")} alt={`${pkg.siteName}｜${pkg.enName}`} />
+                        <img className="logo" width="300" height="77" src={require("../../public/logo.svg")} alt={`${pkg.siteName} - ${pkg.enName}`} />
                     </a>
                 </Link>
 

@@ -75,14 +75,14 @@ const App = (props) => {
         return html;
     }, []);
 
-    const getGalleryImageAlt = useCallback((item) => {
-        let alt = item.title;
+    const getGalleryItemText = useCallback((item) => {
+        let text = item.title;
 
         if(item.subtitle){
-            alt += `｜${item.subtitle}`;
+            text += ` - ${item.subtitle}`;
         }
 
-        return alt;
+        return text;
     }, []);
 
     const galleryItemPlaceholderClickHandler = useCallback((event) => {
@@ -125,8 +125,8 @@ const App = (props) => {
                                                 return (
                                                     <a className="gallery_item" href={getGalleryItemHref(index)} title={item.subtitle} target="_self" onClick={(event) => galleryItemPlaceholderClickHandler(event)} key={index}>
                                                         <div className="padding_box"></div>
-                                                        <img className="gallery_image" width={imageSize.width} height={imageSize.height} src={require("../../assets/image/poster/default.png")} alt={getGalleryImageAlt(item)} />
-                                                        <h2 className="gallery_text">{`${item.title}-${item.subtitle}`}</h2>
+                                                        <img className="gallery_image" width={imageSize.width} height={imageSize.height} src={require("../../assets/image/poster/default.png")} alt={getGalleryItemText(item)} />
+                                                        <h2 className="gallery_text">{getGalleryItemText(item)}</h2>
                                                     </a>
                                                 );
                                             })
@@ -143,8 +143,8 @@ const App = (props) => {
                                 return (
                                     <a className="gallery_item" href={getGalleryItemHref(index)} data-lg-size={`${imageSize.width}-${imageSize.height}`} data-sub-html={getGalleryItemSubHTML(item)} data-src={require(`../../assets/image/gallery/${item.src}`)} title={item.subtitle} target="_self" onClick={(event) => galleryItemClickHandler(event, item)} key={index}>
                                         <div className="padding_box"></div>
-                                        <img className="gallery_image" width={imageSize.width} height={imageSize.height} data-src={require(`../../assets/image/gallery/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={getGalleryImageAlt(item)} />
-                                        <h2 className="gallery_text">{`${item.title}-${item.subtitle}`}</h2>
+                                        <img className="gallery_image" width={imageSize.width} height={imageSize.height} data-src={require(`../../assets/image/gallery/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={getGalleryItemText(item)} />
+                                        <h2 className="gallery_text">{getGalleryItemText(item)}</h2>
                                     </a>
                                 );
                             })
