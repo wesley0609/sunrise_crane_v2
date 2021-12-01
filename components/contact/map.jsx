@@ -14,13 +14,11 @@ const mapDispatchToProps = (dispatch) => {
 };
 const App = (props) => {
     const iframeHeight = useMemo(() => {
-        let height = 450;
-
         if(props.deviceType != "pc"){
-            height = 350;
+            return 350;
         }
 
-        return height;
+        return 450;
     }, [props.deviceType]);
 
     const iframeStyle = useMemo(() => {

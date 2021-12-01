@@ -40,7 +40,7 @@ const App = (props) => {
             service: serviceMeta["service"],
             home: homeMeta,
             client: clientMeta["client"]
-        }
+        };
     }, []);
 
     useEffect(() => {
