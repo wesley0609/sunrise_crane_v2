@@ -1,12 +1,12 @@
 
 const app = (faq) => {
+    let items = faq["faq"];
+
     let obj = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": []
     };
-
-    let items = faq["faq"];
     
     for(let i = 0; i < items.length; i ++){
         let item = items[i];
