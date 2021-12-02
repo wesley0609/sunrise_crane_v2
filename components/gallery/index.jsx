@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import Banner from "../banner/index.jsx";
 import Information from "../information/index.jsx";
-import GalleryItems from "./galleryItems.jsx";
+import Items from "./items.jsx";
 
 const mapStateToProps = (state) => {
     return {};
@@ -21,7 +21,7 @@ const App = (props) => {
                 <h1 className="ssr_only">{props.gallery.title}</h1>
                 <Banner banner={props.banner} />
                 <Information information={props.gallery.information} />
-                <GalleryItems gallery={props.gallery.gallery} />
+                <Items items={props.gallery.content} />
             </main>
 
             <style jsx>

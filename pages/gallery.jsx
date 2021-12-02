@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     const meta = useMemo(() => {
         return {
-            banner: bannerMeta["gallery"],
+            banner: bannerMeta.gallery,
             gallery: galleryMeta
         };
     }, []);

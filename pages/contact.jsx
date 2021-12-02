@@ -34,7 +34,7 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     const meta = useMemo(() => {
         return {
-            banner: bannerMeta["contact"],
+            banner: bannerMeta.contact,
             contact: contactMeta
         };
     }, []);

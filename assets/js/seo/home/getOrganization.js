@@ -4,7 +4,7 @@ import contactMeta from "../../../json/meta/contact/index.json";
 
 const app = () => {
     let url = pkg.siteUrl;
-    let contact = contactMeta["contact"];
+    let contact = contactMeta.contact;
     let twAddress = contact.fullAddress.tw;
 
     let obj = {

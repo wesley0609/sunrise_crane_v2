@@ -23,7 +23,7 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     const meta = useMemo(() => {
         return {
-            contact: contactMeta["contact"]
+            contact: contactMeta.contact
         };
     }, []);
 

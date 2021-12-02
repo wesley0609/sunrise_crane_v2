@@ -18,7 +18,7 @@ const app = () => {
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": title["faq"],
+                "name": title.faq,
                 "item": seo.faq.getUrl()
             }
         ]

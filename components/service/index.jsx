@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 import Banner from "../banner/index.jsx";
 import Information from "../information/index.jsx";
-import ServiceItems from "./serviceItems.jsx";
+import Items from "./items.jsx";
 
 const mapStateToProps = (state) => {
     return {};
@@ -21,7 +21,7 @@ const App = (props) => {
                 <h1 className="ssr_only">{props.service.title}</h1>
                 <Banner banner={props.banner} />
                 <Information information={props.service.information} />
-                <ServiceItems service={props.service.service} />
+                <Items items={props.service.content} />
             </main>
 
             <style jsx>

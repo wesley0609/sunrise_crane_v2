@@ -121,7 +121,7 @@ const App = (props) => {
                                     // sync with to be presented
                                     <div className="gallery_items placeholder">
                                         {
-                                            props.gallery.map((item, index) => {
+                                            props.items.map((item, index) => {
                                                 return (
                                                     <a className="gallery_item" href={getGalleryItemHref(index)} title={item.subtitle} target="_self" onClick={(event) => galleryItemPlaceholderClickHandler(event)} key={index}>
                                                         <div className="padding_box"></div>
@@ -139,7 +139,7 @@ const App = (props) => {
 
                     <LightGallery elementClassNames={`${scopedId} gallery_items`} onInit={setting.onInit} plugins={setting.plugins} download={setting.download} licenseKey={setting.licenseKey}>
                         {
-                            props.gallery.map((item, index) => {
+                            props.items.map((item, index) => {
                                 return (
                                     <a className="gallery_item" href={getGalleryItemHref(index)} data-lg-size={`${imageSize.width}-${imageSize.height}`} data-sub-html={getGalleryItemSubHTML(item)} data-src={require(`../../assets/image/gallery/${item.src}`)} title={item.subtitle} target="_self" onClick={(event) => galleryItemClickHandler(event, item)} key={index}>
                                         <div className="padding_box"></div>
@@ -280,7 +280,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-    gallery: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

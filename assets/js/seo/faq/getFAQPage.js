@@ -1,6 +1,6 @@
 
 const app = (faq) => {
-    let items = faq["faq"];
+    let items = faq.content;
 
     let obj = {
         "@context": "https://schema.org",

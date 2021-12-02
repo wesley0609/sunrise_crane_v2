@@ -36,10 +36,10 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     const meta = useMemo(() => {
         return {
-            banner: bannerMeta["home"],
-            service: serviceMeta["service"],
+            banner: bannerMeta.home,
+            service: serviceMeta.content,
             home: homeMeta,
-            client: clientMeta["client"]
+            client: clientMeta.content
         };
     }, []);
 

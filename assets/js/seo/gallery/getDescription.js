@@ -2,7 +2,7 @@
 import description from "../../../json/seo/description.json";
 
 const app = () => {
-    return description["gallery"];
+    return description.gallery;
 };
 
 export default app;

@@ -37,7 +37,7 @@ const App = (props) => {
                 <div className="secvice_items_container">
                     <div className="service_items">
                         {
-                            props.service.map((item, index) => {
+                            props.items.map((item, index) => {
                                 return (
                                     <div className="service_item" onClick={(event) => serviceItemClickHandler(event, item)} key={index}>
                                         <img className="poster_section" width="150" height="150" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
@@ -162,7 +162,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-    service: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

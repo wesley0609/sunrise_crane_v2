@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     const meta = useMemo(() => {
         return {
-            menu: headerMeta["menu"]
+            menu: headerMeta.menu
         };
     }, []);
 

@@ -19,7 +19,7 @@ const App = (props) => {
     const questionSectionClickHandler = useCallback((event, item, index) => {
         let _answerDisplays = [];
 
-        for(let i = 0; i < props.faq.length; i ++){
+        for(let i = 0; i < props.items.length; i ++){
             if(i == index){
                 if(answerDisplays[index]){
                     _answerDisplays.push(false);
@@ -35,7 +35,7 @@ const App = (props) => {
 
         setAnswerDisplays(_answerDisplays);
         gaEvent.faq.clickQuestion(item);
-    }, [props.faq, answerDisplays]);
+    }, [props.items, answerDisplays]);
 
     const getAnswerSectionStyle = useCallback((index) => {
         if(answerDisplays[index]){
@@ -52,7 +52,7 @@ const App = (props) => {
     useEffect(() => {
         let _answerDisplays = [];
 
-        for(let i = 0; i < props.faq.length; i ++){
+        for(let i = 0; i < props.items.length; i ++){
             if(i == 0){
                 _answerDisplays.push(true);
             }
@@ -62,7 +62,7 @@ const App = (props) => {
         }
 
         setAnswerDisplays(_answerDisplays);
-    }, [props.faq]);
+    }, [props.items]);
 
     return (
         <>
@@ -72,7 +72,7 @@ const App = (props) => {
                 <div className="faq_items_container">
                     <div className="faq_items">
                         {
-                            props.faq.map((item, index) => {
+                            props.items.map((item, index) => {
                                 return (
                                     <div className="faq_item" key={index}>
                                         <button className="question_section" title={item.question} onClick={(event) => questionSectionClickHandler(event, item, index)}>
@@ -205,7 +205,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
-    faq: PropTypes.array.isRequired
+    items: PropTypes.array.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
