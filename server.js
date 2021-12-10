@@ -1,15 +1,16 @@
 
 const Koa = require("koa");
-const next = require("next");
 const Router = require("@koa/router");
 const https = require("https");
 const fs = require("fs");
+const next = require("next");
+
+const config = require("./assets/json/config/config.common.json");
 
 const host = process.env.HOST || "127.0.0.1";
 const dev = process.env.NODE_ENV !== "production";
-const app = next({ dev });
+const app = next({dev});
 const handle = app.getRequestHandler();
-const config = require("./assets/json/config/config.common.json");
 
 app.prepare().then(() => {
     const server = new Koa();
@@ -17,8 +18,8 @@ app.prepare().then(() => {
     
     // koa router 9.0.0 or more
     router.all("(.*)", async (ctx) => {
-        await handle(ctx.req, ctx.res);
         ctx.respond = false;
+        await handle(ctx.req, ctx.res);
     });
     
     server.use(async (ctx, next) => {
