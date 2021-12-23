@@ -1,6 +1,6 @@
 
 import { connect } from "react-redux";
-import { useEffect, useMemo, useRef, useCallback } from "react";
+import { useEffect, useState, useMemo, useRef, useCallback } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Glide from "@glidejs/glide";
@@ -20,6 +20,8 @@ const mapDispatchToProps = (dispatch) => {
 
 const App = (props) => {
     const glide = useRef(null);
+
+    const [touchAction, setTouchAction] = useState("pan-y");
 
     const perView = useMemo(() => {
         if(props.deviceType == "mobile"){
@@ -45,6 +47,14 @@ const App = (props) => {
             classes: {
                 activeNav: "service_bullet_active"
             }
+        });
+
+        glide.current.on("swipe.start", () => {
+            setTouchAction("none");
+        });
+
+        glide.current.on("swipe.end", () => {
+            setTouchAction("pan-y");
         });
 
         glide.current.mount();
@@ -228,7 +238,7 @@ const App = (props) => {
                                     align-items: center;
 
                                     .service_item{
-                                        touch-action: pan-y;
+                                        touch-action: ${touchAction};
 
                                         @media screen and (min-width: 769px){
                                             &:hover{
