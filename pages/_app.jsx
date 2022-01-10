@@ -2,8 +2,6 @@
 import "normalize.css";
 
 import { Provider } from "react-redux";
-import { useEffect } from "react";
-import { useRouter } from "next/router";
 import Head from "next/head";
 
 import store from "../redux/store.js";
@@ -24,22 +22,6 @@ if(process.title == "browser"){
 }
 
 const App = ({Component, pageProps, ...etc}) => {
-    const router = useRouter();
-
-    useEffect(() => {
-        store.dispatch({
-            type: "router",
-            value: router
-        });
-    }, [router]);
-
-    useEffect(() => {
-        store.dispatch({
-            type: "ready",
-            value: true
-        });
-    }, []);
-
     return (
         <Provider store={store}>
             <Head>

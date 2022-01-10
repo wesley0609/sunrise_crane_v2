@@ -1,15 +1,14 @@
 
 import { connect } from "react-redux";
 import React, { useMemo, useCallback } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
 const mapStateToProps = (state) => {
-    return {
-        router: state.router
-    };
+    return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -17,6 +16,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
     const color = useMemo(() => {
         if(props.color){
             return props.color;
@@ -26,8 +27,8 @@ const App = (props) => {
     }, [props.color]);
 
     const linkClickHandler = useCallback((event, item) => {
-        gaEvent.breadcrumb.clickLink(props.router, item);
-    }, [props.router]);
+        gaEvent.breadcrumb.clickLink(router, item);
+    }, [router]);
 
     return (
         <>

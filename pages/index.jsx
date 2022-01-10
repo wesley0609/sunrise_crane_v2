@@ -1,6 +1,6 @@
 
 import { connect } from "react-redux";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import Head from "next/head";
 
 import seo from "../assets/js/seo/index.js";
@@ -23,14 +23,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        dispatchHeaderFocus: (value) => {
-            dispatch({
-                type: "header/focus",
-                value: value
-            });
-        }
-    };
+    return {};
 };
 
 const App = (props) => {
@@ -42,10 +35,6 @@ const App = (props) => {
             client: clientMeta.content
         };
     }, []);
-
-    useEffect(() => {
-        props.dispatchHeaderFocus("/");
-    }, [props]);
 
     return (
         <>

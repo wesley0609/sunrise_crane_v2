@@ -1,6 +1,7 @@
 
 import { connect } from "react-redux";
 import { useCallback } from "react";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
@@ -9,9 +10,7 @@ import gaEvent from "../../assets/js/ga/index.js";
 import pkg from "../../package.json";
 
 const mapStateToProps = (state) => {
-    return {
-        focus: state.header.focus
-    };
+    return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -19,13 +18,15 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
     const linkFocusClass = useCallback((item) => {
-        if(item.as == props.focus){
+        if(item.as == router.route){
             return "focus";
         }
 
         return "";
-    }, [props.focus]);
+    }, [router]);
 
     const logoSectionClickHandler = useCallback((event) => {
         gaEvent.header.clickLogo();

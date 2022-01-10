@@ -1,13 +1,12 @@
 
 import { connect } from "react-redux";
 import { useCallback } from "react";
+import { useRouter } from "next/router";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
 const mapStateToProps = (state) => {
-    return {
-        router: state.router
-    };
+    return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -15,15 +14,16 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
     const gotopBtnClickHandler = useCallback((event) => {
         scroll({
             top: 0,
-            left: 0,
-            behavior: "smooth"
+            left: 0
         });
 
-        gaEvent.footer.clickGotop(props.router);
-    }, [props.router]);
+        gaEvent.footer.clickGotop(router);
+    }, [router]);
 
     return (
         <>

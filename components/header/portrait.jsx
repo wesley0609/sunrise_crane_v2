@@ -1,6 +1,7 @@
 
 import { connect } from "react-redux";
 import { useEffect, useCallback, useState, useMemo } from "react";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
@@ -9,10 +10,7 @@ import gaEvent from "../../assets/js/ga/index.js";
 import pkg from "../../package.json";
 
 const mapStateToProps = (state) => {
-    return {
-        router: state.router,
-        focus: state.header.focus
-    };
+    return {};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -20,6 +18,8 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
     const [menuBtnBool, setMenuBtnBool] = useState(false);
 
     // cannot directly control the DOM because SEO
@@ -32,12 +32,12 @@ const App = (props) => {
     }, [menuBtnBool]);
 
     const linkFocusClass = useCallback((item) => {
-        if(item.as == props.focus){
+        if(item.as == router.route){
             return "focus";
         }
 
         return "";
-    }, [props.focus]);
+    }, [router]);
 
     const menuBtnClickHandler = useCallback((event) => {
         setMenuBtnBool(!menuBtnBool);
@@ -53,7 +53,7 @@ const App = (props) => {
 
     useEffect(() => {
         setMenuBtnBool(false);
-    }, [props.router]);
+    }, [router]);
 
     return (
         <>
