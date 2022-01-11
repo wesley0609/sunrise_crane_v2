@@ -52,7 +52,7 @@ const App = (props) => {
                             display: flex;
                             flex-direction: column;
                             justify-content: flex-end;
-                            align-items: left;
+                            align-items: flex-start;
                             z-index: 0;
 
                             @media screen and (max-width: 768px){

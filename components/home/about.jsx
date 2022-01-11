@@ -63,6 +63,8 @@ const App = (props) => {
                     .about_section{
                         display: flex;
                         flex-direction: row;
+                        justify-content: center;
+                        align-items: stretch;
 
                         @media screen and (max-width: 768px){
                             flex-direction: column;

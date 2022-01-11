@@ -172,6 +172,7 @@ const App = (props) => {
                                         display: flex;
                                         flex-direction: column;
                                         justify-content: center;
+                                        align-items: flex-start;
 
                                         @media screen and (max-width: 414px){
                                             left: 5%;

@@ -63,11 +63,10 @@ const App = (props) => {
             <style jsx>
                 {`
                     .header_content{
-                        position: relative;
                         height: 80px;
                         display: flex;
                         flex-direction: row;
-                        justify-content: flex-start;
+                        justify-content: space-between;
                         align-items: center;
                         padding-left: 8%;
                         padding-right: 8%;
@@ -91,12 +90,8 @@ const App = (props) => {
                         .navigation_section{
                             display: flex;
                             flex-direction: row;
-                            justify-content: flex-end;
+                            justify-content: center;
                             align-items: center;
-                            position: absolute;
-                            right: 8%;
-                            top: 0;
-                            height: 100%;
 
                             .navigation_tab{
                                 list-style-type: none;
@@ -104,11 +99,7 @@ const App = (props) => {
                                 margin-right: 8px;
 
                                 .link{
-                                    display: flex;
-                                    flex-direction: row;
-                                    justify-content: center;
-                                    align-items: center;
-                                    height: 100%;
+                                    line-height: 20px;
                                     font-size: 15px;
                                     color: var(--white);
 

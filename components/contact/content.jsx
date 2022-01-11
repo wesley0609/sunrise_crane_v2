@@ -129,6 +129,8 @@ const App = (props) => {
                             width: 80%;
                             display: flex;
                             flex-direction: row;
+                            justify-content: center;
+                            align-items: stretch;
                             position: relative;
 
                             @media screen and (max-width: 768px){
@@ -204,6 +206,7 @@ const App = (props) => {
                                         .contact_item{
                                             display: flex;
                                             flex-direction: row;
+                                            justify-content: flex-start;
                                             align-items: center;
 
                                             @media screen and (min-width: 769px){
