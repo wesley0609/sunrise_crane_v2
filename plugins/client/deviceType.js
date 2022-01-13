@@ -13,7 +13,7 @@ const app = () => {
 
                 let dispatch = (deviceType) => {
                     store.dispatch({
-                        type: "deviceType", 
+                        type: "deviceType",
                         value: deviceType
                     });
                 };

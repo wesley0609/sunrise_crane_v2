@@ -1,6 +1,11 @@
 
 const app = () => {
-    window.dataLayer = window.dataLayer || [];
+    try{
+        window.dataLayer = window.dataLayer || [];
+    }
+    catch(ex){
+        console.log(ex.stack);
+    }
 };
 
 export default app;
