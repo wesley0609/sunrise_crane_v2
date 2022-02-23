@@ -8,7 +8,7 @@ import seo from "../assets/js/seo/index.js";
 
 import About from "../components/about/index.jsx";
 
-export const getServerSideProps = async (context) => {
+export const getInitialProps = async (context) => {
     return {
         props: {}
     };
