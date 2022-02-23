@@ -25,7 +25,13 @@ const App = ({Component, pageProps, ...etc}) => {
     const seo = useMemo(() => {
         let _seo = etc.seo;
 
-        global.sunrise = global.sunrise || {};
+        if(process.title == "node"){
+            global.sunrise = global.sunrise || {};
+        }
+
+        if(process.title == "browser"){
+            window.sunrise = window.sunrise || {};
+        }
 
         sunrise.seo = _seo;
 
