@@ -25,6 +25,8 @@ const App = ({Component, pageProps, ...etc}) => {
     const seo = useMemo(() => {
         let _seo = etc.seo;
 
+        window.sunrise = window.sunrise || {};
+
         sunrise.seo = _seo;
 
         return _seo;
