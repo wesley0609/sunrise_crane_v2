@@ -23,7 +23,7 @@ if(process.title == "browser"){
 
 const App = ({Component, pageProps, ...etc}) => {
     const seo = useMemo(() => {
-        let _seo = etc.props.seo;
+        let _seo = etc.seo;
 
         sunrise.seo = _seo;
 
@@ -67,12 +67,12 @@ const App = ({Component, pageProps, ...etc}) => {
 App.getInitialProps = async (ctx) => {
     if(process.title == "node"){
         return {
-            props: {
-                seo: plugins.server.seo(ctx),
-                config: plugins.server.config()
-            }
+            seo: plugins.server.seo(ctx),
+            config: plugins.server.config()
         };
     }
+
+    return {};
 };
 
 export default App;
