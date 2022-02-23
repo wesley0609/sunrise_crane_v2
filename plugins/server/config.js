@@ -9,19 +9,20 @@ const app = () => {
     try{
         global.sunrise = global.sunrise || {};
 
-        let env = process.env.NEXT_PUBLIC_ENV;
         let target = null;
-        let config = null;
 
-        if(env == "development"){
+        if(process.env.NEXT_PUBLIC_ENV == "development"){
             target = dev;
         }
         else{
             target = prod;
         }
         
-        config = _.extend(common, target);
+        let config = _.extend(common, target);
+        
         sunrise.config = config;
+
+        return config;
     }
     catch(ex){
         console.log(ex.stack);

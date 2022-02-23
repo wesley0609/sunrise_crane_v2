@@ -1,0 +1,29 @@
+{
+    "title": "About",
+    "subtitle": "about",
+    "first": {
+        "title": "Sunrise Crane Engineering Team",
+        "subtitle": "North, central and south lifting, crane handling, installation and positioning",
+        "content": "Sunrise Crane is a crane company that started from the clean room precision equipment and heavy mechanical equipment moving, installation and positioning in the green energy industry such as semiconductor, TFT-LCD, solar and wind power generation, and other high-tech industries. Since the company was established, it has directly entered the field of lifting engineering in the semi-conductor industry: equipment moving in. We have been serving our customers by adhering to the safety standard of “zero accident rate” for many years, and have been receiving unanimous trust, affirmation and good comments from our customers."
+    },
+    "second": {
+        "title": "“Safety, efficiency, professionalism” are our beliefs",
+        "subtitle": "Sunrise insists on “safety” as the first goal",
+        "content": [
+            "Safety: The safety of personnel and equipment cannot be compromised.",
+            "Efficiency: immediate, smooth, precise, the best way to fulfill commitments (contracts) to our customers.",
+            "Professional: Use different machines and the most appropriate staffing for different operations (cases)."
+        ]
+    },
+    "third": {
+        "title": {
+            "text": "The most rigorous workmanship, the most professional technology, the most appropriate lifting equipment, the most efficient service",
+            "split": ","
+        },
+        "content": "Through the acquisition of new machinery and equipment, cultivation of professional talents, and on-site surveys, we understand the needs of our customers and incorporate the possible hazards in the working environment into our thinking, and then discuss with our customers about the construction methods for different projects. The most efficient service is provided to our customers. Sunplus continuously purchases and updates all kinds of lifting apparatus in order to make the project quality higher and more efficient. The lifting apparatus we have includes all kinds of lifting stackers, hand-pulled cranes, 5mm steel plates, all kinds of hydraulic plate trucks, live wheels, chariot wheels, lifting platforms, suspension air cushions and other perfect construction tools."
+    },
+    "fourth": {
+        "title": "Short-term contracting, long-term contracting, lifting project contracting",
+        "content": "Sunplus Crane has rich experience in short-term contracting, long-term contracting, and engineering contracting, including: Taoyuan Hwa-Ya Science Park - Micron Technology semiconductor equipment relocation, New Taipei Nan-Lin Science Park - Nanya Technology semiconductor equipment relocation, Hsinchu Science Park - RitFast Technology semiconductor equipment relocation, Taichung Science Park - AUO equipment relocation, Tainan Science Park - ASML Global Training Center lithography machine (EUV) lifting in Tainan Science Park, and Taiwan Nittoku Lifting Engineering Contractor, we have rich, professional and safe lifting experience from south to north. Sunplus also has a number of reputable partners in the industry. We welcome top-to-bottom contracting of complete projects, from transportation, crating / uncrating, container loading / unloading, inbound / outbound, to moving, lifting, positioning, etc. We have close cooperation with related companies throughout Taiwan (northern, central, and southern)."
+    }
+}

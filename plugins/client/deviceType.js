@@ -6,26 +6,28 @@ const app = () => {
         let resize = null;
 
         store.subscribe(() => {
-            let _resize = store.getState().resize;
+            if(store.getState().ready){
+                let _resize = store.getState().resize;
 
-            if(resize != _resize){
-                resize = _resize;
+                if(resize != _resize){
+                    resize = _resize;
 
-                let dispatch = (deviceType) => {
-                    store.dispatch({
-                        type: "deviceType",
-                        value: deviceType
-                    });
-                };
+                    let dispatch = (deviceType) => {
+                        store.dispatch({
+                            type: "deviceType",
+                            value: deviceType
+                        });
+                    };
 
-                if(resize.width <= 414){
-                    dispatch("mobile");
-                }
-                else if(resize.width <= 768){
-                    dispatch("pad");
-                }
-                else{
-                    dispatch("pc");
+                    if(resize.width <= 414){
+                        dispatch("mobile");
+                    }
+                    else if(resize.width <= 768){
+                        dispatch("pad");
+                    }
+                    else{
+                        dispatch("pc");
+                    }
                 }
             }
         });

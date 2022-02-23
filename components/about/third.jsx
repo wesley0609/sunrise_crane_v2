@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
 const App = (props) => {
     const iconLists = useMemo(() => {
         let title = props.about.third.title;
-        let titleLists = title.split("、");
+        let titleLists = title.text.split(title.split);
         let _iconLists = [];
 
         for(let i = 0; i < titleLists.length; i ++){
@@ -42,7 +42,7 @@ const App = (props) => {
         <>
             <div className="third_section">
                 <div className="top_section">
-                    <h2 className="title">{props.about.third.title}</h2>
+                    <h2 className="title">{props.about.third.title.text}</h2>
                     <h3 className="content">{props.about.third.content}</h3>
                 </div>
 
@@ -91,7 +91,9 @@ const App = (props) => {
                             .title{
                                 font-size: 30px;
                                 color: var(--white);
-                                line-height: 50px;
+                                line-height: 45px;
+                                padding-top: 10px;
+                                padding-bottom: 10px;
 
                                 @media screen and (max-width: 414px){
                                     font-size: 28px;

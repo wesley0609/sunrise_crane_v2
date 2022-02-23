@@ -1,0 +1,30 @@
+{
+    "service": {
+        "title": "Service",
+        "subtitle": "service",
+        "description": "Through the acquisition of new machinery and equipment, cultivation of professional talents, and on-site survey, we understand the needs of our customers and incorporate the possible hazards in the working environment into our thinking, and then discuss with our customers on the construction methods for different projects. We will provide the best and most efficient service to our customers.",
+        "href": "/service",
+        "as": "/service"
+    },
+    "about": {
+        "title": "About",
+        "subtitle": "about",
+        "description": "We are a mechanical moving company that started from moving precision instruments in clean rooms and moving, installing and positioning heavy machinery and equipment in the green energy industry such as semiconductor, TFT-LCD, solar energy and wind power generation, as well as other high-tech industries.",
+        "href": "/about",
+        "as": "/about"
+    },
+    "gallery": {
+        "title": "Gallery",
+        "subtitle": "gallery",
+        "description": "With years of accumulated experience, continuously improved equipment handling, heavy lifting technology and lifting equipment, and regular labor safety and health training for all staff, and adhering to the “zero accident rate” safety standard that Sunrise Crane has been operating for many years, we have been receiving unanimous trust, affirmation and good comments from our customers.",
+        "href": "/gallery",
+        "as": "/gallery"
+    },
+    "client": {
+        "title": "Client",
+        "subtitle": "client",
+        "description": "",
+        "href": "",
+        "as": ""
+    }
+}

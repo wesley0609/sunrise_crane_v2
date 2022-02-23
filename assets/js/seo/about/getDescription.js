@@ -1,8 +1,8 @@
 
-import description from "../../../json/seo/description.json";
-
 const app = () => {
-    return description.about;
+    let seo = sunrise.seo;
+    
+    return seo.description.about;
 };
 
 export default app;

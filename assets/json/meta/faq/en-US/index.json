@@ -1,0 +1,22 @@
+{
+    "title": "Faq",
+    "information": {
+        "title": "Customer FAQs",
+        "subtitle": "faq",
+        "description": "Engineering FAQ for you to understand once and for all"
+    },
+    "content": [
+        {
+            "question": "What is a crane?",
+            "answer": "Crane is a kind of intermittent operation to lift, lower and horizontal movement of the moving machine, using hooks or other pick-up devices to hang heavy objects, in space for lifting and moving and other cyclical operations of machinery. Cranes have many categories, “crane”, “tower crane”, “overhead crane”, “car” and other common names refer to one or more types of cranes. According to the structure can be divided into bridge-type cranes, cable-type cranes and jib-type cranes three categories, according to the pick-up device can be divided into hook cranes, grab cranes, electromagnetic cranes and other fifteen categories, according to the way of movement can be divided into fixed cranes, crawler cranes, move the crane, radial cranes, walking cranes five categories, according to the drive can be divided into manual cranes, electric cranes, hydraulic cranes. Hydraulic cranes three types. There are also according to the rotation capacity, support mode, operation mode, etc. to classification."
+        },
+        {
+            "question": "Can I find a lifting company for moving?",
+            "answer": "It is recommended to find a moving company for moving. However, if it is “valuable items”, “precision items”, “very heavy items”, “artifacts”, or if the moving space is too small to move smoothly, you can call a lifting company. The crane company usually specializes in moving semiconductor precision machinery and equipment, so they pay close attention to the details of the move and will make sure that the items are intact and moved precisely to the fixed point, but the price of the move will be higher than the traditional moving company."
+        },
+        {
+            "question": "Is there insurance for moving equipment?",
+            "answer": "We are insured by Fubon Insurance’s corporate insurance “Construction Equipment Comprehensive Insurance” when moving equipment."
+        }
+    ]
+}

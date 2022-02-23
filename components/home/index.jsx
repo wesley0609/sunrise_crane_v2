@@ -2,8 +2,6 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import pkg from "../../package.json";
-
 import Banner from "./banner.jsx";
 import Service from "./service.jsx";
 import About from "./about.jsx";
@@ -22,7 +20,7 @@ const App = (props) => {
     return (
         <>
             <main className="home_section">
-                <h1 className="ssr_only">{pkg.siteName}</h1>
+                <h1 className="ssr_only">{sunrise.seo.default.siteName}</h1>
                 <Banner banner={props.banner} />
                 <Service homeService={props.home.service} service={props.service} />
                 <About homeAbout={props.home.about} />

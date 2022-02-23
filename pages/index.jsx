@@ -1,18 +1,14 @@
 
 import { connect } from "react-redux";
 import { useMemo } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 
 import seo from "../assets/js/seo/index.js";
 
-import bannerMeta from "../assets/json/meta/banner/index.json";
-import homeMeta from "../assets/json/meta/home/index.json";
-import serviceMeta from "../assets/json/meta/service/index.json";
-import clientMeta from "../assets/json/meta/client/index.json";
-
 import Home from "../components/home/index.jsx";
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     return {
         props: {}
     };
@@ -27,14 +23,82 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
+    const bannerMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/banner/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/banner/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/banner/index.json");
+    }, [router]);
+
+    const serviceMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/service/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/service/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/service/index.json");
+    }, [router]);
+
+    const homeMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/home/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/home/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/home/index.json");
+    }, [router]);
+
+    const clientMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/client/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/client/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/client/index.json");
+    }, [router]);
+
+    const contactMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/contact/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/contact/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/contact/index.json");
+    }, [router]);
+
     const meta = useMemo(() => {
         return {
             banner: bannerMeta.home,
             service: serviceMeta.content,
             home: homeMeta,
-            client: clientMeta.content
+            client: clientMeta.content,
+            contact: contactMeta.content
         };
-    }, []);
+    }, [bannerMeta, serviceMeta, homeMeta, clientMeta, contactMeta]);
 
     return (
         <>
@@ -45,8 +109,16 @@ const App = (props) => {
                 <meta property="og:title" content={seo.home.getTitle()} key="og:title" />
                 <meta property="og:description" content={seo.home.getDescription()} key="og:description" />
                 <link rel="canonical" href={seo.home.getUrl()} key="canonical" />
-                <script type="application/ld+json" dangerouslySetInnerHTML={seo.home.getOrganization()} key="Organization"></script>
+                <script type="application/ld+json" dangerouslySetInnerHTML={seo.home.getOrganization(meta.contact)} key="Organization"></script>
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.home.getBreadcrumbList()} key="BreadcrumbList"></script>
+
+                {
+                    seo.home.getAlternate(router).map((item, index) => {
+                        return (
+                            <link rel="alternate" hrefLang={item.hreflang} href={item.href} key={`alternate-${item.hreflang}`} />
+                        );
+                    })
+                }
             </Head>
 
             <Home banner={meta.banner} service={meta.service} home={meta.home} client={meta.client} />

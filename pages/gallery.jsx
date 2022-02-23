@@ -1,16 +1,14 @@
 
 import { connect } from "react-redux";
 import { useMemo } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 
 import seo from "../assets/js/seo/index.js";
 
-import bannerMeta from "../assets/json/meta/banner/index.json";
-import galleryMeta from "../assets/json/meta/gallery/index.json";
-
 import Gallery from "../components/gallery/index.jsx";
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     return {
         props: {}
     };
@@ -25,12 +23,40 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
+    const bannerMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/banner/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/banner/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/banner/index.json");
+    }, [router]);
+
+    const galleryMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/gallery/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/gallery/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/gallery/index.json");
+    }, [router]);
+
     const meta = useMemo(() => {
         return {
             banner: bannerMeta.gallery,
             gallery: galleryMeta
         };
-    }, []);
+    }, [bannerMeta, galleryMeta]);
     
     return (
         <>
@@ -42,6 +68,14 @@ const App = (props) => {
                 <meta property="og:description" content={seo.gallery.getDescription()} key="og:description" />
                 <link rel="canonical" href={seo.gallery.getUrl()} key="canonical" />
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.gallery.getBreadcrumbList()} key="BreadcrumbList"></script>
+
+                {
+                    seo.gallery.getAlternate(router).map((item, index) => {
+                        return (
+                            <link rel="alternate" hrefLang={item.hreflang} href={item.href} key={`alternate-${item.hreflang}`} />
+                        );
+                    })
+                }
             </Head>
 
             <Gallery banner={meta.banner} gallery={meta.gallery} />

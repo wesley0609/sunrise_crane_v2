@@ -60,7 +60,7 @@ const App = (props) => {
         return () => {
             glide.current.destroy();
         };
-    }, [perView]);
+    }, [perView, props.homeService]);
 
     return (
         <>
@@ -260,6 +260,9 @@ const App = (props) => {
                                         .des_section{
                                             font-weight: bold;
                                             line-height: 35px;
+                                            width: 80%;
+                                            margin-left: auto;
+                                            margin-right: auto;
                                             text-overflow: ellipsis;
                                             white-space: nowrap;
                                             overflow: hidden;

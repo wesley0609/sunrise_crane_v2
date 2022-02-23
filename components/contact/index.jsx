@@ -22,8 +22,8 @@ const App = (props) => {
                 <h1 className="ssr_only">{props.contact.title}</h1>
                 <Banner banner={props.banner} />
                 <Information information={props.contact.information} />
-                <Content contact={props.contact.contact} />
-                <Map contact={props.contact.contact} />
+                <Content contact={props.contact.content} titleMap={props.titleMap} />
+                <Map contact={props.contact.content} />
             </main>
 
             <style jsx>
@@ -39,6 +39,7 @@ const App = (props) => {
 
 App.propTypes = {
     banner: PropTypes.object.isRequired,
+    titleMap: PropTypes.object.isRequired,
     contact: PropTypes.object.isRequired
 };
 

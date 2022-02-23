@@ -70,7 +70,7 @@ const App = (props) => {
         return () => {
             glide.current.destroy();
         };
-    }, [perView]);
+    }, [perView, props.homeClient]);
 
     return (
         <>

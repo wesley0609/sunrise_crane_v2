@@ -1,8 +1,7 @@
 
 import { connect } from "react-redux";
 import { useMemo } from "react";
-
-import headerMeta from "../../assets/json/meta/header/index.json";
+import { useRouter } from "next/router";
 
 import Landscape from "./landscape.jsx";
 import Portrait from "./portrait.jsx";
@@ -18,11 +17,26 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
+    const headerMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../../assets/json/meta/header/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../../assets/json/meta/header/index.json");
+            }
+        }
+
+        return require("../../assets/json/meta/header/index.json");
+    }, [router]);
+
     const meta = useMemo(() => {
         return {
             menu: headerMeta.menu
         };
-    }, []);
+    }, [headerMeta]);
 
     return (
         <>

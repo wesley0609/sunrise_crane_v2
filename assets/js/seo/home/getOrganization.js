@@ -1,28 +1,25 @@
 
-import pkg from "../../../../package.json";
-import contactMeta from "../../../json/meta/contact/index.json";
-
-const app = () => {
-    let url = pkg.siteUrl;
-    let contact = contactMeta.contact;
-    let twAddress = contact.fullAddress.tw;
+const app = (contact) => {
+    let seo = sunrise.seo;
+    let url = seo.default.siteUrl;
+    let fullAddress = contact.fullAddress;
 
     let obj = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": pkg.title,
+        "name": seo.default.title,
         "url": url,
         "logo": `${url}/logo.svg`,
         "image": `${url}/share.jpg`,
         "email": `mailto:${contact.email}`,
-        "telephone": contact.phoneNumber.local,
+        "telephone": contact.telephone,
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": twAddress.address,
-            "addressLocality": twAddress.district,
-            "addressRegion": twAddress.county,
-            "postalCode": contact.fullAddress.postal,
-            "addressCountry": twAddress.country
+            "streetAddress": fullAddress.address,
+            "addressLocality": fullAddress.district,
+            "addressRegion": fullAddress.county,
+            "postalCode": fullAddress.postal,
+            "addressCountry": fullAddress.country
         }
     };
 

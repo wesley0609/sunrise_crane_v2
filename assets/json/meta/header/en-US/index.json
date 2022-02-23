@@ -1,0 +1,34 @@
+{
+    "menu": [
+        {
+            "title": "Home",
+            "href": "/",
+            "as": "/"
+        },
+        {
+            "title": "About",
+            "href": "/about",
+            "as": "/about"
+        },
+        {
+            "title": "Service",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "Gallery",
+            "href": "/gallery",
+            "as": "/gallery"
+        },
+        {
+            "title": "Faq",
+            "href": "/faq",
+            "as": "/faq"
+        },
+        {
+            "title": "Contact",
+            "href": "/contact",
+            "as": "/contact"
+        }
+    ]
+}

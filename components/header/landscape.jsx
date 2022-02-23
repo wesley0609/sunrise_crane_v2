@@ -1,24 +1,35 @@
 
 import { connect } from "react-redux";
-import { useCallback } from "react";
+import { useRef, useCallback } from "react";
 import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
-import pkg from "../../package.json";
+import LanguagesBalloon from "./languagesBalloon.jsx";
 
 const mapStateToProps = (state) => {
-    return {};
+    return {
+        languagesBalloonTrigger: state.header.languagesBalloonTrigger
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {};
+    return {
+        dispatchLanguagesBalloonTrigger: (value) => {
+            dispatch({
+                type: "header/languagesBalloonTrigger",
+                value: value
+            });
+        }
+    };
 };
 
 const App = (props) => {
     const router = useRouter();
+
+    const languageBtnRef = useRef(null);
 
     const linkFocusClass = useCallback((item) => {
         if(item.as == router.route){
@@ -27,6 +38,10 @@ const App = (props) => {
 
         return "";
     }, [router]);
+
+    const languageBtnMouseOverHandler = useCallback((event) => {
+        props.dispatchLanguagesBalloonTrigger(languageBtnRef.current);
+    }, [props, languageBtnRef]);
 
     const logoSectionClickHandler = useCallback((event) => {
         gaEvent.header.clickLogo();
@@ -40,8 +55,8 @@ const App = (props) => {
         <>
             <div className="header_content">
                 <Link href="/" as="/">
-                    <a className="logo_section" title={pkg.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={`${pkg.siteName} - ${pkg.enName}`} />
+                    <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
+                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={sunrise.seo.default.siteName} />
                     </a>
                 </Link>
 
@@ -57,7 +72,21 @@ const App = (props) => {
                             );
                         })
                     }
+
+                    <div className="tool_section">
+                        <button className="tool_btn language" onMouseOver={(event) => languageBtnMouseOverHandler(event)} ref={languageBtnRef}></button>
+                    </div>
                 </ul>
+
+                {
+                    (() => {
+                        if(props.languagesBalloonTrigger){
+                            return (
+                                <LanguagesBalloon />
+                            );
+                        }
+                    })()
+                }
             </div>
 
             <style jsx>
@@ -112,6 +141,23 @@ const App = (props) => {
                                     }
                                 }
                             }
+
+                            .tool_section{
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                align-items: center;
+                                margin-left: 10px;
+
+                                .tool_btn{
+                                    background-image: url(${require("../../assets/image/header/translate.svg")});
+                                    height: 24px;
+                                    width: 24px;
+                                    background-size: 24px 24px;
+                                    margin-left: 8px;
+                                    margin-right: 8px;
+                                }
+                            }                            
                         }
                     }
                 `}

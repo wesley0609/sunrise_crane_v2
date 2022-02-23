@@ -1,10 +1,9 @@
 
-import pkg from "../../../../package.json";
-import title from "../../../json/seo/title.json";
-
 import seo from "../index.js";
 
 const app = () => {
+    let _seo = sunrise.seo;
+
     let obj = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -12,13 +11,13 @@ const app = () => {
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": pkg.siteName,
-                "item": pkg.siteUrl
+                "name": _seo.default.siteName,
+                "item": _seo.default.siteUrl
             },
             {
                 "@type": "ListItem",
                 "position": 2,
-                "name": title.contact,
+                "name": _seo.title.contact,
                 "item": seo.contact.getUrl()
             }
         ]

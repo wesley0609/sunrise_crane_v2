@@ -1,8 +1,8 @@
 
-import pkg from "../../../../package.json";
-
 const app = () => {
-    return `${pkg.siteUrl}/gallery`;
+    let seo = sunrise.seo;
+
+    return `${seo.default.siteUrl}/gallery`;
 };
 
 export default app;

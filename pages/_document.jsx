@@ -3,7 +3,6 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 
 import head from "../assets/js/head/index.js";
 
-import pkg from "../package.json";
 import theme from "../assets/json/style/theme.json";
 
 export default class App extends Document{
@@ -15,17 +14,10 @@ export default class App extends Document{
 
     render(){
         return (
-            <Html dir="ltr" lang="zh-Hant-TW" prefix="og: http://ogp.me/ns#">
+            <Html dir="ltr" prefix="og: http://ogp.me/ns#">
                 <Head>
-                    <meta name="author" content={pkg.author} />
-                    <meta name="keywords" content={pkg.keywords.join(",")} />
                     <meta name="theme-color" content={theme["--black"]} />
                     <meta property="fb:app_id" content="3115592912095632" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:site_name" content={pkg.siteName} />
-                    <meta property="og:image" content={`${pkg.siteUrl}/share.jpg`} />
-                    <meta property="og:image:width" content="1080" />
-                    <meta property="og:image:height" content="566" />
                     <link rel="manifest" href="/manifest.json" />
                     <link rel="shortcut icon" type="image/png" size="48x48" href="/favicon.png" />
                     <link rel="icon" type="image/png" size="192x192" href="/icon/icon@192.png" />

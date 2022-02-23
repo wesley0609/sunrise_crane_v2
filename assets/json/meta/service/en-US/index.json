@@ -1,0 +1,52 @@
+{
+    "title": "Service",
+    "information": {
+        "title": "Sunrise Crane Service Projects",
+        "subtitle": "service",
+        "description": "Lifting, handling, installation, positioning, container loading and unloading"
+    },
+    "content": [
+        {
+            "title": "Equipment Move In / Move Out / Remove",
+            "description": "Clean room precision mechanical equipment Move In, Move Out, Remove, equipment moving, air cushion moving, equipment positioning.",
+            "src": "service01.svg",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "Heavy machinery handling, precision instrument handling",
+            "description": "(General / Special) Precision instrument handling, heavy machinery and equipment, crane handling, crane handling and positioning.",
+            "src": "service02.svg",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "Equipment assembly, positioning, disassembly",
+            "description": "On-site assembly of machinery and equipment, (forklift / crane) positioning, equipment disassembly, used equipment purchase and sale, disassembly.",
+            "src": "service03.svg",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "Container loading, unloading",
+            "description": "Packing (equipment / goods), wooden box packing, aluminum foil vacuum packing, container loading, (equipment / goods) unloading, wooden box disassembly, positioning.",
+            "src": "service04.svg",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "Whole plant relocation, wooden box packing, transportation",
+            "description": "Whole plant equipment and goods relocation, equipment packing, wooden box packing, Euro-wing, hover truck, flatbed truck transportation.",
+            "src": "service05.svg",
+            "href": "/service",
+            "as": "/service"
+        },
+        {
+            "title": "Artwork transportation, detailed transportation",
+            "description": "We deliver, move, and position precision goods, valuables, and artwork in various types of vehicles.",
+            "src": "service06.svg",
+            "href": "/service",
+            "as": "/service"
+        }
+    ]
+}

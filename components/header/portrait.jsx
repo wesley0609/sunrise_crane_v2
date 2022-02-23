@@ -7,8 +7,6 @@ import Link from "next/link";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
-import pkg from "../../package.json";
-
 const mapStateToProps = (state) => {
     return {};
 };
@@ -39,6 +37,14 @@ const App = (props) => {
         return "";
     }, [router]);
 
+    const languageLinkFocusClass = useCallback((item) => {
+        if(router.locale == item){
+            return "focus";
+        }
+
+        return "";
+    }, [router]);
+
     const menuBtnClickHandler = useCallback((event) => {
         setMenuBtnBool(!menuBtnBool);
     }, [menuBtnBool]);
@@ -51,6 +57,10 @@ const App = (props) => {
         gaEvent.header.clickMenu(item);
     }, []);
 
+    const languageLinkClickHandler = useCallback((event, item) => {
+        gaEvent.header.clickLanguage(item);
+    }, []);
+
     useEffect(() => {
         setMenuBtnBool(false);
     }, [router]);
@@ -59,8 +69,8 @@ const App = (props) => {
         <>
             <div className="header_content">
                 <Link href="/" as="/">
-                    <a className="logo_section" title={pkg.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={`${pkg.siteName} - ${pkg.enName}`} />
+                    <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
+                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={sunrise.seo.default.siteName} />
                     </a>
                 </Link>
 
@@ -95,6 +105,16 @@ const App = (props) => {
                             );
                         })
                     }
+
+                    <div className="language_link_section">
+                        <Link href={router.route} as={router.route} locale="zh-TW">
+                            <a className={`link ${languageLinkFocusClass("zh-TW")}`} title="中文" target="_self" onClick={(event) => languageLinkClickHandler(event, "zh-TW")}>中文</a>
+                        </Link>
+
+                        <Link href={router.route} as={router.route} locale="en-US">
+                            <a className={`link ${languageLinkFocusClass("en-US")}`} title="English" target="_self" onClick={(event) => languageLinkClickHandler(event, "en-US")}>English</a>
+                        </Link>
+                    </div>
                 </ul>
             </div>
 
@@ -168,6 +188,29 @@ const App = (props) => {
                                     font-size: 15px;
                                     color: var(--white);
                                     line-height: 50px;
+
+                                    &.focus{
+                                        color: var(--primary);
+                                    }
+                                }                                
+                            }
+
+                            .language_link_section{
+                                display: inline-block;
+                                text-align: center;
+                                margin-top: 10px;
+
+                                .link{
+                                    font-size: 15px;
+                                    color: var(--white);
+                                    line-height: 30px;
+
+                                    &:not(:last-child):after{
+                                        content: "｜";
+                                        color: var(--white);
+                                        margin-left: 3px;
+                                        margin-right: 3px;
+                                    }
 
                                     &.focus{
                                         color: var(--primary);

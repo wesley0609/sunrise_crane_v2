@@ -112,7 +112,9 @@ const App = (props) => {
 
                                 .title{
                                     font-size: 30px;
-                                    line-height: 50px;
+                                    line-height: 45px;
+                                    padding-top: 10px;
+                                    padding-bottom: 10px;
 
                                     @media screen and (max-width: 414px){
                                         font-size: 28px;

@@ -1,9 +1,8 @@
 
-import pkg from "../../../../package.json";
-import title from "../../../json/seo/title.json";
-
 const app = () => {
-    return `${title.gallery} - ${pkg.siteName}`;
+    let seo = sunrise.seo;
+
+    return `${seo.title.gallery} - ${seo.default.siteName}`;
 };
 
 export default app;

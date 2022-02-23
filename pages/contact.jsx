@@ -1,16 +1,14 @@
 
 import { connect } from "react-redux";
 import { useMemo } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 
 import seo from "../assets/js/seo/index.js";
 
-import bannerMeta from "../assets/json/meta/banner/index.json";
-import contactMeta from "../assets/json/meta/contact/index.json";
-
 import Contact from "../components/contact/index.jsx";
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     return {
         props: {}
     };
@@ -25,12 +23,54 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
+    const bannerMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/banner/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/banner/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/banner/index.json");
+    }, [router]);
+
+    const titleMapMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/contact/${router.locale}/titleMap.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/contact/titleMap.json");
+            }
+        }
+
+        return require("../assets/json/meta/contact/titleMap.json");
+    }, [router]);
+
+    const contactMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/contact/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/contact/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/contact/index.json");
+    }, [router]);
+
     const meta = useMemo(() => {
         return {
             banner: bannerMeta.contact,
+            titleMap: titleMapMeta,
             contact: contactMeta
         };
-    }, []);
+    }, [bannerMeta, titleMapMeta, contactMeta]);
 
     return (
         <>
@@ -42,9 +82,17 @@ const App = (props) => {
                 <meta property="og:description" content={seo.contact.getDescription()} key="og:description" />
                 <link rel="canonical" href={seo.contact.getUrl()} key="canonical" />
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.contact.getBreadcrumbList()} key="BreadcrumbList"></script>
+
+                {
+                    seo.contact.getAlternate(router).map((item, index) => {
+                        return (
+                            <link rel="alternate" hrefLang={item.hreflang} href={item.href} key={`alternate-${item.hreflang}`} />
+                        );
+                    })
+                }
             </Head>
 
-            <Contact banner={meta.banner} contact={meta.contact} />
+            <Contact banner={meta.banner} titleMap={meta.titleMap} contact={meta.contact} />
         </>
     );
 };

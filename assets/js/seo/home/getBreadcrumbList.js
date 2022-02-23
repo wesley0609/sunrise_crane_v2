@@ -1,7 +1,7 @@
 
-import pkg from "../../../../package.json";
-
 const app = () => {
+    let seo = sunrise.seo;
+
     let obj = {
         "@context": "https://schema.org",
         "@type": "BreadcrumbList",
@@ -9,8 +9,8 @@ const app = () => {
             {
                 "@type": "ListItem",
                 "position": 1,
-                "name": pkg.siteName,
-                "item": pkg.siteUrl
+                "name": seo.default.siteName,
+                "item": seo.default.siteUrl
             }
         ]
     };

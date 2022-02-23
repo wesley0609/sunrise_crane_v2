@@ -1,6 +1,6 @@
 
 import { connect } from "react-redux";
-import { useEffect, useMemo, useCallback } from "react";
+import { useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
 import LazyLoad from "lazyload";
 
@@ -13,14 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {};
 };
+
 const App = (props) => {
-    const address = useMemo(() => {
-        let fullAddress = props.contact.fullAddress;
-        let tw = fullAddress.tw;
-
-        return `${fullAddress.postal} ${tw.county}${tw.district}${tw.address}`;
-    }, [props.contact]);
-
     const contactClickHandler = useCallback((event, item) => {
         gaEvent.footer.clickContact(item);
     }, []);
@@ -52,45 +46,63 @@ const App = (props) => {
 
                             <div className="contact_items">
                                 <div className="contact_item">
-                                    <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/localPhone.svg")} alt="電話" />
-                                    <h2 className="title">電話</h2>
-                                    <h3 className="ssr_only">{props.contact.phoneNumber.local}</h3>
-                                    <a className="content" href={`tel:${props.contact.phoneNumber.local}`} title={props.contact.phoneNumber.local} target="_self" onClick={(event) => contactClickHandler(event, "localPhone")}>{props.contact.phoneNumber.local}</a>
+                                    <div className="item_title">
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/telephone.svg")} alt={props.titleMap.telephone} />
+                                        <h2 className="title">{props.titleMap.telephone}</h2>
+                                    </div>
+                                    
+                                    <h3 className="ssr_only">{props.contact.telephone}</h3>
+                                    <a className="content" href={`tel:${props.contact.telephone}`} title={props.contact.telephone} target="_self" onClick={(event) => contactClickHandler(event, "telephone")}>{props.contact.telephone}</a>
                                 </div>
 
                                 <div className="contact_item">
-                                    <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/phone.svg")} alt="手機" />
-                                    <h2 className="title">手機</h2>
-                                    <h3 className="ssr_only">{props.contact.phoneNumber.phone}</h3>
-                                    <a className="content" href={`tel:${props.contact.phoneNumber.phone}`} title={props.contact.phoneNumber.phone} target="_self" onClick={(event) => contactClickHandler(event, "phone")}>{props.contact.phoneNumber.phone}</a>
+                                    <div className="item_title">
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/cellphone.svg")} alt={props.titleMap.cellphone} />
+                                        <h2 className="title">{props.titleMap.cellphone}</h2>
+                                    </div>
+                                    
+                                    <h3 className="ssr_only">{props.contact.cellphone}</h3>
+                                    <a className="content" href={`tel:${props.contact.cellphone}`} title={props.contact.cellphone} target="_self" onClick={(event) => contactClickHandler(event, "cellphone")}>{props.contact.cellphone}</a>
                                 </div>
 
                                 <div className="contact_item">
-                                    <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/fax.svg")} alt="傳真" />
-                                    <h2 className="title">傳真</h2>
+                                    <div className="item_title">
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/fax.svg")} alt={props.titleMap.fax} />
+                                        <h2 className="title">{props.titleMap.fax}</h2>
+                                    </div>
+                                    
                                     <h3 className="ssr_only">{props.contact.fax}</h3>
                                     <a className="content" href={`tel:${props.contact.fax}`} title={props.contact.fax} target="_self" onClick={(event) => contactClickHandler(event, "fax")}>{props.contact.fax}</a>
                                 </div>
 
                                 <div className="contact_item">
-                                    <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/id.svg")} alt="統編" />
-                                    <h2 className="title">統編</h2>
+                                    <div className="item_title">
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/id.svg")} alt={props.titleMap.id} />
+                                        <h2 className="title">{props.titleMap.id}</h2>
+                                    </div>
+                                    
                                     <h3 className="ssr_only">{props.contact.id}</h3>
                                     <span className="content">{props.contact.id}</span>
                                 </div>
 
                                 <div className="contact_item">
-                                    <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/email.svg")} alt="Email" />
-                                    <h2 className="title">Email</h2>
+                                    <div className="item_title">
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/email.svg")} alt={props.titleMap.email} />
+                                        <h2 className="title">{props.titleMap.email}</h2>
+                                    </div>
+                                    
                                     <h3 className="ssr_only">{props.contact.email}</h3>
                                     <a className="content" href={`mailto:${props.contact.email}`} title={props.contact.email} target="_self" onClick={(event) => contactClickHandler(event, "email")}>{props.contact.email}</a>
                                 </div>
                                 
                                 <div className="contact_item">
-                                    <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/address.svg")} alt="地址" />
-                                    <h2 className="title">地址</h2>
-                                    <h3 className="ssr_only">{address}</h3>
-                                    <a className="content" href={props.contact.fullAddress.mapUrl} title={address} target="_blank" rel="noreferrer" onClick={(event) => contactClickHandler(event, "address")}>{address}</a>
+                                    <div className="item_title">
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/address.svg")} alt={props.titleMap.address} />
+                                        <h2 className="title">{props.titleMap.address}</h2>
+                                    </div>
+                                    
+                                    <h3 className="ssr_only">{props.contact.fullAddress.whole}</h3>
+                                    <a className="content" href={props.contact.fullAddress.mapUrl} title={props.contact.fullAddress.whole} target="_blank" rel="noreferrer" onClick={(event) => contactClickHandler(event, "address")}>{props.contact.fullAddress.whole}</a>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +209,7 @@ const App = (props) => {
                                     .contact_items{
                                         margin-top: 15px;
                                         margin-left: 15px;
-                                        line-height: 30px;
+                                        line-height: 25px;
 
                                         @media screen and (max-width: 768px){
                                             margin-left: 0;
@@ -207,7 +219,8 @@ const App = (props) => {
                                             display: flex;
                                             flex-direction: row;
                                             justify-content: flex-start;
-                                            align-items: center;
+                                            align-items: flex-start;
+                                            margin-top: 5px;
 
                                             @media screen and (min-width: 769px){
                                                 a:hover{
@@ -215,31 +228,38 @@ const App = (props) => {
                                                 }
                                             }
 
-                                            .icon{
-                                                display: block;
-                                                width: 20px;
-                                                height: 20px;
+                                            .item_title{
+                                                display: flex;
+                                                flex-direction: row;
+                                                justify-content: center;
+                                                align-items: center;
 
-                                                @media screen and (max-width: 414px){
-                                                    width: 16px;
-                                                    height: 16px;
+                                                .icon{
+                                                    display: block;
+                                                    width: 20px;
+                                                    height: 20px;
+
+                                                    @media screen and (max-width: 414px){
+                                                        width: 16px;
+                                                        height: 16px;
+                                                    }
+                                                }
+
+                                                .title{
+                                                    margin-left: 6px;
+
+                                                    @media screen and (max-width: 414px){
+                                                        font-size: 14px;
+                                                        margin-left: 4px;
+                                                    }
+
+                                                    &:after{
+                                                        content: "：";
+                                                    }
                                                 }
                                             }
 
-                                            .title{
-                                                margin-left: 6px;
-
-                                                @media screen and (max-width: 414px){
-                                                    font-size: 14px;
-                                                    margin-left: 4px;
-                                                }
-
-                                                &:after{
-                                                    content: "：";
-                                                }
-                                            }
-
-                                            .content{
+                                            .content{                                                
                                                 @media screen and (max-width: 414px){
                                                     font-size: 14px;
                                                 }
@@ -257,6 +277,7 @@ const App = (props) => {
 };
 
 App.propTypes = {
+    titleMap: PropTypes.object.isRequired,
     contact: PropTypes.object.isRequired
 };
 

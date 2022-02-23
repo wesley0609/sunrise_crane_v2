@@ -8,6 +8,10 @@ const nextConfig = {
     // https://nextjs.org/docs/basic-features/image-optimization#disable-static-imports
     images: {
         disableStaticImages: true
+    },
+    i18n: {
+        locales: ["zh-TW", "en-US"],
+        defaultLocale: "zh-TW"
     }
 };
 

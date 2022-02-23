@@ -1,8 +1,8 @@
 
-import pkg from "../../../../package.json";
-
 const app = () => {
-    return `${pkg.siteUrl}/contact`;
+    let seo = sunrise.seo;
+
+    return `${seo.default.siteUrl}/contact`;
 };
 
 export default app;

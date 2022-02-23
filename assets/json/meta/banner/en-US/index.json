@@ -1,0 +1,54 @@
+{
+    "home": [
+        {
+            "title": "The safest way of construction",
+            "subtitle": "“Safety, Efficiency, Professionalism”",
+            "src": "banner01.jpg"
+        },
+        {
+            "title": "Most efficient performance contract",
+            "subtitle": "“Safety, Efficiency, Professionalism”",
+            "src": "banner02.jpg"
+        },
+        {
+            "title": "The most professional technology",
+            "subtitle": "“Safety, Efficiency, Professionalism”",
+            "src": "banner03.jpg"
+        }
+    ],
+    "about": {
+        "title": "About",
+        "subtitle": "about",
+        "src": "index.jpg",
+        "href": "/about",
+        "as": "/about"
+    },
+    "service": {
+        "title": "Service",
+        "subtitle": "service",
+        "src": "index.jpg",
+        "href": "/service",
+        "as": "/service"
+    },
+    "gallery": {
+        "title": "Gallery",
+        "subtitle": "gallery",
+        "src": "index.jpg",
+        "href": "/gallery",
+        "as": "/gallery"
+    },
+    "faq": {
+        "title": "Faq",
+        "subtitle": "faq",
+        "src": "index.jpg",
+        "href": "/faq",
+        "as": "/faq"
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "contact",
+        "src": "index.jpg",
+        "href": "/contact",
+        "as": "/contact"
+    }
+}

@@ -65,7 +65,7 @@ const App = (props) => {
         return () => {
             glide.current.destroy();
         };
-    }, [props.deviceType]);
+    }, [props.deviceType, props.banner]);
 
     return (
         <>
@@ -166,22 +166,21 @@ const App = (props) => {
 
                                     .banner_text{
                                         position: absolute;
-                                        top: 0;
+                                        top: 50%;
                                         left: 15%;
-                                        height: 100%;
-                                        display: flex;
-                                        flex-direction: column;
-                                        justify-content: center;
-                                        align-items: flex-start;
+                                        transform: translateY(-50%);
+                                        width: 70%;
 
                                         @media screen and (max-width: 414px){
                                             left: 5%;
+                                            width: 90%;
                                         }
 
                                         .title{
                                             color: var(--white);
                                             font-size: 35px;
                                             line-height: 60px;
+                                            white-space: initial;
 
                                             @media screen and (max-width: 414px){
                                                 font-size: 30px;
@@ -193,6 +192,7 @@ const App = (props) => {
                                             color: var(--white);
                                             font-size: 18px;
                                             line-height: 40px;
+                                            white-space: initial;
 
                                             @media screen and (max-width: 414px){
                                                 font-size: 16px;

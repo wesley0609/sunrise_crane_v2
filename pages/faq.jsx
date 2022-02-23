@@ -1,16 +1,14 @@
 
 import { connect } from "react-redux";
 import { useMemo } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 
 import seo from "../assets/js/seo/index.js";
 
-import bannerMeta from "../assets/json/meta/banner/index.json";
-import faqMeta from "../assets/json/meta/faq/index.json";
-
 import Faq from "../components/faq/index.jsx";
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     return {
         props: {}
     };
@@ -25,12 +23,40 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const App = (props) => {
+    const router = useRouter();
+
+    const bannerMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/banner/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/banner/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/banner/index.json");
+    }, [router]);
+
+    const faqMeta = useMemo(() => {
+        if(router.locale != router.defaultLocale){
+            try{
+                return require(`../assets/json/meta/faq/${router.locale}/index.json`);
+            }
+            catch(ex){
+                return require("../assets/json/meta/faq/index.json");
+            }
+        }
+
+        return require("../assets/json/meta/faq/index.json");
+    }, [router]);
+
     const meta = useMemo(() => {
         return {
             banner: bannerMeta.faq,
             faq: faqMeta
         };
-    }, []);
+    }, [bannerMeta, faqMeta]);
 
     return (
         <>
@@ -43,6 +69,14 @@ const App = (props) => {
                 <link rel="canonical" href={seo.faq.getUrl()} key="canonical" />
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.faq.getBreadcrumbList()} key="BreadcrumbList"></script>
                 <script type="application/ld+json" dangerouslySetInnerHTML={seo.faq.getFAQPage(meta.faq)} key="FAQPage"></script>
+
+                {
+                    seo.faq.getAlternate(router).map((item, index) => {
+                        return (
+                            <link rel="alternate" hrefLang={item.hreflang} href={item.href} key={`alternate-${item.hreflang}`} />
+                        );
+                    })
+                }
             </Head>
 
             <Faq banner={meta.banner} faq={meta.faq} />
