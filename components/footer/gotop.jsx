@@ -27,7 +27,7 @@ const App = (props) => {
 
     return (
         <>
-            <button className="gotop_btn" title={sunrise.seo.other.gotopTitle} onClick={(event) => gotopBtnClickHandler(event)}>
+            <button className="gotop_btn" title={sunrise.seo.other.gotop} onClick={(event) => gotopBtnClickHandler(event)}>
                 <div className="text">GO TOP</div>
                 <div className="icon"></div>
             </button>

@@ -91,8 +91,6 @@ const App = (props) => {
     return (
         <>
             <div className="languages_balloon_section" ref={languagesBalloonSectionRef}>
-                <div className="triangle"></div>
-
                 <div className="content_section">
                     <div className="content_container">
                         <Link href={router.route} as={router.route} locale="zh-TW">
@@ -112,23 +110,11 @@ const App = (props) => {
                         position: fixed;
                         top: ${languagesBalloonSectionStyle.top};
                         left: ${languagesBalloonSectionStyle.left};
-                        
-                        .triangle{
-                            position: absolute;
-                            border-left: 10px solid transparent;
-                            border-right: 10px solid transparent;
-                            border-bottom: 15px solid var(--white);
-                            top: 5px;
-                            left: 50%;
-                            transform: translateX(-50%);
-                        }
 
                         .content_section{
                             margin-top: 15px;
                             background-color: var(--white);
-                            border-radius: 2px;
-                            box-shadow: 0 0 20px rgba(0, 0, 0, .5);
-                            padding: 10px 15px;
+                            box-shadow: 0px 5px 15px #0000001a;
                             overflow: hidden;
 
                             .content_container{
@@ -139,15 +125,19 @@ const App = (props) => {
 
                                 .link{
                                     font-size: 15px;
-                                    color: var(--black);
                                     line-height: 30px;
+                                    padding: 10px 15px;
+                                    width: 100%;
+                                    text-align: center;
+                                    border-bottom: 1px solid #e3e3e3;
 
-                                    &:hover{
-                                        color: var(--primary);
+                                    &:last-child{
+                                        border-bottom: none;
                                     }
 
-                                    &.focus{
-                                        color: var(--primary);
+                                    &:hover{
+                                        background-color: var(--primary);
+                                        color: var(--white);
                                     }
                                 }
                             }

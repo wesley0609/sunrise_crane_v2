@@ -82,12 +82,12 @@ const App = (props) => {
                                                 (() => {
                                                     if(answerDisplays[index]){
                                                         return (
-                                                            <img className="icon" width="36" height="36" src={require("../../assets/image/faq/icon/less.svg")} alt="less" />
+                                                            <img className="icon" width="36" height="36" src={require("../../assets/image/faq/icon/less.svg")} alt={sunrise.seo.other.less} />
                                                         );
                                                     }
                                                     else{
                                                         return (
-                                                            <img className="icon" width="36" height="36" src={require("../../assets/image/faq/icon/more.svg")} alt="more" />
+                                                            <img className="icon" width="36" height="36" src={require("../../assets/image/faq/icon/more.svg")} alt={sunrise.seo.other.more} />
                                                         );
                                                     }
                                                 })()

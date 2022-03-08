@@ -74,7 +74,11 @@ const App = (props) => {
                     }
 
                     <div className="tool_section">
-                        <button className="tool_btn language" onMouseOver={(event) => languageBtnMouseOverHandler(event)} ref={languageBtnRef}></button>
+                        <button className="language_btn" onMouseOver={(event) => languageBtnMouseOverHandler(event)} title={sunrise.seo.other.language} ref={languageBtnRef}>
+                            <img className="icon" src={require("../../assets/image/header/language.svg")} alt={sunrise.seo.other.language} />
+                            <div className="text">{sunrise.seo.default.lang}</div>
+                            <img className="more" src={require("../../assets/image/header/more.svg")} alt={sunrise.seo.other.more} />
+                        </button>
                     </div>
                 </ul>
 
@@ -147,17 +151,41 @@ const App = (props) => {
                                 flex-direction: row;
                                 justify-content: center;
                                 align-items: center;
-                                margin-left: 10px;
 
-                                .tool_btn{
-                                    background-image: url(${require("../../assets/image/header/translate.svg")});
-                                    height: 24px;
-                                    width: 24px;
-                                    background-size: 24px 24px;
+                                :before{
+                                    content: "｜";
+                                    color: var(--white);
+                                }
+
+                                .language_btn{
+                                    display: flex;
+                                    flex-direction: row;
+                                    justify-content: center;
+                                    align-items: center;
                                     margin-left: 8px;
                                     margin-right: 8px;
+
+                                    .icon{
+                                        display: block;
+                                        width: 14px;
+                                        height: 14px;
+                                    }
+
+                                    .text{
+                                        line-height: 20px;
+                                        font-size: 15px;
+                                        color: var(--white);
+                                        margin-left: 8px;
+                                    }
+
+                                    .more{
+                                        display: block;
+                                        width: 8px;
+                                        height: 5px;
+                                        margin-left: 8px;
+                                    }
                                 }
-                            }                            
+                            }
                         }
                     }
                 `}

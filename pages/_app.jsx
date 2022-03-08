@@ -2,7 +2,7 @@
 import "normalize.css";
 
 import { Provider } from "react-redux";
-import { useEffect, useMemo } from "react";
+import { useEffect } from "react";
 import Head from "next/head";
 
 import store from "../redux/store.js";
@@ -23,8 +23,10 @@ if(process.title == "browser"){
 
 const App = ({Component, pageProps, ...etc}) => {
     const seo = etc.seo;
+    const config = etc.config;
 
     sunrise.seo = seo;
+    sunrise.config = config;
 
     useEffect(() => {
         store.dispatch({

@@ -119,8 +119,8 @@ const App = (props) => {
                         </div>
 
                         <div className="client_arrows" data-glide-el="controls">
-                            <button className="client_arrow left" data-glide-dir="<" title="上一個"></button>
-                            <button className="client_arrow right" data-glide-dir=">" title="下一個"></button>
+                            <button className="client_arrow left" data-glide-dir="<" title={sunrise.seo.other.prev}></button>
+                            <button className="client_arrow right" data-glide-dir=">" title={sunrise.seo.other.next}></button>
                         </div>
                     </div>
 

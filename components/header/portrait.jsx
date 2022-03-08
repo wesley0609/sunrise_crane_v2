@@ -75,17 +75,17 @@ const App = (props) => {
                 </Link>
 
                 <div className="menu_btn_section">
-                    <button className="menu_btn" onClick={menuBtnClickHandler} title="目錄">
+                    <button className="menu_btn" onClick={menuBtnClickHandler} title={sunrise.seo.other.menu}>
                         {
                             (() => {
                                 if(menuBtnBool){
                                     return (
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/header/close.svg")} alt="關閉目錄" />
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/header/close.svg")} alt={sunrise.seo.other.less} />
                                     );
                                 }
                                 else{
                                     return (
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/header/open.svg")} alt="開啟目錄" />
+                                        <img className="icon" width="24" height="24" src={require("../../assets/image/header/open.svg")} alt={sunrise.seo.other.more} />
                                     );
                                 }
                             })()
@@ -198,18 +198,17 @@ const App = (props) => {
                             .language_link_section{
                                 display: inline-block;
                                 text-align: center;
-                                margin-top: 10px;
 
                                 .link{
                                     font-size: 15px;
                                     color: var(--white);
-                                    line-height: 30px;
+                                    line-height: 50px;
 
                                     &:not(:last-child):after{
                                         content: "｜";
                                         color: var(--white);
-                                        margin-left: 3px;
-                                        margin-right: 3px;
+                                        margin-left: 5px;
+                                        margin-right: 5px;
                                     }
 
                                     &.focus{

@@ -1,4 +1,10 @@
 {
-    "breadcrumbTitle": "Home",
-    "gotopTitle": "Go top"
+    "breadcrumb": "Home",
+    "gotop": "Go top",
+    "menu": "Menu",
+    "more": "More",
+    "less": "Less",
+    "language": "Language",
+    "prev": "Prev",
+    "next": "Next"
 }

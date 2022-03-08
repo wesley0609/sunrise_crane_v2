@@ -19,7 +19,7 @@ const App = (props) => {
         let _breadcrumb = [];
 
         _breadcrumb.push({
-            title: sunrise.seo.other.breadcrumbTitle,
+            title: sunrise.seo.other.breadcrumb,
             href: "/",
             as: "/"
         });
