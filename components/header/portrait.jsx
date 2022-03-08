@@ -93,18 +93,20 @@ const App = (props) => {
                     </button>
                 </div>
 
-                <ul className={`navigation_section ${navigationSectionClass}`}>
-                    {
-                        props.menu.map((item, index) => {
-                            return (
-                                <li className="navigation_tab" key={index}>
-                                    <Link href={item.href} as={item.as}>
-                                        <a className={`link ${linkFocusClass(item)}`} title={item.title} target="_self" onClick={(event) => linkClickHandler(event, item)}>{item.title}</a>
-                                    </Link>
-                                </li>
-                            );
-                        })
-                    }
+                <div className={`navigation_section ${navigationSectionClass}`}>
+                    <ul className="navigation_tabs">
+                        {
+                            props.menu.map((item, index) => {
+                                return (
+                                    <li className="navigation_tab" key={index}>
+                                        <Link href={item.href} as={item.as}>
+                                            <a className={`link ${linkFocusClass(item)}`} title={item.title} target="_self" onClick={(event) => linkClickHandler(event, item)}>{item.title}</a>
+                                        </Link>
+                                    </li>
+                                );
+                            })
+                        }
+                    </ul>
 
                     <div className="language_link_section">
                         <Link href={router.route} as={router.route} locale="zh-TW">
@@ -115,7 +117,7 @@ const App = (props) => {
                             <a className={`link ${languageLinkFocusClass("en-US")}`} title="English" target="_self" onClick={(event) => languageLinkClickHandler(event, "en-US")}>English</a>
                         </Link>
                     </div>
-                </ul>
+                </div>
             </div>
 
             <style jsx>
@@ -181,18 +183,25 @@ const App = (props) => {
                                 align-items: center;
                             }
 
-                            .navigation_tab{
-                                list-style-type: none;
+                            .navigation_tabs{
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                align-items: center;
 
-                                .link{
-                                    font-size: 15px;
-                                    color: var(--white);
-                                    line-height: 50px;
+                                .navigation_tab{
+                                    list-style-type: none;
 
-                                    &.focus{
-                                        color: var(--primary);
-                                    }
-                                }                                
+                                    .link{
+                                        font-size: 15px;
+                                        color: var(--white);
+                                        line-height: 50px;
+
+                                        &.focus{
+                                            color: var(--primary);
+                                        }
+                                    }                                
+                                }
                             }
 
                             .language_link_section{
