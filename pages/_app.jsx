@@ -42,19 +42,20 @@ const App = ({Component, pageProps, ...etc}) => {
     return (
         <Provider store={store}>
             <Head>
-                <title key="title">{sunrise.seo.default.title}</title>
+                {}
+                <title key="title">{etc.seo.default.title}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" key="viewport" />
-                <meta name="description" content={sunrise.seo.default.description} key="description" />
-                <meta name="author" content={sunrise.seo.default.author} key="author" />
-                <meta name="keywords" content={sunrise.seo.default.keywords.join(",")} key="keywords" />
+                <meta name="description" content={etc.seo.default.description} key="description" />
+                <meta name="author" content={etc.seo.default.author} key="author" />
+                <meta name="keywords" content={etc.seo.default.keywords.join(",")} key="keywords" />
                 <meta property="og:type" content="website" key="og:type" />
-                <meta property="og:site_name" content={sunrise.seo.default.siteName} key="og:site_name" />
-                <meta property="og:image" content={`${sunrise.seo.default.siteUrl}/share.jpg`} key="og:image" />
+                <meta property="og:site_name" content={etc.seo.default.siteName} key="og:site_name" />
+                <meta property="og:image" content={`${etc.seo.default.siteUrl}/share.jpg`} key="og:image" />
                 <meta property="og:image:width" content="1080" key="og:image:width" />
                 <meta property="og:image:height" content="566" key="og:image:height" />
-                <meta property="og:url" content={sunrise.seo.default.siteUrl} key="og:url" />
-                <meta property="og:title" content={sunrise.seo.default.title} key="og:title" />
-                <meta property="og:description" content={sunrise.seo.default.description} key="og:description" />
+                <meta property="og:url" content={etc.seo.default.siteUrl} key="og:url" />
+                <meta property="og:title" content={etc.seo.default.title} key="og:title" />
+                <meta property="og:description" content={etc.seo.default.description} key="og:description" />
             </Head>
 
             <GlobalStyle {...pageProps} />
