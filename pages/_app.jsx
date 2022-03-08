@@ -22,21 +22,9 @@ if(process.title == "browser"){
 }
 
 const App = ({Component, pageProps, ...etc}) => {
-    const seo = useMemo(() => {
-        let _seo = etc.seo;
+    const seo = etc.seo;
 
-        global.sunrise = global.sunrise || {};
-
-        sunrise.seo = _seo;
-
-        return _seo;
-    }, [etc.seo]);
-
-    useEffect(() => {
-        window.sunrise = window.sunrise || {};
-
-        sunrise.seo = seo;
-    }, [seo]);
+    sunrise.seo = seo;
 
     useEffect(() => {
         store.dispatch({
