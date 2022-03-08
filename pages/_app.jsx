@@ -63,6 +63,8 @@ const App = ({Component, pageProps, ...etc}) => {
 };
 
 App.getInitialProps = async (ctx) => {
+    plugins.server.robots(ctx);
+
     return {
         seo: plugins.server.seo(ctx),
         config: plugins.server.config()
