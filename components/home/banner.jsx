@@ -22,15 +22,13 @@ const App = (props) => {
         if(props.deviceType == "mobile"){
             return {
                 width: 795,
-                height: 955,
-                paddingBottom: "120.13%"
+                height: 955
             };
         }
 
         return {
             width: 1920,
-            height: 680,
-            paddingBottom: "35.42%"
+            height: 680
         };
     }, [props.deviceType]);
 
@@ -142,7 +140,11 @@ const App = (props) => {
                                     position: relative;
 
                                     .padding_box{
-                                        padding-bottom: ${imageSize.paddingBottom};
+                                        padding-bottom: 35.42%;
+
+                                        @media screen and (max-width: 414px){
+                                            padding-bottom: 120.13%;
+                                        }
                                     }
 
                                     .banner_image{
