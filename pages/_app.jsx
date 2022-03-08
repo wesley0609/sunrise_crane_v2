@@ -42,8 +42,12 @@ const App = ({Component, pageProps, ...etc}) => {
     return (
         <Provider store={store}>
             <Head>
-                {}
-                <title key="title">{etc.seo.default.title}</title>
+                {
+                    (() => {
+                        console.log(etc);
+                    })()
+                }
+                {/* <title key="title">{etc.seo.default.title}</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" key="viewport" />
                 <meta name="description" content={etc.seo.default.description} key="description" />
                 <meta name="author" content={etc.seo.default.author} key="author" />
@@ -55,7 +59,7 @@ const App = ({Component, pageProps, ...etc}) => {
                 <meta property="og:image:height" content="566" key="og:image:height" />
                 <meta property="og:url" content={etc.seo.default.siteUrl} key="og:url" />
                 <meta property="og:title" content={etc.seo.default.title} key="og:title" />
-                <meta property="og:description" content={etc.seo.default.description} key="og:description" />
+                <meta property="og:description" content={etc.seo.default.description} key="og:description" /> */}
             </Head>
 
             <GlobalStyle {...pageProps} />
