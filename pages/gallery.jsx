@@ -26,29 +26,11 @@ const App = (props) => {
     const router = useRouter();
 
     const bannerMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/banner/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/banner/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/banner/index.json");
+        return require(`../assets/json/meta/banner/${router.locale}/index.json`);
     }, [router]);
 
     const galleryMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/gallery/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/gallery/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/gallery/index.json");
+        return require(`../assets/json/meta/gallery/${router.locale}/index.json`);
     }, [router]);
 
     const meta = useMemo(() => {

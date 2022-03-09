@@ -1,0 +1,10 @@
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.sunrise-crane.com.tw
+
+# Sitemaps
+Sitemap: https://www.sunrise-crane.com.tw/sitemap.xml

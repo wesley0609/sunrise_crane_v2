@@ -1,0 +1,75 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    <url>
+        <loc>https://www.sunrise-crane.com.tw</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/about</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/about"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/about"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/service</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/service"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/service"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/gallery</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/gallery"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/gallery"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/faq</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/faq"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/faq"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/contact</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/contact"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/contact"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/en-US</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/en-US/about</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/about"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/about"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/en-US/service</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/service"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/service"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/en-US/gallery</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/gallery"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/gallery"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/en-US/faq</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/faq"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/faq"/>
+    </url>
+
+    <url>
+        <loc>https://www.sunrise-crane.com.tw/en-US/contact</loc>
+        <xhtml:link rel="alternate" hreflang="zh-TW" href="https://www.sunrise-crane.com.tw/contact"/>
+        <xhtml:link rel="alternate" hreflang="en-US" href="https://www.sunrise-crane.com.tw/en-US/contact"/>
+    </url>
+</urlset>
