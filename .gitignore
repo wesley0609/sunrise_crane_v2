@@ -38,10 +38,6 @@ yarn-error.log*
 /public/service-worker.js
 /public/workbox-*.js
 
-# sitemap
-/public/sitemap.xml
-/public/robots.txt
-
 # https certificate
 private.key
 certificate.crt
