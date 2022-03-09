@@ -8,7 +8,7 @@ import seo from "../assets/js/seo/index.js";
 
 import Home from "../components/home/index.jsx";
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
     return {
         props: {}
     };
@@ -26,68 +26,23 @@ const App = (props) => {
     const router = useRouter();
 
     const bannerMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/banner/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/banner/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/banner/index.json");
+        return require(`../assets/json/meta/banner/${router.locale}/index.json`);
     }, [router]);
 
     const serviceMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/service/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/service/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/service/index.json");
+        return require(`../assets/json/meta/service/${router.locale}/index.json`);
     }, [router]);
 
     const homeMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/home/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/home/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/home/index.json");
+        return require(`../assets/json/meta/home/${router.locale}/index.json`);
     }, [router]);
 
     const clientMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/client/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/client/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/client/index.json");
+        return require(`../assets/json/meta/client/${router.locale}/index.json`);
     }, [router]);
 
     const contactMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/contact/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/contact/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/contact/index.json");
+        return require(`../assets/json/meta/contact/${router.locale}/index.json`);
     }, [router]);
 
     const meta = useMemo(() => {

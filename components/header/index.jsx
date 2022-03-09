@@ -20,16 +20,7 @@ const App = (props) => {
     const router = useRouter();
 
     const headerMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../../assets/json/meta/header/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../../assets/json/meta/header/index.json");
-            }
-        }
-
-        return require("../../assets/json/meta/header/index.json");
+        return require(`../../assets/json/meta/header/${router.locale}/index.json`);
     }, [router]);
 
     const meta = useMemo(() => {

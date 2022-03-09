@@ -8,7 +8,7 @@ import seo from "../assets/js/seo/index.js";
 
 import Service from "../components/service/index.jsx";
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
     return {
         props: {}
     };
@@ -26,29 +26,11 @@ const App = (props) => {
     const router = useRouter();
 
     const bannerMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/banner/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/banner/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/banner/index.json");
+        return require(`../assets/json/meta/banner/${router.locale}/index.json`);
     }, [router]);
 
     const serviceMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../assets/json/meta/service/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../assets/json/meta/service/index.json");
-            }
-        }
-
-        return require("../assets/json/meta/service/index.json");
+        return require(`../assets/json/meta/service/${router.locale}/index.json`);
     }, [router]);
 
     const meta = useMemo(() => {

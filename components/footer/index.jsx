@@ -22,29 +22,11 @@ const App = (props) => {
     const router = useRouter();
 
     const titleMapMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../../assets/json/meta/contact/${router.locale}/titleMap.json`);
-            }
-            catch(ex){
-                return require("../../assets/json/meta/contact/titleMap.json");
-            }
-        }
-
-        return require("../../assets/json/meta/contact/titleMap.json");
+        return require(`../../assets/json/meta/contact/${router.locale}/titleMap.json`);
     }, [router]);
 
     const contactMeta = useMemo(() => {
-        if(router.locale != router.defaultLocale){
-            try{
-                return require(`../../assets/json/meta/contact/${router.locale}/index.json`);
-            }
-            catch(ex){
-                return require("../../assets/json/meta/contact/index.json");
-            }
-        }
-
-        return require("../../assets/json/meta/contact/index.json");
+        return require(`../../assets/json/meta/contact/${router.locale}/index.json`);
     }, [router]);
 
     const meta = useMemo(() => {

@@ -4,13 +4,22 @@ const app = (router) => {
     let seo = sunrise.seo;
     let locales = router.locales;
 
-    arr.push({
-        hreflang: "x-default",
-        href: `${seo.default.siteUrl}/contact`
-    });
-
     for(let i = 0; i < locales.length; i ++){
         let locale = locales[i];
+
+        if(locale == router.defaultLocale){
+            arr.push({
+                hreflang: "x-default",
+                href: `${seo.default.siteUrl}/contact`
+            });
+
+            arr.push({
+                hreflang: locale,
+                href: `${seo.default.siteUrl}/contact`
+            });
+            
+            continue;
+        }
 
         arr.push({
             hreflang: locale,
