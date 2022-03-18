@@ -19,7 +19,4 @@ $ npm run dev
 # production mode
 $ npm run build
 $ npm run start
-
-# release project
-$ sh build.sh
 ```
