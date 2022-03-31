@@ -1,12 +1,10 @@
 
 import seo from "./seo.js";
 import config from "./config.js";
-import robots from "./robots.js";
 
 const app = {
     seo: seo,
-    config: config,
-    robots: robots
+    config: config
 };
 
 export default app;
