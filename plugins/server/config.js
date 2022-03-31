@@ -7,6 +7,8 @@ import prod from "../../assets/json/config/config.prod.json";
 
 const app = () => {
     try{
+        global.sunrise = global.sunrise || {};
+
         let target = null;
 
         if(process.env.NEXT_PUBLIC_ENV == "development"){
@@ -18,6 +20,8 @@ const app = () => {
         
         let config = _.extend(common, target);
         
+        sunrise.config = config;
+
         return config;
     }
     catch(ex){
