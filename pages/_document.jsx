@@ -24,7 +24,6 @@ export default class App extends Document{
                     <link rel="apple-touch-icon" type="image/png" size="512x512" href="/icon/icon@512.png" />
                     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:wght@400;700&display=optional" />
                     <script type="text/javascript" dangerouslySetInnerHTML={head.gtm}></script>
-                    <script type="text/javascript" dangerouslySetInnerHTML={head.alexa}></script>
                 </Head>
                 
                 <body>
