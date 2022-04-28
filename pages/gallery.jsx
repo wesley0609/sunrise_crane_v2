@@ -8,7 +8,7 @@ import seo from "../assets/js/seo/index.js";
 
 import Gallery from "../components/gallery/index.jsx";
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
     return {
         props: {}
     };

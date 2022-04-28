@@ -1,14 +1,16 @@
 
-import sunrise from "./sunrise.js";
-import dataLayer from "./dataLayer.js";
+import seo from "./seo.js";
+import config from "./config.js";
 import resize from "./resize.js";
 import deviceType from "./deviceType.js";
+import dataLayer from "./dataLayer.js";
 
 const app = {
-    sunrise: sunrise,
-    dataLayer: dataLayer,
+    seo: seo,
+    config: config,
     resize: resize,
-    deviceType: deviceType
+    deviceType: deviceType,
+    dataLayer: dataLayer
 };
 
 export default app;
