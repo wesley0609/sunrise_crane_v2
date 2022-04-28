@@ -1,9 +1,7 @@
 
 const app = () => {
     try{
-        window.sunrise = window.sunrise || {};
-
-        sunrise.config = __NEXT_DATA__.props.config;
+        window.sunrise = window.sunrise || [];
     }
     catch(ex){
         console.log(ex.stack);

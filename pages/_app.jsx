@@ -14,16 +14,15 @@ import Header from "../components/header/index.jsx";
 import Footer from "../components/footer/index.jsx";
 
 if(process.title == "browser"){
-    plugins.client.seo();
-    plugins.client.config();
+    plugins.client.sunrise();
+    plugins.client.dataLayer();
     plugins.client.resize();
     plugins.client.deviceType();
-    plugins.client.dataLayer();
 }
 
 const App = ({Component, pageProps, ...etc}) => {
-    const seo = etc.seo;
-    const config = etc.config;
+    const seo = plugins.server.seo(etc.router);
+    const config = plugins.server.config();
 
     sunrise.seo = seo;
     sunrise.config = config;
@@ -60,15 +59,6 @@ const App = ({Component, pageProps, ...etc}) => {
             <Footer {...pageProps} />
         </Provider>
     );
-};
-
-App.getInitialProps = async (ctx) => {
-    plugins.server.robots(ctx);
-
-    return {
-        seo: plugins.server.seo(ctx),
-        config: plugins.server.config()
-    };
 };
 
 export default App;

@@ -1,22 +1,18 @@
 
-const app = (ctx) => {
+const app = (router) => {
     try{
-        global.sunrise = global.sunrise || {};
-
-        let seoDefault = require(`../../assets/json/seo/${ctx.router.locale}/default.json`);
-        let seoTitle = require(`../../assets/json/seo/${ctx.router.locale}/title.json`);
-        let seoDescription = require(`../../assets/json/seo/${ctx.router.locale}/description.json`);
-        let seoOther = require(`../../assets/json/seo/${ctx.router.locale}/other.json`);
+        let seoDefault = require(`../../assets/json/seo/${router.locale}/default.json`);
+        let seoTitle = require(`../../assets/json/seo/${router.locale}/title.json`);
+        let seoDescription = require(`../../assets/json/seo/${router.locale}/description.json`);
+        let seoOther = require(`../../assets/json/seo/${router.locale}/other.json`);
 
         let seo = {
-            lang: ctx.router.locale,
+            lang: router.locale,
             default: seoDefault,
             title: seoTitle,
             description: seoDescription,
             other: seoOther
         };
-
-        sunrise.seo = seo;
 
         return seo;
     }
