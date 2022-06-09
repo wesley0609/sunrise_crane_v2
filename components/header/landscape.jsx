@@ -75,9 +75,9 @@ const App = (props) => {
 
                     <div className="tool_section">
                         <button className="language_btn" onMouseOver={(event) => languageBtnMouseOverHandler(event)} title={sunrise.seo.other.language} ref={languageBtnRef}>
-                            <img className="icon" src={require("../../assets/image/header/language.svg")} alt={sunrise.seo.other.language} />
+                            <img className="icon" width="15" height="15" src={require("../../assets/image/header/language.svg")} alt={sunrise.seo.other.language} />
                             <div className="text">{sunrise.seo.default.lang}</div>
-                            <img className="more" src={require("../../assets/image/header/more.svg")} alt={sunrise.seo.other.more} />
+                            <img className="more" width="9" height="5" src={require("../../assets/image/header/more.svg")} alt={sunrise.seo.other.more} />
                         </button>
                     </div>
                 </ul>
