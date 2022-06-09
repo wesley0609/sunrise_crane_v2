@@ -39,7 +39,7 @@ const App = ({Component, pageProps, ...etc}) => {
         <Provider store={store}>
             <Head>
                 <title key="title">{seo.default.title}</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" key="viewport" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
                 <meta name="description" content={seo.default.description} key="description" />
                 <meta name="author" content={seo.default.author} key="author" />
                 <meta name="keywords" content={seo.default.keywords.join(",")} key="keywords" />
