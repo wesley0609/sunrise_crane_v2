@@ -1,25 +1,20 @@
 
-import { connect } from "react-redux";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 const App = (props) => {
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
+
     const iframeHeight = useMemo(() => {
-        if(props.deviceType != "pc"){
+        if(deviceType != "pc"){
             return 350;
         }
 
         return 450;
-    }, [props.deviceType]);
+    }, [deviceType]);
 
     const iframeStyle = useMemo(() => {
         return {
@@ -31,7 +26,7 @@ const App = (props) => {
     return (
         <>
             <div className="map_section">
-                <iframe src={props.contact.fullAddress.mapEmbedUrl} width="100%" height={iframeHeight} style={iframeStyle} title="Google Maps Embed" loading="lazy"></iframe>
+                <iframe src={props.contact.fullAddress.mapEmbedUrl} width="100%" height={iframeHeight} style={iframeStyle} title="Google Maps Embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <style jsx>
@@ -50,4 +45,4 @@ App.propTypes = {
     contact: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

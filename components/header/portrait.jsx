@@ -1,19 +1,11 @@
 
-import { connect } from "react-redux";
 import { useEffect, useCallback, useState, useMemo } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
 import gaEvent from "../../assets/js/ga/index.js";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const router = useRouter();
@@ -70,7 +62,7 @@ const App = (props) => {
             <div className="header_content">
                 <Link href="/" as="/">
                     <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={sunrise.seo.default.siteName} />
+                        <Image src="/image/logo.svg" width={235} height={60} alt={sunrise.seo.default.siteName} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
                     </a>
                 </Link>
 
@@ -80,12 +72,16 @@ const App = (props) => {
                             (() => {
                                 if(menuBtnBool){
                                     return (
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/header/close.svg")} alt={sunrise.seo.other.less} />
+                                        <div className="icon_container">
+                                            <Image src="/image/header/close.svg" width={24} height={24} alt={sunrise.seo.other.less} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
+                                        </div>
                                     );
                                 }
                                 else{
                                     return (
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/header/open.svg")} alt={sunrise.seo.other.more} />
+                                        <div className="icon_container">
+                                            <Image src="/image/header/open.svg" width={24} height={24} alt={sunrise.seo.other.more} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
+                                        </div>
                                     );
                                 }
                             })()
@@ -158,8 +154,7 @@ const App = (props) => {
                                 width: 24px;
                                 height: 24px;
 
-                                .icon{
-                                    display: block;
+                                .icon_container{
                                     width: 100%;
                                     height: 100%;
                                 }
@@ -237,4 +232,4 @@ App.propTypes = {
     menu: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

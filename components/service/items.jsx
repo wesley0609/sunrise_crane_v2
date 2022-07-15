@@ -1,32 +1,13 @@
 
-import { connect } from "react-redux";
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
+import Image from "next/image";
 import PropTypes from "prop-types";
-import LazyLoad from "lazyload";
 
 import gaEvent from "../../assets/js/ga/index.js";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const serviceItemClickHandler = useCallback((event, item) => {
         gaEvent.service.clickService(item);
-    }, []);
-
-    useEffect(() => {
-        let images = document.querySelectorAll(".service_items_section .poster_section");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
     }, []);
 
     return (
@@ -40,11 +21,13 @@ const App = (props) => {
                             props.items.map((item, index) => {
                                 return (
                                     <div className="service_item" onClick={(event) => serviceItemClickHandler(event, item)} key={index}>
-                                        <img className="poster_section" width="150" height="150" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
+                                        <div className="poster_section">
+                                            <Image src={`/image/service/${item.src}`} width={150} height={150} alt={item.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
+                                        </div>
 
                                         <div className="content_section">
                                             <h2 className="title">{item.title}</h2>
-                                            <h3 className="description">{item.description}</h3>
+                                            <p className="description">{item.description}</p>
                                         </div>
                                     </div>
                                 );
@@ -165,4 +148,4 @@ App.propTypes = {
     items: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

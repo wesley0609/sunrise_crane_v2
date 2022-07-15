@@ -1,29 +1,12 @@
 
-import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import Image from "next/image";
 import PropTypes from "prop-types";
-import LazyLoad from "lazyload";
-
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
-    useEffect(() => {
-        let images = document.querySelectorAll(".poster_section .poster");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
-    }, [props.deviceType]);
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
 
     return (
         <>
@@ -32,11 +15,11 @@ const App = (props) => {
                     <div className="left_container">
                         {
                             (() => {
-                                if(props.deviceType == "mobile" || props.deviceType == "pad"){
+                                if(deviceType == "mobile" || deviceType == "pad"){
                                     return (
                                         <div className="poster_section">
                                             <div className="padding_box"></div>
-                                            <img className="poster" width="770" height="960" data-src={require("../../assets/image/about/second/index.png")} src={require("../../assets/image/poster/default.png")} alt={props.about.second.title} />
+                                            <Image src="/image/about/second/index.png" alt={props.about.second.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                         </div>
                                     );
                                 }
@@ -52,7 +35,7 @@ const App = (props) => {
                             {
                                 props.about.second.content.map((item, index) => {
                                     return (
-                                        <h4 className="content_list" key={index}>{item}</h4>
+                                        <p className="content_list" key={index}>{item}</p>
                                     );
                                 })
                             }
@@ -62,13 +45,13 @@ const App = (props) => {
 
                 {
                     (() => {
-                        if(props.deviceType == "pc"){
+                        if(deviceType == "pc"){
                             return (
                                 <div className="right_section">
                                     <div className="right_container">
                                         <div className="poster_section">
                                             <div className="padding_box"></div>
-                                            <img className="poster" width="770" height="960" data-src={require("../../assets/image/about/second/index.png")} src={require("../../assets/image/poster/default.png")} alt={props.about.second.title} />
+                                            <Image src="/image/about/second/index.png" alt={props.about.second.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                         </div>
                                     </div>
                                 </div>
@@ -118,15 +101,6 @@ const App = (props) => {
 
                                     .padding_box{
                                         padding-bottom: 124.67%;
-                                    }
-
-                                    .poster{
-                                        display: block;
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 100%;
-                                        top: 0;
-                                        left: 0;
                                     }
                                 }
 
@@ -190,15 +164,6 @@ const App = (props) => {
                                     .padding_box{
                                         padding-bottom: 124.67%;
                                     }
-
-                                    .poster{
-                                        display: block;
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 100%;
-                                        top: 0;
-                                        left: 0;
-                                    }
                                 }
                             }
                         }
@@ -213,4 +178,4 @@ App.propTypes = {
     about: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

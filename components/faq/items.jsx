@@ -1,17 +1,9 @@
 
-import { connect } from "react-redux";
 import { useEffect, useState, useCallback } from "react";
+import Image from "next/image";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const [answerDisplays, setAnswerDisplays] = useState([]);
@@ -82,19 +74,23 @@ const App = (props) => {
                                                 (() => {
                                                     if(answerDisplays[index]){
                                                         return (
-                                                            <img className="icon" width="36" height="36" src={require("../../assets/image/faq/icon/less.svg")} alt={sunrise.seo.other.less} />
+                                                            <div className="icon_container">
+                                                                <Image src="/image/faq/icon/less.svg" width={36} height={36} alt={sunrise.seo.other.less} layout="responsive" />
+                                                            </div>
                                                         );
                                                     }
                                                     else{
                                                         return (
-                                                            <img className="icon" width="36" height="36" src={require("../../assets/image/faq/icon/more.svg")} alt={sunrise.seo.other.more} />
+                                                            <div className="icon_container">
+                                                                <Image src="/image/faq/icon/more.svg" width={36} height={36} alt={sunrise.seo.other.more} layout="responsive" />
+                                                            </div>
                                                         );
                                                     }
                                                 })()
                                             }
                                         </button>
 
-                                        <h3 className="answer_section" style={getAnswerSectionStyle(index)}>{item.answer}</h3>
+                                        <p className="answer_section" style={getAnswerSectionStyle(index)}>{item.answer}</p>
                                     </div>
                                 );
                             })
@@ -174,7 +170,7 @@ const App = (props) => {
                                             padding-right: 40px;
                                         }
 
-                                        .icon{
+                                        .icon_container{
                                             position: absolute;
                                             top: 50%;
                                             right: 0;
@@ -208,4 +204,4 @@ App.propTypes = {
     items: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

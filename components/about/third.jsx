@@ -1,16 +1,7 @@
 
-import { connect } from "react-redux";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
+import Image from "next/image";
 import PropTypes from "prop-types";
-import LazyLoad from "lazyload";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const iconLists = useMemo(() => {
@@ -28,22 +19,16 @@ const App = (props) => {
         return _iconLists;
     }, [props.about]);
 
-    useEffect(() => {
-        let images = document.querySelectorAll(".icon_items .icon");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
-    }, []);
-
     return (
         <>
             <div className="third_section">
+                <div className="background_section">
+                    <Image src={`/image/about/third/background.jpg`} alt={props.about.third.title.text} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} objectFit="cover" layout="fill" />
+                </div>
+
                 <div className="top_section">
                     <h2 className="title">{props.about.third.title.text}</h2>
-                    <h3 className="content">{props.about.third.content}</h3>
+                    <p className="content">{props.about.third.content}</p>
                 </div>
 
                 <div className="bottom_section">
@@ -53,7 +38,7 @@ const App = (props) => {
                                 return (
                                     <div className="icon_item" key={index}>
                                         <div className="padding_box"></div>
-                                        <img className="icon" width="100" height="100" data-src={require(`../../assets/image/about/third/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.alt} key={index} />
+                                        <Image src={`/image/about/third/${item.src}`} alt={item.alt} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                     </div>
                                 );
                             })
@@ -65,9 +50,6 @@ const App = (props) => {
             <style jsx>
                 {`
                     .third_section{
-                        background-image: url(${require("../../assets/image/about/third/background.jpg")});
-                        background-size: cover;
-                        background-position: center center;
                         text-align: center;
                         display: flex;
                         flex-direction: column;
@@ -75,10 +57,20 @@ const App = (props) => {
                         align-items: center;
                         padding-top: 60px;
                         padding-bottom: 60px;
+                        position: relative;
 
                         @media screen and (max-width: 414px){
                             padding-top: 30px;
                             padding-bottom: 30px;
+                        }
+
+                        .background_section{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: -1;
                         }
 
                         .top_section{
@@ -139,15 +131,6 @@ const App = (props) => {
                                     .padding_box{
                                         padding-bottom: 100%;
                                     }
-
-                                    .icon{
-                                        display: block;
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 100%;
-                                        top: 0;
-                                        left: 0;
-                                    }
                                 }
                             }
                         }
@@ -162,4 +145,4 @@ App.propTypes = {
     about: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

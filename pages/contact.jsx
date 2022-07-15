@@ -1,5 +1,4 @@
 
-import { connect } from "react-redux";
 import { useMemo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
@@ -12,14 +11,6 @@ export const getServerSideProps = async (context) => {
     return {
         props: {}
     };
-};
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
 };
 
 const App = (props) => {
@@ -70,4 +61,4 @@ const App = (props) => {
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

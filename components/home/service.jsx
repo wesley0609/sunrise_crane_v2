@@ -1,37 +1,31 @@
 
-import { connect } from "react-redux";
 import { useEffect, useMemo, useRef, useCallback } from "react";
+import { useSelector } from "react-redux";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import Glide from "@glidejs/glide";
-import LazyLoad from "lazyload";
 
 import gaEvent from "../../assets/js/ga/index.js";
-
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const glide = useRef(null);
 
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
+
     const perView = useMemo(() => {
-        if(props.deviceType == "mobile"){
+        if(deviceType == "mobile"){
             return 1;
         }
 
-        if(props.deviceType == "pad"){
+        if(deviceType == "pad"){
             return 2;
         }
         
         return 4;
-    }, [props.deviceType]);
+    }, [deviceType]);
 
     const serviceItemClickHandler = useCallback((event, item) => {
         gaEvent.home.clickService(item);
@@ -39,23 +33,13 @@ const App = (props) => {
 
     useEffect(() => {
         glide.current = new Glide(".service_list_section", {
-            type: "carousel",
+            // because it is used together with next/image, the clone's image will not be loaded
+            bound: true,
             perView: perView,
-            gap: 0,
-            classes: {
-                activeNav: "service_bullet_active"
-            }
+            gap: 0
         });
 
         glide.current.mount();
-
-        let images = document.querySelectorAll(".poster_section .poster");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
 
         return () => {
             glide.current.destroy();
@@ -71,7 +55,7 @@ const App = (props) => {
 
                     {
                         (() => {
-                            if(props.deviceType == "pc"){
+                            if(deviceType == "pc"){
                                 return (
                                     <div className="background">{props.homeService.subtitle.toUpperCase()}</div>
                                 );
@@ -82,7 +66,7 @@ const App = (props) => {
                     <div className="border"></div>
                 </div>
 
-                <div className="description_section">{props.homeService.description}</div>
+                <p className="description_section">{props.homeService.description}</p>
 
                 <div className="service_list_section">
                     <div className="service_container glide__track" data-glide-el="track">
@@ -94,7 +78,7 @@ const App = (props) => {
                                             <a className="service_item glide__slide" title={item.title} target="_self" onClick={(event) => serviceItemClickHandler(event, item)}>
                                                 <div className="poster_section">
                                                     <div className="padding_box"></div>
-                                                    <img className="poster" width="150" height="150" data-src={require(`../../assets/image/service/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={item.title} />
+                                                    <Image src={`/image/service/${item.src}`} alt={item.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                                 </div>
                                                 
                                                 <h3 className="des_section">{item.title}</h3>
@@ -246,15 +230,6 @@ const App = (props) => {
                                             .padding_box{
                                                 padding-bottom: 100%;
                                             }
-
-                                            .poster{
-                                                display: block;
-                                                position: absolute;
-                                                width: 100%;
-                                                height: 100%;
-                                                top: 0;
-                                                left: 0;
-                                            }
                                         }
 
                                         .des_section{
@@ -276,7 +251,7 @@ const App = (props) => {
                                     .service_arrow{
                                         position: absolute;
                                         top: 50%;
-                                        background-image: url(${require("../../assets/image/swiper/default/blackArrow.svg")});
+                                        background-image: url("/image/swiper/default/blackArrow.svg");
                                         height: 30px;
                                         width: 30px;
                                         background-size: 30px 30px;
@@ -338,7 +313,7 @@ const App = (props) => {
                                         }
                                     }
 
-                                    &.service_bullet_active{
+                                    &.glide__bullet--active{
                                         .icon{
                                             background-color: var(--primary);
                                         }
@@ -358,4 +333,4 @@ App.propTypes = {
     service: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

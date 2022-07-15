@@ -1,40 +1,23 @@
 
-import { connect } from "react-redux";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import Image from "next/image";
 import PropTypes from "prop-types";
-import LazyLoad from "lazyload";
-
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
-    useEffect(() => {
-        let images = document.querySelectorAll(".fourth_section .poster");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
-    }, [props.deviceType]);
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
 
     return (
         <>
             <div className="fourth_section">
                 {
                     (() => {
-                        if(props.deviceType == "pc"){
+                        if(deviceType == "pc"){
                             return (
                                 <div className="left_section">
                                     <div className="padding_box"></div>
-                                    <img className="poster" width="864" height="592" data-src={require("../../assets/image/about/fourth/index.jpg")} src={require("../../assets/image/poster/default.png")} alt={props.about.fourth.title} />
+                                    <Image src="/image/about/fourth/index.jpg" alt={props.about.fourth.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                 </div>
                             );
                         }
@@ -44,14 +27,16 @@ const App = (props) => {
                 <div className="right_section">
                     <div className="right_container">
                         <h2 className="title">{props.about.fourth.title}</h2>
-                        <h3 className="content">{props.about.fourth.content}</h3>
+                        <p className="content">{props.about.fourth.content}</p>
                     </div>
 
                     {
                         (() => {
-                            if(props.deviceType == "mobile" || props.deviceType == "pad"){
+                            if(deviceType == "mobile" || deviceType == "pad"){
                                 return (
-                                    <img className="poster" width="864" height="592" data-src={require("../../assets/image/about/fourth/index.jpg")} src={require("../../assets/image/poster/default.png")} alt={props.about.fourth.title} />
+                                    <div className="poster_container">
+                                        <Image src="/image/about/fourth/index.jpg" width={864} height={592} alt={props.about.fourth.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
+                                    </div>
                                 );
                             }
                         })()
@@ -77,15 +62,6 @@ const App = (props) => {
 
                             .padding_box{
                                 padding-bottom: 65.82%;
-                            }
-
-                            .poster{
-                                display: block;
-                                position: absolute;
-                                width: 100%;
-                                height: 100%;
-                                top: 0;
-                                left: 0;
                             }
                         }
 
@@ -128,8 +104,7 @@ const App = (props) => {
                                 }
                             }
 
-                            .poster{
-                                display: block;
+                            .poster_container{
                                 width: 100%;
                                 height: 100%;
                                 margin-top: 30px;
@@ -146,4 +121,4 @@ App.propTypes = {
     about: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

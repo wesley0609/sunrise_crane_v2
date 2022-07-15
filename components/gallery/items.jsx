@@ -2,11 +2,10 @@
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 
-import { connect } from "react-redux";
-import { useEffect, useState, useMemo, useCallback } from "react";
+import { useEffect, useState, useMemo, useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import PropTypes from "prop-types";
-import LazyLoad from "lazyload";
 import lgZoom from "lightgallery/plugins/zoom";
 import lgHash from "lightgallery/plugins/hash";
 
@@ -17,26 +16,11 @@ const LightGallery = dynamic(() => import("lightgallery/react"), {
     ssr: false
 });
 
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
-
-// lightGallery lazyload will implemented in v2, see: https://github.com/sachinchoolur/lightGallery/issues/965
-// lgThumbnail is not used because lazyload is not supported, which will cause performance issue
 const App = (props) => {
+    const galleryItemsSectionRef = useRef(null);
+
     const [placeholderDisplay, setPlaceholderDisplay] = useState(true);
     const [scopedId, setScopedId] = useState(null);
-
-    const imageSize = useMemo(() => {
-        return {
-            width: 1200,
-            height: 900
-        };
-    }, []);
     
     const setting = useMemo(() => {
         return {
@@ -45,14 +29,6 @@ const App = (props) => {
             download: false,
             onInit: () => {
                 setPlaceholderDisplay(false);
-
-                let images = document.querySelectorAll(".gallery_items_section .gallery_image");
-
-                new LazyLoad(images, {
-                    root: null,
-                    rootMargin: "0px",
-                    threshold: 0
-                });
             }
         };
     }, []);
@@ -94,8 +70,7 @@ const App = (props) => {
     }, []);
 
     useEffect(() => {
-        let el = document.querySelector(".gallery_items_section");
-        let classLists = el.classList;
+        let classLists = galleryItemsSectionRef.current.classList;
 
         for(let i = 0; i < classLists.length; i ++){
             let classList = classLists[i];
@@ -110,7 +85,7 @@ const App = (props) => {
 
     return (
         <>
-            <div className="gallery_items_section">
+            <div className="gallery_items_section" ref={galleryItemsSectionRef}>
                 <div className="background_section"></div>
                 
                 <div className="gallery_items_container">
@@ -125,7 +100,7 @@ const App = (props) => {
                                                 return (
                                                     <a className="gallery_item" href={getGalleryItemHref(index)} title={item.subtitle} target="_self" onClick={(event) => galleryItemPlaceholderClickHandler(event)} key={index}>
                                                         <div className="padding_box"></div>
-                                                        <img className="gallery_image" width={imageSize.width} height={imageSize.height} src={require("../../assets/image/poster/default.png")} alt={getGalleryItemText(item)} />
+                                                        <Image src={`/image/gallery/${item.src}`} alt={getGalleryItemText(item)} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                                         <h2 className="gallery_text">{getGalleryItemText(item)}</h2>
                                                     </a>
                                                 );
@@ -141,9 +116,9 @@ const App = (props) => {
                         {
                             props.items.map((item, index) => {
                                 return (
-                                    <a className="gallery_item" href={getGalleryItemHref(index)} data-lg-size={`${imageSize.width}-${imageSize.height}`} data-sub-html={getGalleryItemSubHTML(item)} data-src={require(`../../assets/image/gallery/${item.src}`)} title={item.subtitle} target="_self" onClick={(event) => galleryItemClickHandler(event, item)} key={index}>
+                                    <a className="gallery_item" href={getGalleryItemHref(index)} data-lg-size="1200-900" data-sub-html={getGalleryItemSubHTML(item)} data-src={`/image/gallery/${item.src}`} title={item.subtitle} target="_self" onClick={(event) => galleryItemClickHandler(event, item)} key={index}>
                                         <div className="padding_box"></div>
-                                        <img className="gallery_image" width={imageSize.width} height={imageSize.height} data-src={require(`../../assets/image/gallery/${item.src}`)} src={require("../../assets/image/poster/default.png")} alt={getGalleryItemText(item)} />
+                                        <Image src={`/image/gallery/${item.src}`} alt={getGalleryItemText(item)} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                         <h2 className="gallery_text">{getGalleryItemText(item)}</h2>
                                     </a>
                                 );
@@ -239,15 +214,6 @@ const App = (props) => {
                                         padding-bottom: 75%;
                                     }
 
-                                    .gallery_image{
-                                        display: block;
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 100%;
-                                        top: 0;
-                                        left: 0;
-                                    }
-
                                     .gallery_text{
                                         display: none;
                                         position: absolute;
@@ -283,4 +249,4 @@ App.propTypes = {
     items: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

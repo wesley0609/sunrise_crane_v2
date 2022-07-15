@@ -1,17 +1,8 @@
 
-import { connect } from "react-redux";
 import { useMemo } from "react";
 import NextNprogress from "nextjs-progressbar";
 
 import theme from "../../assets/json/style/theme.json";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const setting = useMemo(() => {
@@ -29,4 +20,4 @@ const App = (props) => {
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -1,19 +1,10 @@
 
-import { connect } from "react-redux";
 import React, { useMemo, useCallback } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const router = useRouter();
@@ -95,4 +86,4 @@ App.propTypes = {
     color: PropTypes.string
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

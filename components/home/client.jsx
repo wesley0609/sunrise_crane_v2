@@ -1,35 +1,29 @@
 
-import { connect } from "react-redux";
 import { useEffect, useRef, useMemo } from "react";
+import { useSelector } from "react-redux";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import Glide from "@glidejs/glide";
-import LazyLoad from "lazyload";
 import _ from "lodash";
-
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const glide = useRef(null);
 
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
+
     const perView = useMemo(() => {
-        if(props.deviceType == "mobile"){
+        if(deviceType == "mobile"){
             return 2;
         }
         
-        if(props.deviceType == "pad"){
+        if(deviceType == "pad"){
             return 3;
         }
         
         return 5;
-    }, [props.deviceType]);
+    }, [deviceType]);
 
     const meta = useMemo(() => {
         let client = _.cloneDeep(props.client);
@@ -51,21 +45,10 @@ const App = (props) => {
     useEffect(() => {
         glide.current = new Glide(".client_list_section", {
             type: "carousel",
-            gap: 0,
-            classes: {
-                activeNav: "client_bullet_active"
-            }
+            gap: 0
         });
 
         glide.current.mount();
-
-        let images = document.querySelectorAll(".client_section .client_image");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
 
         return () => {
             glide.current.destroy();
@@ -75,13 +58,17 @@ const App = (props) => {
     return (
         <>
             <div className="client_section">
+                <div className="background_section">
+                    <Image src={`/image/home/client/background.jpg`} alt={props.homeClient.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} objectFit="cover" layout="fill" />
+                </div>
+
                 <div className="title_section">
                     <h2 className="title">{props.homeClient.title}</h2>
                     <div className="subtitle">{props.homeClient.subtitle.toUpperCase()}</div>
                     
                     {
                         (() => {
-                            if(props.deviceType == "pc"){
+                            if(deviceType == "pc"){
                                 return (
                                     <div className="background">{props.homeClient.subtitle.toUpperCase()}</div>
                                 );
@@ -105,7 +92,7 @@ const App = (props) => {
                                                         return (
                                                             <div className="poster_section" key={_index}>
                                                                 <div className="padding_box"></div>
-                                                                <img className="client_image" width="400" height="216" data-src={require(`../../assets/image/client/${_item.src}`)} src={require("../../assets/image/poster/default.png")} alt={_item.title} />
+                                                                <Image src={`/image/client/${_item.src}`} alt={_item.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                                                 <h3 className="ssr_only">{_item.title}</h3>
                                                             </div>
                                                         );
@@ -141,15 +128,13 @@ const App = (props) => {
             <style jsx>
                 {`
                     .client_section{
-                        background-image: url(${require("../../assets/image/home/client/background.jpg")});
-                        background-size: cover;
-                        background-position: center center;
                         display: flex;
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
                         padding-top: 60px;
                         padding-bottom: 60px;
+                        position: relative;
 
                         @media screen and (max-width: 768px){
                             padding-top: 35px;
@@ -161,6 +146,15 @@ const App = (props) => {
                             padding-bottom: 25px;
                         }
 
+                        .background_section{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: -1;
+                        }
+
                         .title_section{
                             position: relative;
                             height: 120px;
@@ -168,7 +162,6 @@ const App = (props) => {
                             flex-direction: column;
                             justify-content: flex-start;
                             align-items: center;
-                            z-index: 0;
 
                             @media screen and (max-width: 768px){
                                 height: auto;
@@ -254,15 +247,6 @@ const App = (props) => {
                                                 .padding_box{
                                                     padding-bottom: 53.85%;
                                                 }
-
-                                                .client_image{
-                                                    display: block;
-                                                    position: absolute;
-                                                    width: 100%;
-                                                    height: 100%;
-                                                    top: 0;
-                                                    left: 0;
-                                                }
                                             }
                                         }
                                     }
@@ -274,7 +258,7 @@ const App = (props) => {
                                     .client_arrow{
                                         position: absolute;
                                         top: 50%;
-                                        background-image: url(${require("../../assets/image/swiper/default/blackArrow.svg")});
+                                        background-image: url("/image/swiper/default/blackArrow.svg");
                                         height: 30px;
                                         width: 30px;
                                         background-size: 30px 30px;
@@ -336,7 +320,7 @@ const App = (props) => {
                                         }
                                     }
 
-                                    &.client_bullet_active{
+                                    &.glide__bullet--active{
                                         .icon{
                                             background-color: var(--primary);
                                         }
@@ -356,4 +340,4 @@ App.propTypes = {
     client: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

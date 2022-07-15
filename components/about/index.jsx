@@ -1,5 +1,4 @@
 
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import Banner from "../banner/index.jsx";
@@ -7,14 +6,6 @@ import First from "./first.jsx";
 import Second from "./second.jsx";
 import Third from "./third.jsx";
 import Fourth from "./fourth.jsx";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     return (
@@ -44,4 +35,4 @@ App.propTypes = {
     about: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

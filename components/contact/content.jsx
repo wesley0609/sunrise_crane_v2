@@ -1,32 +1,19 @@
 
-import { connect } from "react-redux";
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
+import Image from "next/image";
 import PropTypes from "prop-types";
-import LazyLoad from "lazyload";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
-
 const App = (props) => {
-    const contactClickHandler = useCallback((event, item) => {
-        gaEvent.footer.clickContact(item);
+    const getItemTitleStyle = useCallback((item) => {
+        return {
+            "--before-background-image": `url(/image/contact/icon/${item}.svg)`
+        };
     }, []);
 
-    useEffect(() => {
-        let images = document.querySelectorAll(".left_section .contact_image");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
+    const contactClickHandler = useCallback((event, item) => {
+        gaEvent.footer.clickContact(item);
     }, []);
 
     return (
@@ -37,7 +24,7 @@ const App = (props) => {
                 <div className="content_container">
                     <div className="left_section">
                         <div className="padding_box"></div>
-                        <img className="contact_image" width="1200" height="900" data-src={require("../../assets/image/contact/index.jpg")} src={require("../../assets/image/poster/default.png")} alt={props.contact.title} />
+                        <Image src="/image/contact/index.jpg" alt={props.contact.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                     </div>
 
                     <div className="right_section">
@@ -46,61 +33,37 @@ const App = (props) => {
 
                             <div className="contact_items">
                                 <div className="contact_item">
-                                    <div className="item_title">
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/telephone.svg")} alt={props.titleMap.telephone} />
-                                        <h2 className="title">{props.titleMap.telephone}</h2>
-                                    </div>
-                                    
+                                    <h2 className="item_title" style={getItemTitleStyle("telephone")}>{props.titleMap.telephone}</h2>
                                     <h3 className="ssr_only">{props.contact.telephone}</h3>
                                     <a className="content" href={`tel:${props.contact.telephone}`} title={props.contact.telephone} target="_self" onClick={(event) => contactClickHandler(event, "telephone")}>{props.contact.telephone}</a>
                                 </div>
 
                                 <div className="contact_item">
-                                    <div className="item_title">
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/cellphone.svg")} alt={props.titleMap.cellphone} />
-                                        <h2 className="title">{props.titleMap.cellphone}</h2>
-                                    </div>
-                                    
+                                    <h2 className="item_title" style={getItemTitleStyle("cellphone")}>{props.titleMap.cellphone}</h2>
                                     <h3 className="ssr_only">{props.contact.cellphone}</h3>
                                     <a className="content" href={`tel:${props.contact.cellphone}`} title={props.contact.cellphone} target="_self" onClick={(event) => contactClickHandler(event, "cellphone")}>{props.contact.cellphone}</a>
                                 </div>
 
                                 <div className="contact_item">
-                                    <div className="item_title">
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/fax.svg")} alt={props.titleMap.fax} />
-                                        <h2 className="title">{props.titleMap.fax}</h2>
-                                    </div>
-                                    
+                                    <h2 className="item_title" style={getItemTitleStyle("fax")}>{props.titleMap.fax}</h2>
                                     <h3 className="ssr_only">{props.contact.fax}</h3>
                                     <a className="content" href={`tel:${props.contact.fax}`} title={props.contact.fax} target="_self" onClick={(event) => contactClickHandler(event, "fax")}>{props.contact.fax}</a>
                                 </div>
 
                                 <div className="contact_item">
-                                    <div className="item_title">
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/id.svg")} alt={props.titleMap.id} />
-                                        <h2 className="title">{props.titleMap.id}</h2>
-                                    </div>
-                                    
+                                    <h2 className="item_title" style={getItemTitleStyle("id")}>{props.titleMap.id}</h2>
                                     <h3 className="ssr_only">{props.contact.id}</h3>
                                     <span className="content">{props.contact.id}</span>
                                 </div>
 
                                 <div className="contact_item">
-                                    <div className="item_title">
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/email.svg")} alt={props.titleMap.email} />
-                                        <h2 className="title">{props.titleMap.email}</h2>
-                                    </div>
-                                    
+                                    <h2 className="item_title" style={getItemTitleStyle("email")}>{props.titleMap.email}</h2>
                                     <h3 className="ssr_only">{props.contact.email}</h3>
                                     <a className="content" href={`mailto:${props.contact.email}`} title={props.contact.email} target="_self" onClick={(event) => contactClickHandler(event, "email")}>{props.contact.email}</a>
                                 </div>
                                 
                                 <div className="contact_item">
-                                    <div className="item_title">
-                                        <img className="icon" width="24" height="24" src={require("../../assets/image/contact/icon/address.svg")} alt={props.titleMap.address} />
-                                        <h2 className="title">{props.titleMap.address}</h2>
-                                    </div>
-                                    
+                                    <h2 className="item_title" style={getItemTitleStyle("address")}>{props.titleMap.address}</h2>
                                     <h3 className="ssr_only">{props.contact.fullAddress.whole}</h3>
                                     <a className="content" href={props.contact.fullAddress.mapUrl} title={props.contact.fullAddress.whole} target="_blank" rel="noreferrer" onClick={(event) => contactClickHandler(event, "address")}>{props.contact.fullAddress.whole}</a>
                                 </div>
@@ -160,15 +123,6 @@ const App = (props) => {
 
                                 .padding_box{
                                     padding-bottom: 75%;
-                                }
-
-                                .contact_image{
-                                    display: block;
-                                    position: absolute;
-                                    width: 100%;
-                                    height: 100%;
-                                    top: 0;
-                                    left: 0;
                                 }
                             }
 
@@ -234,28 +188,27 @@ const App = (props) => {
                                                 justify-content: center;
                                                 align-items: center;
 
-                                                .icon{
-                                                    display: block;
-                                                    width: 20px;
-                                                    height: 20px;
+                                                @media screen and (max-width: 414px){
+                                                    font-size: 14px;
+                                                }
 
+                                                &:before{
+                                                    content: "";
+                                                    background-image: var(--before-background-image);
+                                                    height: 20px;
+                                                    width: 20px;
+                                                    background-size: 100% 100%;
+                                                    margin-right: 6px;
+                                                    
                                                     @media screen and (max-width: 414px){
                                                         width: 16px;
                                                         height: 16px;
+                                                        margin-right: 4px;
                                                     }
                                                 }
 
-                                                .title{
-                                                    margin-left: 6px;
-
-                                                    @media screen and (max-width: 414px){
-                                                        font-size: 14px;
-                                                        margin-left: 4px;
-                                                    }
-
-                                                    &:after{
-                                                        content: "：";
-                                                    }
+                                                &:after{
+                                                    content: "：";
                                                 }
                                             }
 
@@ -281,4 +234,4 @@ App.propTypes = {
     contact: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

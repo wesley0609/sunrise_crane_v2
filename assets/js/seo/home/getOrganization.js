@@ -9,8 +9,8 @@ const app = (contact) => {
         "@type": "Organization",
         "name": seo.default.title,
         "url": url,
-        "logo": `${url}/logo.svg`,
-        "image": `${url}/share.jpg`,
+        "logo": `${url}/image/logo.svg`,
+        "image": `${url}/image/share.jpg`,
         "email": `mailto:${contact.email}`,
         "telephone": contact.telephone,
         "address": {

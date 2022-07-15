@@ -1,7 +1,7 @@
 
-import { connect } from "react-redux";
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
@@ -9,27 +9,12 @@ import gaEvent from "../../assets/js/ga/index.js";
 
 import LanguagesBalloon from "./languagesBalloon.jsx";
 
-const mapStateToProps = (state) => {
-    return {
-        languagesBalloonTrigger: state.header.languagesBalloonTrigger
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        dispatchLanguagesBalloonTrigger: (value) => {
-            dispatch({
-                type: "header/languagesBalloonTrigger",
-                value: value
-            });
-        }
-    };
-};
-
 const App = (props) => {
     const router = useRouter();
 
     const languageBtnRef = useRef(null);
+
+    const [languagesBalloonDisplay, setLanguagesBalloonDisplay] = useState(false);
 
     const linkFocusClass = useCallback((item) => {
         if(item.as == router.route){
@@ -40,8 +25,12 @@ const App = (props) => {
     }, [router]);
 
     const languageBtnMouseOverHandler = useCallback((event) => {
-        props.dispatchLanguagesBalloonTrigger(languageBtnRef.current);
-    }, [props, languageBtnRef]);
+        setLanguagesBalloonDisplay(true);
+    }, []);
+
+    const languageBtnMouseOutHandler = useCallback((event) => {
+        setLanguagesBalloonDisplay(false);
+    }, []);
 
     const logoSectionClickHandler = useCallback((event) => {
         gaEvent.header.clickLogo();
@@ -56,7 +45,7 @@ const App = (props) => {
             <div className="header_content">
                 <Link href="/" as="/">
                     <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="235" height="60" src={require("../../public/logo.svg")} alt={sunrise.seo.default.siteName} />
+                        <Image src="/image/logo.svg" width={235} height={60} alt={sunrise.seo.default.siteName} layout="responsive" priority />
                     </a>
                 </Link>
 
@@ -74,23 +63,23 @@ const App = (props) => {
                     }
 
                     <div className="tool_section">
-                        <button className="language_btn" onMouseOver={(event) => languageBtnMouseOverHandler(event)} title={sunrise.seo.other.language} ref={languageBtnRef}>
-                            <img className="icon" width="15" height="15" src={require("../../assets/image/header/language.svg")} alt={sunrise.seo.other.language} />
-                            <div className="text">{sunrise.seo.default.lang}</div>
-                            <img className="more" width="9" height="5" src={require("../../assets/image/header/more.svg")} alt={sunrise.seo.other.more} />
-                        </button>
+                        <div className="language_btn_container">
+                            <button className="language_btn" onMouseOver={(event) => languageBtnMouseOverHandler(event)} onMouseOut={(event) => languageBtnMouseOutHandler(event)} title={sunrise.seo.other.language} ref={languageBtnRef}>{sunrise.seo.default.lang}</button>
+
+                            {
+                                (() => {
+                                    if(languagesBalloonDisplay){
+                                        return (
+                                            <div className="language_balloon_container">
+                                                <LanguagesBalloon setLanguagesBalloonDisplay={setLanguagesBalloonDisplay} />
+                                            </div>
+                                        );
+                                    }
+                                })()
+                            }
+                        </div>
                     </div>
                 </ul>
-
-                {
-                    (() => {
-                        if(props.languagesBalloonTrigger){
-                            return (
-                                <LanguagesBalloon />
-                            );
-                        }
-                    })()
-                }
             </div>
 
             <style jsx>
@@ -112,12 +101,6 @@ const App = (props) => {
                             display: block;
                             width: 235px;
                             height: 60px;
-
-                            .logo{
-                                display: block;
-                                width: 100%;
-                                height: 100%;
-                            }
                         }
 
                         .navigation_section{
@@ -157,32 +140,44 @@ const App = (props) => {
                                     color: var(--white);
                                 }
 
-                                .language_btn{
-                                    display: flex;
-                                    flex-direction: row;
-                                    justify-content: center;
-                                    align-items: center;
-                                    margin-left: 8px;
-                                    margin-right: 8px;
+                                .language_btn_container{
+                                    position: relative;
 
-                                    .icon{
-                                        display: block;
-                                        width: 14px;
-                                        height: 14px;
-                                    }
-
-                                    .text{
+                                    .language_btn{
+                                        display: flex;
+                                        flex-direction: row;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin-left: 8px;
+                                        margin-right: 8px;
                                         line-height: 20px;
                                         font-size: 15px;
                                         color: var(--white);
-                                        margin-left: 8px;
+
+                                        &:before{
+                                            content: "";
+                                            background-image: url("/image/header/language.svg");
+                                            height: 14px;
+                                            width: 14px;
+                                            background-size: 100% 100%;
+                                            margin-right: 8px;
+                                        }
+
+                                        &:after{
+                                            content: "";
+                                            background-image: url("/image/header/more.svg");
+                                            height: 8px;
+                                            width: 5px;
+                                            background-size: 100% 100%;
+                                            margin-left: 8px;
+                                        }
                                     }
 
-                                    .more{
-                                        display: block;
-                                        width: 8px;
-                                        height: 5px;
-                                        margin-left: 8px;
+                                    .language_balloon_container{
+                                        position: absolute;
+                                        top: 20px;
+                                        left: 50%;
+                                        transform: translateX(-50%);
                                     }
                                 }
                             }
@@ -198,4 +193,4 @@ App.propTypes = {
     menu: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

@@ -1,18 +1,9 @@
 
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import Banner from "../banner/index.jsx";
 import Information from "../information/index.jsx";
 import Items from "./items.jsx";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     return (
@@ -40,4 +31,4 @@ App.propTypes = {
     gallery: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

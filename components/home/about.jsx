@@ -1,41 +1,22 @@
 
-import { connect } from "react-redux";
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import LazyLoad from "lazyload";
 
 import gaEvent from "../../assets/js/ga/index.js";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const moreLinkClickHandler = useCallback((event) => {
         gaEvent.home.clickAbout();
     }, []);
 
-    useEffect(() => {
-        let images = document.querySelectorAll(".left_section .about_image");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
-    }, []);
-    
     return (
         <>
             <div className="about_section">
                 <div className="left_section">
                     <div className="padding_box"></div>
-                    <img className="about_image" width="1152" height="520" data-src={require("../../assets/image/home/about/about.jpg")} src={require("../../assets/image/poster/default.png")} alt={props.homeAbout.title} />
+                    <Image src="/image/home/about/about.jpg" alt={props.homeAbout.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                 </div>
 
                 <div className="right_section">
@@ -46,7 +27,7 @@ const App = (props) => {
                             <div className="border"></div>
                         </div>
 
-                        <h3 className="description_section">{props.homeAbout.description}</h3>
+                        <p className="description_section">{props.homeAbout.description}</p>
 
                         <Link href={props.homeAbout.href} as={props.homeAbout.as}>
                             <a className="more_link" title={props.homeAbout.title} target="_self" onClick={(event) => moreLinkClickHandler(event)}>
@@ -80,15 +61,6 @@ const App = (props) => {
 
                             .padding_box{
                                 padding-bottom: 45.22%;
-                            }
-
-                            .about_image{
-                                display: block;
-                                position: absolute;
-                                width: 100%;
-                                height: 100%;
-                                top: 0;
-                                left: 0;
                             }
                         }
 
@@ -167,7 +139,7 @@ const App = (props) => {
                                     }
 
                                     .icon{
-                                        background-image: url(${require("../../assets/image/home/more/whiteMore.svg")});
+                                        background-image: url("/image/home/more/whiteMore.svg");
                                         height: 4px;
                                         width: 26px;
                                         background-size: 100% 100%;
@@ -187,4 +159,4 @@ App.propTypes = {
     homeAbout: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

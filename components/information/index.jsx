@@ -1,18 +1,12 @@
 
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
-
 const App = (props) => {
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
+
     return (
         <>
             <div className="information_section">
@@ -22,7 +16,7 @@ const App = (props) => {
 
                     {
                         (() => {
-                            if(props.deviceType == "pc"){
+                            if(deviceType == "pc"){
                                 return (
                                     <div className="background">{props.information.subtitle.toUpperCase()}</div>
                                 );
@@ -53,7 +47,6 @@ const App = (props) => {
                             flex-direction: column;
                             justify-content: flex-end;
                             align-items: flex-start;
-                            z-index: 0;
 
                             @media screen and (max-width: 768px){
                                 width: 90%;
@@ -108,4 +101,4 @@ App.propTypes = {
     information: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

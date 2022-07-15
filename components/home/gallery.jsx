@@ -1,40 +1,28 @@
 
-import { connect } from "react-redux";
-import { useEffect, useCallback } from "react";
+import { useCallback } from "react";
+import { useSelector } from "react-redux";
+import Image from "next/image";
 import PropTypes from "prop-types";
 import Link from "next/link";
-import LazyLoad from "lazyload";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
-
 const App = (props) => {
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
+
     const moreLinkClickHandler = useCallback((event) => {
         gaEvent.home.clickGallery();
-    }, []);
-
-    useEffect(() => {
-        let images = document.querySelectorAll(".poster_section .poster");
-
-        new LazyLoad(images, {
-            root: null,
-            rootMargin: "0px",
-            threshold: 0
-        });
     }, []);
 
     return (
         <>
             <div className="gallery_section">
+                <div className="background_section">
+                    <Image src={`/image/home/gallery/background.jpg`} alt={props.homeGallery.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} objectFit="cover" layout="fill" />
+                </div>
+
                 <div className="left_section">
                     <div className="left_container">
                         <div className="title_section">
@@ -43,7 +31,7 @@ const App = (props) => {
 
                             {
                                 (() => {
-                                    if(props.deviceType == "pc"){
+                                    if(deviceType == "pc"){
                                         return (
                                             <div className="background">{props.homeGallery.subtitle.toUpperCase()}</div>
                                         );
@@ -56,18 +44,18 @@ const App = (props) => {
 
                         {
                             (() => {
-                                if(props.deviceType == "mobile" || props.deviceType == "pad"){
+                                if(deviceType == "mobile" || deviceType == "pad"){
                                     return (
                                         <div className="poster_section">
                                             <div className="padding_box"></div>
-                                            <img className="poster" width="900" height="628" data-src={require("../../assets/image/home/gallery/index.png")} src={require("../../assets/image/poster/default.png")} alt={props.homeGallery.title} />
+                                            <Image src="/image/home/gallery/index.png" alt={props.homeGallery.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                         </div>
                                     );
                                 }
                             })()
                         }
 
-                        <h3 className="description_section">{props.homeGallery.description}</h3>
+                        <p className="description_section">{props.homeGallery.description}</p>
 
                         <Link href={props.homeGallery.href} as={props.homeGallery.as}>
                             <a className="more_link" title={props.homeGallery.title} target="_self" onClick={(event) => moreLinkClickHandler(event)}>
@@ -80,13 +68,13 @@ const App = (props) => {
 
                 {
                     (() => {
-                        if(props.deviceType == "pc"){
+                        if(deviceType == "pc"){
                             return (
                                 <div className="right_section">
                                     <div className="right_container">
                                         <div className="poster_section">
                                             <div className="padding_box"></div>
-                                            <img className="poster" width="900" height="628" data-src={require("../../assets/image/home/gallery/index.png")} src={require("../../assets/image/poster/default.png")} alt={props.homeGallery.title} />
+                                            <Image src="/image/home/gallery/index.png" alt={props.homeGallery.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
                                         </div>
                                     </div>
                                 </div>
@@ -99,15 +87,13 @@ const App = (props) => {
             <style jsx>
                 {`
                     .gallery_section{
-                        background-image: url(${require("../../assets/image/home/gallery/background.jpg")});
-                        background-size: cover;
-                        background-position: right center;
                         display: flex;
                         flex-direction: row;
                         justify-content: center;
                         align-items: center;
                         padding-top: 60px;
                         padding-bottom: 60px;
+                        position: relative;
 
                         @media screen and (max-width: 768px){
                             flex-direction: column;
@@ -118,6 +104,15 @@ const App = (props) => {
                         @media screen and (max-width: 414px){
                             padding-top: 25px;
                             padding-bottom: 25px;
+                        }
+
+                        .background_section{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: -1;
                         }
 
                         .left_section{
@@ -145,7 +140,6 @@ const App = (props) => {
                                     flex-direction: column;
                                     justify-content: flex-end;
                                     align-items: flex-start;
-                                    z-index: 0;
 
                                     @media screen and (max-width: 768px){
                                         height: auto;
@@ -196,15 +190,6 @@ const App = (props) => {
                                     .padding_box{
                                         padding-bottom: 75.55%;
                                     }
-
-                                    .poster{
-                                        display: block;
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 100%;
-                                        top: 0;
-                                        left: 0;
-                                    }
                                 }
 
                                 .description_section{
@@ -232,7 +217,7 @@ const App = (props) => {
                                     }
 
                                     .icon{
-                                        background-image: url(${require("../../assets/image/home/more/blackMore.svg")});
+                                        background-image: url("/image/home/more/blackMore.svg");
                                         height: 4px;
                                         width: 26px;
                                         background-size: 100% 100%;
@@ -258,15 +243,6 @@ const App = (props) => {
                                     .padding_box{
                                         padding-bottom: 75.55%;
                                     }
-
-                                    .poster{
-                                        display: block;
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 100%;
-                                        top: 0;
-                                        left: 0;
-                                    }
                                 }
                             }
                         }
@@ -281,4 +257,4 @@ App.propTypes = {
     homeGallery: PropTypes.object.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

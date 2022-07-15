@@ -1,25 +1,20 @@
 
-import { connect } from "react-redux";
 import { useMemo, useCallback } from "react";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Link from "next/link";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
 import Gotop from "./gotop.jsx";
 
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
-
 const App = (props) => {
     const router = useRouter();
+
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
 
     const titleMapMeta = useMemo(() => {
         return require(`../../assets/json/meta/contact/${router.locale}/titleMap.json`);
@@ -51,9 +46,13 @@ const App = (props) => {
     return (
         <>
             <footer className="footer_section">
+                <div className="background_section">
+                    <Image src={`/image/footer/background.jpg`} alt="Footer background image" placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} objectFit="cover" layout="fill" />
+                </div>
+
                 <Link href="/" as="/">
                     <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <img className="logo" width="300" height="77" src={require("../../public/logo.svg")} alt={sunrise.seo.default.siteName} />
+                        <Image src="/image/logo.svg" width={300} height={77} alt={sunrise.seo.default.siteName} layout="responsive" />
                     </a>
                 </Link>
 
@@ -75,7 +74,7 @@ const App = (props) => {
 
                     {
                         (() => {
-                            if(props.deviceType == "mobile"){
+                            if(deviceType == "mobile"){
                                 return (
                                     <br />
                                 );
@@ -90,7 +89,7 @@ const App = (props) => {
 
                     {
                         (() => {
-                            if(props.deviceType == "pc"){
+                            if(deviceType == "pc"){
                                 return (
                                     <br />
                                 );
@@ -105,7 +104,7 @@ const App = (props) => {
 
                     {
                         (() => {
-                            if(props.deviceType == "mobile"){
+                            if(deviceType == "mobile"){
                                 return (
                                     <br />
                                 );
@@ -120,16 +119,16 @@ const App = (props) => {
                 </div>
 
                 <div className="copy_right_section">Copyright © 2016-{year} {sunrise.seo.default.siteName} All Rights Reserved</div>
-                <Gotop />
+
+                <div className="gotop_section">
+                    <Gotop />
+                </div>
             </footer>
 
             <style jsx>
                 {`
                     .footer_section{
                         position: relative;
-                        background-image: url(${require("../../assets/image/footer/background.jpg")});
-                        background-size: cover;
-                        background-position: center center;
                         text-align: center;
                         padding-top: 60px;
                         display: flex;
@@ -143,6 +142,15 @@ const App = (props) => {
                             padding-right: 5px;
                         }
 
+                        .background_section{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            z-index: -1;
+                        }
+
                         .logo_section{
                             display: block;
                             width: 300px;
@@ -151,12 +159,6 @@ const App = (props) => {
                             @media screen and (max-width: 414px){
                                 width: 272px;
                                 height: 70px;
-                            }
-
-                            .logo{
-                                display: block;
-                                width: 100%;
-                                height: 100%;
                             }
                         }
 
@@ -210,6 +212,10 @@ const App = (props) => {
                             line-height: 20px;
                             margin-top: 20px;
                         }
+
+                        .gotop_section{
+                            margin-top: 30px;
+                        }
                     }
                 `}
             </style>
@@ -217,4 +223,4 @@ const App = (props) => {
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

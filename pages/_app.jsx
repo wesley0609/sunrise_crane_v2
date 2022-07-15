@@ -45,7 +45,7 @@ const App = ({Component, pageProps, ...etc}) => {
                 <meta name="keywords" content={seo.default.keywords.join(",")} key="keywords" />
                 <meta property="og:type" content="website" key="og:type" />
                 <meta property="og:site_name" content={seo.default.siteName} key="og:site_name" />
-                <meta property="og:image" content={`${seo.default.siteUrl}/share.jpg`} key="og:image" />
+                <meta property="og:image" content={`${seo.default.siteUrl}/image/share.jpg`} key="og:image" />
                 <meta property="og:image:width" content="1080" key="og:image:width" />
                 <meta property="og:image:height" content="566" key="og:image:height" />
                 <meta property="og:url" content={seo.default.siteUrl} key="og:url" />

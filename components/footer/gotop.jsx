@@ -1,17 +1,8 @@
 
-import { connect } from "react-redux";
 import { useCallback } from "react";
 import { useRouter } from "next/router";
 
 import gaEvent from "../../assets/js/ga/index.js";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     const router = useRouter();
@@ -39,7 +30,6 @@ const App = (props) => {
                         flex-direction: column;
                         justify-content: center;
                         align-items: center;
-                        margin-top: 30px;
 
                         .text{
                             font-size: 12px;
@@ -59,4 +49,4 @@ const App = (props) => {
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

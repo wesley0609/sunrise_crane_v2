@@ -1,5 +1,4 @@
 
-import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import Banner from "./banner.jsx";
@@ -7,14 +6,6 @@ import Service from "./service.jsx";
 import About from "./about.jsx";
 import Gallery from "./gallery.jsx";
 import Client from "./client.jsx";
-
-const mapStateToProps = (state) => {
-    return {};
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
 
 const App = (props) => {
     return (
@@ -46,4 +37,4 @@ App.propTypes = {
     client: PropTypes.array.isRequired
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

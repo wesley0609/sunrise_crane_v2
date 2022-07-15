@@ -1,23 +1,17 @@
 
-import { connect } from "react-redux";
 import { useMemo } from "react";
+import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
 import Landscape from "./landscape.jsx";
 import Portrait from "./portrait.jsx";
 
-const mapStateToProps = (state) => {
-    return {
-        deviceType: state.deviceType
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {};
-};
-
 const App = (props) => {
     const router = useRouter();
+
+    const deviceType = useSelector((state) => {
+        return state.deviceType;
+    });
 
     const headerMeta = useMemo(() => {
         return require(`../../assets/json/meta/header/${router.locale}/index.json`);
@@ -35,7 +29,7 @@ const App = (props) => {
                 <div className="header_container">
                     {
                         (() => {
-                            if(props.deviceType == "pc"){
+                            if(deviceType == "pc"){
                                 return (
                                     <Landscape menu={meta.menu} />
                                 );
@@ -70,4 +64,4 @@ const App = (props) => {
     );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
