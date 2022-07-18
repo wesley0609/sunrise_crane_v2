@@ -62,32 +62,11 @@ const App = (props) => {
             <div className="header_content">
                 <Link href="/" as="/">
                     <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <Image src="/image/logo.svg" width={235} height={60} alt={sunrise.seo.default.siteName} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
+                        <Image src="/image/logo.svg" width={235} height={60} alt={sunrise.seo.default.siteName} layout="responsive" priority />
                     </a>
                 </Link>
 
-                <div className="menu_btn_section">
-                    <button className="menu_btn" onClick={menuBtnClickHandler} title={sunrise.seo.other.menu}>
-                        {
-                            (() => {
-                                if(menuBtnBool){
-                                    return (
-                                        <div className="icon_container">
-                                            <Image src="/image/header/close.svg" width={24} height={24} alt={sunrise.seo.other.less} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
-                                        </div>
-                                    );
-                                }
-                                else{
-                                    return (
-                                        <div className="icon_container">
-                                            <Image src="/image/header/open.svg" width={24} height={24} alt={sunrise.seo.other.more} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="responsive" />
-                                        </div>
-                                    );
-                                }
-                            })()
-                        }
-                    </button>
-                </div>
+                <button className="menu_btn_section" data-display={menuBtnBool} onClick={menuBtnClickHandler} title={sunrise.seo.other.menu}></button>
 
                 <div className={`navigation_section ${navigationSectionClass}`}>
                     <ul className="navigation_tabs">
@@ -123,7 +102,7 @@ const App = (props) => {
                         height: 80px;
                         display: flex;
                         flex-direction: row;
-                        justify-content: flex-start;
+                        justify-content: space-between;
                         align-items: center;
                         padding-left: 6%;
                         padding-right: 6%;
@@ -141,23 +120,13 @@ const App = (props) => {
                         }
 
                         .menu_btn_section{
-                            display: flex;
-                            flex-direction: row;
-                            justify-content: flex-end;
-                            align-items: center;
-                            position: absolute;
-                            right: 6%;
-                            top: 0;
-                            height: 100%;
+                            width: 24px;
+                            height: 24px;
+                            background-image: url("/image/header/close.svg");
+                            background-size: 100% 100%;
 
-                            .menu_btn{
-                                width: 24px;
-                                height: 24px;
-
-                                .icon_container{
-                                    width: 100%;
-                                    height: 100%;
-                                }
+                            &[data-display=false]{
+                                background-image: url("/image/header/open.svg");
                             }
                         }
 
