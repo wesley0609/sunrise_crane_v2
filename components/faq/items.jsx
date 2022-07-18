@@ -1,6 +1,5 @@
 
 import { useEffect, useState, useCallback } from "react";
-import Image from "next/image";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
@@ -69,25 +68,7 @@ const App = (props) => {
                                     <div className="faq_item" key={index}>
                                         <button className="question_section" title={item.question} onClick={(event) => questionSectionClickHandler(event, item, index)}>
                                             <h2 className="question">{item.question}</h2>
-
-                                            {
-                                                (() => {
-                                                    if(answerDisplays[index]){
-                                                        return (
-                                                            <div className="icon_container">
-                                                                <Image src="/image/faq/icon/less.svg" width={36} height={36} alt={sunrise.seo.other.less} layout="responsive" />
-                                                            </div>
-                                                        );
-                                                    }
-                                                    else{
-                                                        return (
-                                                            <div className="icon_container">
-                                                                <Image src="/image/faq/icon/more.svg" width={36} height={36} alt={sunrise.seo.other.more} layout="responsive" />
-                                                            </div>
-                                                        );
-                                                    }
-                                                })()
-                                            }
+                                            <div className="icon" data-display={answerDisplays[index]}></div>
                                         </button>
 
                                         <p className="answer_section" style={getAnswerSectionStyle(index)}>{item.answer}</p>
@@ -170,13 +151,19 @@ const App = (props) => {
                                             padding-right: 40px;
                                         }
 
-                                        .icon_container{
+                                        .icon{
                                             position: absolute;
                                             top: 50%;
                                             right: 0;
                                             transform: translateY(-50%);
                                             width: 22px;
                                             height: 22px;
+                                            background-image: url("/image/faq/icon/less.svg");
+                                            background-size: 100% 100%;
+
+                                            &[data-display=false]{
+                                                background-image: url("/image/faq/icon/more.svg");
+                                            }
                                         }
                                     }
 

@@ -30,10 +30,11 @@
         "@koa/router": "^11.0.1",
         "@styled-jsx/plugin-sass": "^4.0.2",
         "cross-env": "^7.0.3",
-        "eslint": "8.19.0",
+        "eslint": "8.20.0",
         "eslint-config-next": "12.2.2",
         "koa": "^2.13.4",
         "next-compose-plugins": "^2.2.1",
-        "sass": "^1.53.0"
+        "sass": "^1.53.0",
+        "sharp": "^0.30.7"
     }
 }
