@@ -1,5 +1,4 @@
 
-import { useMemo, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Image from "next/image";
@@ -9,39 +8,29 @@ import gaEvent from "../../assets/js/ga/index.js";
 
 import Gotop from "./gotop.jsx";
 
+const logoSectionClickHandler = (event) => {
+    gaEvent.footer.clickLogo();
+};
+
+const contactClickHandler = (event, item) => {
+    gaEvent.footer.clickContact(item);
+};
+
 const App = (props) => {
     const router = useRouter();
+
+    const year = new Date().getFullYear();
+    const titleMapMeta = require(`../../assets/json/meta/contact/${router.locale}/titleMap.json`);
+    const contactMeta = require(`../../assets/json/meta/contact/${router.locale}/index.json`);
+
+    const meta = {
+        titleMap: titleMapMeta,
+        contact: contactMeta.content
+    };
 
     const deviceType = useSelector((state) => {
         return state.deviceType;
     });
-
-    const titleMapMeta = useMemo(() => {
-        return require(`../../assets/json/meta/contact/${router.locale}/titleMap.json`);
-    }, [router]);
-
-    const contactMeta = useMemo(() => {
-        return require(`../../assets/json/meta/contact/${router.locale}/index.json`);
-    }, [router]);
-
-    const meta = useMemo(() => {
-        return {
-            titleMap: titleMapMeta,
-            contact: contactMeta.content
-        };
-    }, [titleMapMeta, contactMeta]);
-
-    const year = useMemo(() => {
-        return new Date().getFullYear();
-    }, []);
-
-    const logoSectionClickHandler = useCallback((event) => {
-        gaEvent.footer.clickLogo();
-    }, []);
-
-    const contactClickHandler = useCallback((event, item) => {
-        gaEvent.footer.clickContact(item);
-    }, []);
 
     return (
         <>

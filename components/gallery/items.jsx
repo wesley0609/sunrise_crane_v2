@@ -2,7 +2,7 @@
 import "lightgallery/css/lightgallery.css";
 import "lightgallery/css/lg-zoom.css";
 
-import { useEffect, useState, useMemo, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -16,28 +16,34 @@ const LightGallery = dynamic(() => import("lightgallery/react"), {
     ssr: false
 });
 
+const galleryItemPlaceholderClickHandler = (event) => {
+    event.preventDefault();
+};
+
+const galleryItemClickHandler = (event, item) => {
+    gaEvent.gallery.clickImage(item);
+};
+
 const App = (props) => {
     const galleryItemsSectionRef = useRef(null);
 
     const [placeholderDisplay, setPlaceholderDisplay] = useState(true);
     const [scopedId, setScopedId] = useState(null);
     
-    const setting = useMemo(() => {
-        return {
-            plugins: [lgZoom, lgHash],
-            licenseKey: process.env.NEXT_PUBLIC_LG_KEY,
-            download: false,
-            onInit: () => {
-                setPlaceholderDisplay(false);
-            }
-        };
-    }, []);
+    const setting = {
+        plugins: [lgZoom, lgHash],
+        licenseKey: process.env.NEXT_PUBLIC_LG_KEY,
+        download: false,
+        onInit: () => {
+            setPlaceholderDisplay(false);
+        }
+    };
 
-    const getGalleryItemHref = useCallback((index) => {
+    const getGalleryItemHref = (index) => {
         return `/gallery/#lg=1&slide=${index}`;
-    }, []);
+    };
 
-    const getGalleryItemSubHTML = useCallback((item) => {
+    const getGalleryItemSubHTML = (item) => {
         let html = [];
 
         html.push(`<h4>${item.title}</h4>`);
@@ -49,9 +55,9 @@ const App = (props) => {
         html = html.join("");
 
         return html;
-    }, []);
+    };
 
-    const getGalleryItemText = useCallback((item) => {
+    const getGalleryItemText = (item) => {
         let text = item.title;
 
         if(item.subtitle){
@@ -59,15 +65,7 @@ const App = (props) => {
         }
 
         return text;
-    }, []);
-
-    const galleryItemPlaceholderClickHandler = useCallback((event) => {
-        event.preventDefault();
-    }, []);
-
-    const galleryItemClickHandler = useCallback((event, item) => {
-        gaEvent.gallery.clickImage(item);
-    }, []);
+    };
 
     useEffect(() => {
         let classLists = galleryItemsSectionRef.current.classList;

@@ -1,5 +1,5 @@
 
-import { useRef, useCallback, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -9,6 +9,14 @@ import gaEvent from "../../assets/js/ga/index.js";
 
 import LanguagesBalloon from "./languagesBalloon.jsx";
 
+const logoSectionClickHandler = (event) => {
+    gaEvent.header.clickLogo();
+};
+
+const linkClickHandler = (event, item) => {
+    gaEvent.header.clickMenu(item);
+};
+
 const App = (props) => {
     const router = useRouter();
 
@@ -16,29 +24,25 @@ const App = (props) => {
 
     const [languagesBalloonDisplay, setLanguagesBalloonDisplay] = useState(false);
 
-    const linkFocusClass = useCallback((item) => {
-        if(item.as == router.route){
+    const getLinkFocusClass = (item) => {
+        if(item.as == router.asPath){
             return "focus";
         }
 
         return "";
-    }, [router]);
+    };
 
-    const languageBtnMouseOverHandler = useCallback((event) => {
+    const languageBtnMouseOverHandler = (event) => {
         setLanguagesBalloonDisplay(true);
-    }, []);
+    };
 
-    const languageBtnMouseOutHandler = useCallback((event) => {
+    const languageBtnMouseOutHandler = (event) => {
         setLanguagesBalloonDisplay(false);
-    }, []);
+    };
 
-    const logoSectionClickHandler = useCallback((event) => {
-        gaEvent.header.clickLogo();
-    }, []);
-
-    const linkClickHandler = useCallback((event, item) => {
-        gaEvent.header.clickMenu(item);
-    }, []);
+    useEffect(() => {
+        setLanguagesBalloonDisplay(false);
+    }, [router]);
 
     return (
         <>
@@ -55,7 +59,7 @@ const App = (props) => {
                             return (
                                 <li className="navigation_tab" key={index}>
                                     <Link href={item.href} as={item.as}>
-                                        <a className={`link ${linkFocusClass(item)}`} title={item.title} target="_self" onClick={(event) => linkClickHandler(event, item)}>{item.title}</a>
+                                        <a className={`link ${getLinkFocusClass(item)}`} title={item.title} target="_self" onClick={(event) => linkClickHandler(event, item)}>{item.title}</a>
                                     </Link>
                                 </li>
                             );

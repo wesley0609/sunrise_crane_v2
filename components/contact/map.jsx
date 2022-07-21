@@ -4,24 +4,22 @@ import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
 const App = (props) => {
+    const iframeStyle = {
+        display: "block",
+        border: "0"
+    };
+    
     const deviceType = useSelector((state) => {
         return state.deviceType;
     });
 
-    const iframeHeight = useMemo(() => {
+    const iframeHeight = (() => {
         if(deviceType != "pc"){
             return 350;
         }
 
         return 450;
-    }, [deviceType]);
-
-    const iframeStyle = useMemo(() => {
-        return {
-            display: "block",
-            border: "0"
-        };
-    }, []);
+    })();
 
     return (
         <>

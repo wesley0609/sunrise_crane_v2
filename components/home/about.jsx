@@ -1,16 +1,15 @@
 
-import { useCallback } from "react";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import Link from "next/link";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
-const App = (props) => {
-    const moreLinkClickHandler = useCallback((event) => {
-        gaEvent.home.clickAbout();
-    }, []);
+const moreLinkClickHandler = (event) => {
+    gaEvent.home.clickAbout();
+};
 
+const App = (props) => {
     return (
         <>
             <div className="about_section">

@@ -1,9 +1,17 @@
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import PropTypes from "prop-types";
 import Glide from "@glidejs/glide";
+
+const getImagePriorityBool = (index) => {
+    if(index == 0){
+        return true;
+    }
+
+    return false;
+};
 
 const App = (props) => {
     const glide = useRef(null);
@@ -12,21 +20,13 @@ const App = (props) => {
         return state.deviceType;
     });
 
-    const getImagePriorityBool = useCallback((index) => {
-        if(index == 0){
-            return true;
-        }
-
-        return false;
-    }, []);
-
-    const getBannerImage = useCallback((item) => {
+    const getBannerImage = (item) => {
         if(deviceType == "mobile"){
             return `/image/home/banner/mobile/${item.src}`;
         }
 
         return `/image/home/banner/pc/${item.src}`;
-    }, [deviceType]);
+    };
 
     useEffect(() => {
         glide.current = new Glide(".banner_section", {

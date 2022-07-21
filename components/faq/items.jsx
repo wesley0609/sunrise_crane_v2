@@ -1,5 +1,5 @@
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
@@ -7,7 +7,7 @@ import gaEvent from "../../assets/js/ga/index.js";
 const App = (props) => {
     const [answerDisplays, setAnswerDisplays] = useState([]);
 
-    const questionSectionClickHandler = useCallback((event, item, index) => {
+    const questionSectionClickHandler = (event, item, index) => {
         let _answerDisplays = [];
 
         for(let i = 0; i < props.items.length; i ++){
@@ -26,9 +26,9 @@ const App = (props) => {
 
         setAnswerDisplays(_answerDisplays);
         gaEvent.faq.clickQuestion(item);
-    }, [props.items, answerDisplays]);
+    };
 
-    const getAnswerSectionStyle = useCallback((index) => {
+    const getAnswerSectionStyle = (index) => {
         if(answerDisplays[index]){
             return {
                 display: "block"
@@ -38,7 +38,7 @@ const App = (props) => {
         return {
             display: "none"
         };
-    }, [answerDisplays]);
+    };
 
     useEffect(() => {
         let _answerDisplays = [];

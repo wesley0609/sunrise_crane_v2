@@ -1,5 +1,4 @@
 
-import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -7,14 +6,14 @@ import Link from "next/link";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
+const moreLinkClickHandler = (event) => {
+    gaEvent.home.clickGallery();
+};
+
 const App = (props) => {
     const deviceType = useSelector((state) => {
         return state.deviceType;
     });
-
-    const moreLinkClickHandler = useCallback((event) => {
-        gaEvent.home.clickGallery();
-    }, []);
 
     return (
         <>
