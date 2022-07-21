@@ -1,20 +1,19 @@
 
-import { useCallback } from "react";
 import Image from "next/image";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
+const contactClickHandler = (event, item) => {
+    gaEvent.footer.clickContact(item);
+};
+
 const App = (props) => {
-    const getItemTitleStyle = useCallback((item) => {
+    const getItemTitleStyle = (item) => {
         return {
             "--before-background-image": `url(/image/contact/icon/${item}.svg)`
         };
-    }, []);
-
-    const contactClickHandler = useCallback((event, item) => {
-        gaEvent.footer.clickContact(item);
-    }, []);
+    };
 
     return (
         <>

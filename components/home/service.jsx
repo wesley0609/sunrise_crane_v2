@@ -1,5 +1,5 @@
 
-import { useEffect, useMemo, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -8,6 +8,10 @@ import Glide from "@glidejs/glide";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
+const serviceItemClickHandler = (event, item) => {
+    gaEvent.home.clickService(item);
+};
+
 const App = (props) => {
     const glide = useRef(null);
 
@@ -15,7 +19,7 @@ const App = (props) => {
         return state.deviceType;
     });
 
-    const perView = useMemo(() => {
+    const perView = (() => {
         if(deviceType == "mobile"){
             return 1;
         }
@@ -25,15 +29,12 @@ const App = (props) => {
         }
         
         return 4;
-    }, [deviceType]);
-
-    const serviceItemClickHandler = useCallback((event, item) => {
-        gaEvent.home.clickService(item);
-    }, []);
+    })();
 
     useEffect(() => {
         glide.current = new Glide(".service_list_section", {
             // because it is used together with next/image, the clone's image will not be loaded
+            // type: "carousel",
             bound: true,
             perView: perView,
             gap: 0

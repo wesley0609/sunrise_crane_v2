@@ -13,7 +13,7 @@ const App = (props) => {
         return state.deviceType;
     });
 
-    const perView = useMemo(() => {
+    const perView = (() => {
         if(deviceType == "mobile"){
             return 2;
         }
@@ -23,7 +23,7 @@ const App = (props) => {
         }
         
         return 5;
-    }, [deviceType]);
+    })();
 
     const meta = useMemo(() => {
         let client = _.cloneDeep(props.client);
@@ -37,10 +37,6 @@ const App = (props) => {
 
         return _.chunk(client, perView);
     }, [props.client, perView]);
-
-    const posterSectionWidth = useMemo(() => {
-        return `${100 / perView}%`;
-    }, [perView]);
 
     useEffect(() => {
         glide.current = new Glide(".client_list_section", {
@@ -242,7 +238,7 @@ const App = (props) => {
 
                                             .poster_section{
                                                 position: relative;
-                                                width: ${posterSectionWidth};
+                                                width: ${`${100 / perView}%`};
 
                                                 .padding_box{
                                                     padding-bottom: 53.85%;

@@ -1,5 +1,5 @@
 
-import React, { useMemo, useCallback } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import PropTypes from "prop-types";
@@ -9,17 +9,17 @@ import gaEvent from "../../assets/js/ga/index.js";
 const App = (props) => {
     const router = useRouter();
 
-    const color = useMemo(() => {
+    const color = (() => {
         if(props.color){
             return props.color;
         }
 
         return "var(--black)";
-    }, [props.color]);
+    })();
 
-    const linkClickHandler = useCallback((event, item) => {
+    const linkClickHandler = (event, item) => {
         gaEvent.breadcrumb.clickLink(router, item);
-    }, [router]);
+    };
 
     return (
         <>

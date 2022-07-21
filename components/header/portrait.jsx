@@ -1,5 +1,5 @@
 
-import { useEffect, useCallback, useState, useMemo } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import PropTypes from "prop-types";
@@ -7,51 +7,51 @@ import Link from "next/link";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
+const logoSectionClickHandler = (event) => {
+    gaEvent.header.clickLogo();
+};
+
+const linkClickHandler = (event, item) => {
+    gaEvent.header.clickMenu(item);
+};
+
+const languageLinkClickHandler = (event, item) => {
+    gaEvent.header.clickLanguage(item);
+};
+
 const App = (props) => {
     const router = useRouter();
 
     const [menuBtnBool, setMenuBtnBool] = useState(false);
 
     // cannot directly control the DOM because SEO
-    const navigationSectionClass = useMemo(() => {
+    const navigationSectionClass = (() => {
         if(menuBtnBool){
             return "open";
         }
 
         return "";
-    }, [menuBtnBool]);
+    })();
 
-    const linkFocusClass = useCallback((item) => {
-        if(item.as == router.route){
+    const getLinkFocusClass = (item) => {
+        if(item.as == router.asPath){
             return "focus";
         }
 
         return "";
-    }, [router]);
+    };
 
-    const languageLinkFocusClass = useCallback((item) => {
-        if(router.locale == item){
+    const getLanguageLinkFocusClass = (item) => {
+        if(item == router.locale){
             return "focus";
         }
 
         return "";
-    }, [router]);
+    };
 
-    const menuBtnClickHandler = useCallback((event) => {
+    const menuBtnClickHandler = (event) => {
         setMenuBtnBool(!menuBtnBool);
-    }, [menuBtnBool]);
-
-    const logoSectionClickHandler = useCallback((event) => {
-        gaEvent.header.clickLogo();
-    }, []);
-
-    const linkClickHandler = useCallback((event, item) => {
-        gaEvent.header.clickMenu(item);
-    }, []);
-
-    const languageLinkClickHandler = useCallback((event, item) => {
-        gaEvent.header.clickLanguage(item);
-    }, []);
+    };
 
     useEffect(() => {
         setMenuBtnBool(false);
@@ -75,7 +75,7 @@ const App = (props) => {
                                 return (
                                     <li className="navigation_tab" key={index}>
                                         <Link href={item.href} as={item.as}>
-                                            <a className={`link ${linkFocusClass(item)}`} title={item.title} target="_self" onClick={(event) => linkClickHandler(event, item)}>{item.title}</a>
+                                            <a className={`link ${getLinkFocusClass(item)}`} title={item.title} target="_self" onClick={(event) => linkClickHandler(event, item)}>{item.title}</a>
                                         </Link>
                                     </li>
                                 );
@@ -85,11 +85,11 @@ const App = (props) => {
 
                     <div className="language_link_section">
                         <Link href={router.route} as={router.route} locale="zh-TW">
-                            <a className={`link ${languageLinkFocusClass("zh-TW")}`} title="中文" target="_self" onClick={(event) => languageLinkClickHandler(event, "zh-TW")}>中文</a>
+                            <a className={`link ${getLanguageLinkFocusClass("zh-TW")}`} title="中文" target="_self" onClick={(event) => languageLinkClickHandler(event, "zh-TW")}>中文</a>
                         </Link>
 
                         <Link href={router.route} as={router.route} locale="en-US">
-                            <a className={`link ${languageLinkFocusClass("en-US")}`} title="English" target="_self" onClick={(event) => languageLinkClickHandler(event, "en-US")}>English</a>
+                            <a className={`link ${getLanguageLinkFocusClass("en-US")}`} title="English" target="_self" onClick={(event) => languageLinkClickHandler(event, "en-US")}>English</a>
                         </Link>
                     </div>
                 </div>

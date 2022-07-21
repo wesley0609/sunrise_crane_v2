@@ -1,5 +1,4 @@
 
-import { useMemo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
@@ -16,35 +15,19 @@ export const getServerSideProps = async (context) => {
 const App = (props) => {
     const router = useRouter();
 
-    const bannerMeta = useMemo(() => {
-        return require(`../assets/json/meta/banner/${router.locale}/index.json`);
-    }, [router]);
+    const bannerMeta = require(`../assets/json/meta/banner/${router.locale}/index.json`);
+    const serviceMeta = require(`../assets/json/meta/service/${router.locale}/index.json`);
+    const homeMeta = require(`../assets/json/meta/home/${router.locale}/index.json`);
+    const clientMeta = require(`../assets/json/meta/client/${router.locale}/index.json`);
+    const contactMeta = require(`../assets/json/meta/contact/${router.locale}/index.json`);
 
-    const serviceMeta = useMemo(() => {
-        return require(`../assets/json/meta/service/${router.locale}/index.json`);
-    }, [router]);
-
-    const homeMeta = useMemo(() => {
-        return require(`../assets/json/meta/home/${router.locale}/index.json`);
-    }, [router]);
-
-    const clientMeta = useMemo(() => {
-        return require(`../assets/json/meta/client/${router.locale}/index.json`);
-    }, [router]);
-
-    const contactMeta = useMemo(() => {
-        return require(`../assets/json/meta/contact/${router.locale}/index.json`);
-    }, [router]);
-
-    const meta = useMemo(() => {
-        return {
-            banner: bannerMeta.home,
-            service: serviceMeta.content,
-            home: homeMeta,
-            client: clientMeta.content,
-            contact: contactMeta.content
-        };
-    }, [bannerMeta, serviceMeta, homeMeta, clientMeta, contactMeta]);
+    const meta = {
+        banner: bannerMeta.home,
+        service: serviceMeta.content,
+        home: homeMeta,
+        client: clientMeta.content,
+        contact: contactMeta.content
+    };
 
     return (
         <>

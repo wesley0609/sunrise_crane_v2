@@ -1,12 +1,11 @@
 
-import { useMemo } from "react";
 import Image from "next/image";
 import PropTypes from "prop-types";
 
 import Breadcrumb from "../breadcrumb/index.jsx";
 
 const App = (props) => {    
-    const breadcrumb = useMemo(() => {
+    const breadcrumb = (() => {
         let _breadcrumb = [];
 
         _breadcrumb.push({
@@ -22,7 +21,7 @@ const App = (props) => {
         });
 
         return _breadcrumb;
-    }, [props.banner]);
+    })();
 
     return (
         <>

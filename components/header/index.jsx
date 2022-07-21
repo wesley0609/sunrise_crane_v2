@@ -1,5 +1,4 @@
 
-import { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 
@@ -9,19 +8,15 @@ import Portrait from "./portrait.jsx";
 const App = (props) => {
     const router = useRouter();
 
+    const headerMeta = require(`../../assets/json/meta/header/${router.locale}/index.json`);
+
+    const meta = {
+        menu: headerMeta.menu
+    };
+
     const deviceType = useSelector((state) => {
         return state.deviceType;
     });
-
-    const headerMeta = useMemo(() => {
-        return require(`../../assets/json/meta/header/${router.locale}/index.json`);
-    }, [router]);
-
-    const meta = useMemo(() => {
-        return {
-            menu: headerMeta.menu
-        };
-    }, [headerMeta]);
 
     return (
         <>

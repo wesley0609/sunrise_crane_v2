@@ -1,5 +1,4 @@
 
-import { useMemo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
@@ -16,20 +15,13 @@ export const getServerSideProps = async (context) => {
 const App = (props) => {
     const router = useRouter();
 
-    const bannerMeta = useMemo(() => {
-        return require(`../assets/json/meta/banner/${router.locale}/index.json`);
-    }, [router]);
+    const bannerMeta = require(`../assets/json/meta/banner/${router.locale}/index.json`);
+    const galleryMeta = require(`../assets/json/meta/gallery/${router.locale}/index.json`);
 
-    const galleryMeta = useMemo(() => {
-        return require(`../assets/json/meta/gallery/${router.locale}/index.json`);
-    }, [router]);
-
-    const meta = useMemo(() => {
-        return {
-            banner: bannerMeta.gallery,
-            gallery: galleryMeta
-        };
-    }, [bannerMeta, galleryMeta]);
+    const meta = {
+        banner: bannerMeta.gallery,
+        gallery: galleryMeta
+    };
     
     return (
         <>

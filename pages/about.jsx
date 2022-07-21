@@ -1,5 +1,4 @@
 
-import { useMemo } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 
@@ -16,20 +15,13 @@ export const getServerSideProps = async (context) => {
 const App = (props) => {
     const router = useRouter();
 
-    const bannerMeta = useMemo(() => {
-        return require(`../assets/json/meta/banner/${router.locale}/index.json`);
-    }, [router]);
+    const bannerMeta = require(`../assets/json/meta/banner/${router.locale}/index.json`);
+    const aboutMeta = require(`../assets/json/meta/about/${router.locale}/index.json`);
 
-    const aboutMeta = useMemo(() => {
-        return require(`../assets/json/meta/about/${router.locale}/index.json`);
-    }, [router]);
-
-    const meta = useMemo(() => {
-        return {
-            banner: bannerMeta.about,
-            about: aboutMeta
-        };
-    }, [bannerMeta, aboutMeta]);
+    const meta ={
+        banner: bannerMeta.about,
+        about: aboutMeta
+    };
 
     return (
         <>

@@ -1,5 +1,4 @@
 
-import { useCallback } from "react";
 import { useRouter } from "next/router";
 
 import gaEvent from "../../assets/js/ga/index.js";
@@ -7,14 +6,14 @@ import gaEvent from "../../assets/js/ga/index.js";
 const App = (props) => {
     const router = useRouter();
 
-    const gotopBtnClickHandler = useCallback((event) => {
+    const gotopBtnClickHandler = (event) => {
         scroll({
             top: 0,
             left: 0
         });
 
         gaEvent.footer.clickGotop(router);
-    }, [router]);
+    };
 
     return (
         <>

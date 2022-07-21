@@ -1,57 +1,43 @@
 
-import { useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
+const linkClickHandler = (event, item) => {
+    gaEvent.header.clickLanguage(item);
+};
+
 const App = (props) => {
     const router = useRouter();
 
-    const languagesBalloonSectionMouseOverHandler = useCallback((event) => {
+    const languagesBalloonSectionMouseOverHandler = (event) => {
         props.setLanguagesBalloonDisplay(true);
-    }, [props]);
+    };
 
-    const languagesBalloonSectionMouseOutHandler = useCallback((event) => {
+    const languagesBalloonSectionMouseOutHandler = (event) => {
         props.setLanguagesBalloonDisplay(false);
-    }, [props]);
+    };
 
-    const linkClickHandler = useCallback((event, item) => {
-        gaEvent.header.clickLanguage(item);
-    }, []);
-
-    const linkFocusClass = useCallback((item) => {
-        if(router.locale == item){
+    const getLinkFocusClass = (item) => {
+        if(item == router.locale){
             return "focus";
         }
 
         return "";
-    }, [router]);
-
-    useEffect(() => {
-        const routeChangeHandler = () => {
-            props.setLanguagesBalloonDisplay(false);
-        };
-        
-        router.events.off("routeChangeStart", routeChangeHandler);
-        router.events.on("routeChangeStart", routeChangeHandler);
-    
-        return () => {
-            router.events.off("routeChangeStart", routeChangeHandler);
-        };
-    }, [props, router]);
+    };
 
     return (
         <>
             <div className="languages_balloon_section" onMouseOver={(event) => languagesBalloonSectionMouseOverHandler(event)} onMouseOut={(event) => languagesBalloonSectionMouseOutHandler(event)}>
                 <div className="content_container">
                     <Link href={router.route} as={router.route} locale="zh-TW">
-                        <a className={`link ${linkFocusClass("zh-TW")}`} title="中文" target="_self" onClick={(event) => linkClickHandler(event, "zh-TW")}>中文</a>
+                        <a className={`link ${getLinkFocusClass("zh-TW")}`} title="中文" target="_self" onClick={(event) => linkClickHandler(event, "zh-TW")}>中文</a>
                     </Link>
 
                     <Link href={router.route} as={router.route} locale="en-US">
-                        <a className={`link ${linkFocusClass("en-US")}`} title="English" target="_self" onClick={(event) => linkClickHandler(event, "en-US")}>English</a>
+                        <a className={`link ${getLinkFocusClass("en-US")}`} title="English" target="_self" onClick={(event) => linkClickHandler(event, "en-US")}>English</a>
                     </Link>
                 </div>
             </div>

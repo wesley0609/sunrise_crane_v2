@@ -18,23 +18,23 @@
         "lightgallery": "^2.5.0",
         "lodash": "^4.17.21",
         "next": "12.2.2",
-        "next-pwa": "^5.5.4",
         "nextjs-progressbar": "^0.0.14",
         "normalize.css": "^8.0.1",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "react-redux": "^8.0.2",
-        "redux": "^4.2.0"
+        "redux": "^4.2.0",
+        "sharp": "^0.30.7"
     },
     "devDependencies": {
-        "@koa/router": "^11.0.1",
+        "@koa/router": "^12.0.0",
         "@styled-jsx/plugin-sass": "^4.0.2",
         "cross-env": "^7.0.3",
         "eslint": "8.20.0",
         "eslint-config-next": "12.2.2",
         "koa": "^2.13.4",
         "next-compose-plugins": "^2.2.1",
-        "sass": "^1.53.0",
-        "sharp": "^0.30.7"
+        "next-pwa": "^5.5.4",
+        "sass": "^1.53.0"
     }
 }

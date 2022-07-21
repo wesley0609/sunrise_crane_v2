@@ -1,15 +1,14 @@
 
-import { useCallback } from "react";
 import Image from "next/image";
 import PropTypes from "prop-types";
 
 import gaEvent from "../../assets/js/ga/index.js";
 
-const App = (props) => {
-    const serviceItemClickHandler = useCallback((event, item) => {
-        gaEvent.service.clickService(item);
-    }, []);
+const serviceItemClickHandler = (event, item) => {
+    gaEvent.service.clickService(item);
+};
 
+const App = (props) => {
     return (
         <>
             <div className="service_items_section">
