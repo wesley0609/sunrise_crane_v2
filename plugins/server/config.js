@@ -1,9 +1,9 @@
 
 import _ from "lodash";
 
-import common from "../../assets/json/config/config.common.json";
-import dev from "../../assets/json/config/config.dev.json";
-import prod from "../../assets/json/config/config.prod.json";
+import common from "../../assets/json/config/common.json";
+import dev from "../../assets/json/config/dev.json";
+import prod from "../../assets/json/config/prod.json";
 
 const app = () => {
     try{

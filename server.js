@@ -5,7 +5,7 @@ const https = require("https");
 const fs = require("fs");
 const next = require("next");
 
-const config = require("./assets/json/config/config.common.json");
+const config = require("./assets/json/config/common.json");
 
 const host = process.env.HOST || "127.0.0.1";
 const dev = process.env.NODE_ENV !== "production";
