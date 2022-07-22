@@ -1,13 +1,13 @@
 
-## site url
+## Site Url
 
 > https://www.sunrise-crane.com.tw/
 
-## node.js version
+## Node.js Version
 
 > 16.x
 
-## build setup
+## Build Setup
 
 ``` bash
 # install dependencies
@@ -20,3 +20,7 @@ $ npm run dev
 $ npm run build
 $ npm run start
 ```
+
+## License
+
+[MIT](./LICENSE.txt)
