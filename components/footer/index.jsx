@@ -41,7 +41,7 @@ const App = (props) => {
 
                 <Link href="/" as="/">
                     <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <Image src="/image/logo.svg" width={300} height={77} alt={sunrise.seo.default.siteName} layout="responsive" />
+                        <Image src="/image/logo.svg" width={300} height={77} alt={sunrise.seo.default.siteName} layout="responsive" unoptimized />
                     </a>
                 </Link>
 

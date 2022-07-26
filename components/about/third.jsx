@@ -38,7 +38,7 @@ const App = (props) => {
                                 return (
                                     <div className="icon_item" key={index}>
                                         <div className="padding_box"></div>
-                                        <Image src={`/image/about/third/${item.src}`} alt={item.alt} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
+                                        <Image src={`/image/about/third/${item.src}`} alt={item.alt} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" unoptimized />
                                     </div>
                                 );
                             })

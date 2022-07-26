@@ -16,10 +16,6 @@ const LightGallery = dynamic(() => import("lightgallery/react"), {
     ssr: false
 });
 
-const galleryItemPlaceholderClickHandler = (event) => {
-    event.preventDefault();
-};
-
 const galleryItemClickHandler = (event, item) => {
     gaEvent.gallery.clickImage(item);
 };
@@ -27,16 +23,12 @@ const galleryItemClickHandler = (event, item) => {
 const App = (props) => {
     const galleryItemsSectionRef = useRef(null);
 
-    const [placeholderDisplay, setPlaceholderDisplay] = useState(true);
     const [scopedId, setScopedId] = useState(null);
     
     const setting = {
         plugins: [lgZoom, lgHash],
         licenseKey: process.env.NEXT_PUBLIC_LG_KEY,
-        download: false,
-        onInit: () => {
-            setPlaceholderDisplay(false);
-        }
+        download: false
     };
 
     const getGalleryItemHref = (index) => {
@@ -87,30 +79,7 @@ const App = (props) => {
                 <div className="background_section"></div>
                 
                 <div className="gallery_items_container">
-                    {
-                        (() => {
-                            if(placeholderDisplay){
-                                return (
-                                    // sync with to be presented
-                                    <div className="gallery_items placeholder">
-                                        {
-                                            props.items.map((item, index) => {
-                                                return (
-                                                    <a className="gallery_item" href={getGalleryItemHref(index)} title={item.subtitle} target="_self" onClick={(event) => galleryItemPlaceholderClickHandler(event)} key={index}>
-                                                        <div className="padding_box"></div>
-                                                        <Image src={`/image/gallery/${item.src}`} alt={getGalleryItemText(item)} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
-                                                        <h2 className="gallery_text">{getGalleryItemText(item)}</h2>
-                                                    </a>
-                                                );
-                                            })
-                                        }
-                                    </div>
-                                );
-                            }
-                        })()
-                    }
-
-                    <LightGallery elementClassNames={`${scopedId} gallery_items`} onInit={setting.onInit} plugins={setting.plugins} download={setting.download} licenseKey={setting.licenseKey}>
+                    <LightGallery elementClassNames={`${scopedId} gallery_items`} plugins={setting.plugins} download={setting.download} licenseKey={setting.licenseKey}>
                         {
                             props.items.map((item, index) => {
                                 return (
@@ -170,14 +139,6 @@ const App = (props) => {
                                 &:after{
                                     content: "";
                                     flex: auto;
-                                }
-
-                                &.placeholder{
-                                    .gallery_item{
-                                        .gallery_text{
-                                            display: none;
-                                        }
-                                    }
                                 }
 
                                 .gallery_item{
