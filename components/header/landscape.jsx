@@ -24,6 +24,15 @@ const App = (props) => {
 
     const [languagesBalloonDisplay, setLanguagesBalloonDisplay] = useState(false);
 
+    // cannot directly control the DOM because SEO
+    const languageBalloonContainerClass = (() => {
+        if(languagesBalloonDisplay){
+            return "open";
+        }
+
+        return "";
+    })();
+
     const getLinkFocusClass = (item) => {
         if(item.as == router.asPath){
             return "focus";
@@ -49,7 +58,7 @@ const App = (props) => {
             <div className="header_content">
                 <Link href="/" as="/">
                     <a className="logo_section" title={sunrise.seo.default.siteName} target="_self" onClick={(event) => logoSectionClickHandler(event)}>
-                        <Image src="/image/logo.svg" width={235} height={60} alt={sunrise.seo.default.siteName} layout="responsive" priority />
+                        <Image src="/image/logo.svg" width={235} height={60} alt={sunrise.seo.default.siteName} layout="responsive" unoptimized />
                     </a>
                 </Link>
 
@@ -70,17 +79,9 @@ const App = (props) => {
                         <div className="language_btn_container">
                             <button className="language_btn" onMouseOver={(event) => languageBtnMouseOverHandler(event)} onMouseOut={(event) => languageBtnMouseOutHandler(event)} title={sunrise.seo.other.language} ref={languageBtnRef}>{sunrise.seo.default.lang}</button>
 
-                            {
-                                (() => {
-                                    if(languagesBalloonDisplay){
-                                        return (
-                                            <div className="language_balloon_container">
-                                                <LanguagesBalloon setLanguagesBalloonDisplay={setLanguagesBalloonDisplay} />
-                                            </div>
-                                        );
-                                    }
-                                })()
-                            }
+                            <div className={`language_balloon_container ${languageBalloonContainerClass}`}>
+                                <LanguagesBalloon setLanguagesBalloonDisplay={setLanguagesBalloonDisplay} />
+                            </div>
                         </div>
                     </div>
                 </ul>
@@ -182,6 +183,11 @@ const App = (props) => {
                                         top: 20px;
                                         left: 50%;
                                         transform: translateX(-50%);
+                                        display: none;
+
+                                        &.open{
+                                            display: block;
+                                        }
                                     }
                                 }
                             }
