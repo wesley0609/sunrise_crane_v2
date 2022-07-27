@@ -8,6 +8,7 @@ import _ from "lodash";
 
 const App = (props) => {
     const glide = useRef(null);
+    const clientListSectionRef = useRef(null);
 
     const deviceType = useSelector((state) => {
         return state.deviceType;
@@ -39,7 +40,7 @@ const App = (props) => {
     }, [props.client, perView]);
 
     useEffect(() => {
-        glide.current = new Glide(".client_list_section", {
+        glide.current = new Glide(clientListSectionRef.current, {
             type: "carousel",
             gap: 0
         });
@@ -75,7 +76,7 @@ const App = (props) => {
                     <div className="border"></div>
                 </div>
 
-                <div className="client_list_section">
+                <div className="client_list_section" ref={clientListSectionRef}>
                     <div className="client_container glide__track" data-glide-el="track">
                         <div className="client_items glide__slides">
                             {

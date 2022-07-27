@@ -27,7 +27,7 @@ const App = (props) => {
         <>
             <div className="banner_section">
                 <div className="background_section">
-                    <Image src={`/image${props.banner.href}/banner/${props.banner.src}`} alt={props.banner.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} objectFit="cover" layout="fill" priority />
+                    <Image src={`/image${props.banner.href}/banner/${props.banner.src}`} alt={props.banner.title} objectFit="cover" layout="fill" priority />
                 </div>
 
                 <div className="text_section">

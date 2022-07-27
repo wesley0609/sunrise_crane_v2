@@ -1,4 +1,6 @@
 
+import "normalize.css";
+
 import theme from "../json/style/theme.json";
 
 const App = () => {
