@@ -35,7 +35,7 @@ yarn-error.log*
 .vercel
 
 # service worker
-/public/service-worker.js
+/public/sw.js
 /public/workbox-*.js
 
 # https certificate

@@ -1,6 +1,4 @@
 
-import "normalize.css";
-
 import { Provider } from "react-redux";
 import { useEffect } from "react";
 import Head from "next/head";

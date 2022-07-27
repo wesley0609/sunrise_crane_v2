@@ -17,8 +17,7 @@ module.exports = withPlugins([
     [withPWA, {
         pwa: {
             disable: process.env.NODE_ENV !== "production",
-            dest: "public",
-            sw: "service-worker.js"
+            dest: "public"
         }
     }]
 ], nextConfig);

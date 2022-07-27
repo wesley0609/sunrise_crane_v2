@@ -14,6 +14,7 @@ const serviceItemClickHandler = (event, item) => {
 
 const App = (props) => {
     const glide = useRef(null);
+    const serviceListSectionRef = useRef(null);
 
     const deviceType = useSelector((state) => {
         return state.deviceType;
@@ -32,7 +33,7 @@ const App = (props) => {
     })();
 
     useEffect(() => {
-        glide.current = new Glide(".service_list_section", {
+        glide.current = new Glide(serviceListSectionRef.current, {
             // because it is used together with next/image, the clone's image will not be loaded
             // type: "carousel",
             bound: true,
@@ -69,7 +70,7 @@ const App = (props) => {
 
                 <p className="description_section">{props.homeService.description}</p>
 
-                <div className="service_list_section">
+                <div className="service_list_section" ref={serviceListSectionRef}>
                     <div className="service_container glide__track" data-glide-el="track">
                         <div className="service_items glide__slides">
                             {

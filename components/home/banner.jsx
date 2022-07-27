@@ -15,6 +15,7 @@ const getImagePriorityBool = (index) => {
 
 const App = (props) => {
     const glide = useRef(null);
+    const bannerSectionRef = useRef(null);
 
     const deviceType = useSelector((state) => {
         return state.deviceType;
@@ -29,22 +30,34 @@ const App = (props) => {
     };
 
     useEffect(() => {
-        glide.current = new Glide(".banner_section", {
+        glide.current = new Glide(bannerSectionRef.current, {
             type: "carousel",
-            autoplay: 5000,
             gap: 0
         });
 
         glide.current.mount();
 
+        let execute = () => {
+            glide.current.play(5000);
+
+            removeEventListener("mousemove", execute);
+            removeEventListener("touchmove", execute);
+        };
+
+        addEventListener("mousemove", execute);
+        addEventListener("touchmove", execute);
+
         return () => {
+            removeEventListener("mousemove", execute);
+            removeEventListener("touchmove", execute);
+            
             glide.current.destroy();
         };
     }, [deviceType, props.banner]);
 
     return (
         <>
-            <div className="banner_section">
+            <div className="banner_section" ref={bannerSectionRef}>
                 <div className="banner_container glide__track" data-glide-el="track">
                     <div className="banner_items glide__slides">
                         {
@@ -52,7 +65,7 @@ const App = (props) => {
                                 return (
                                     <div className="banner_item glide__slide" key={index}>
                                         <div className="padding_box"></div>
-                                        <Image src={getBannerImage(item)} alt={item.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" priority={getImagePriorityBool(index)} />
+                                        <Image src={getBannerImage(item)} alt={item.title} layout="fill" priority={getImagePriorityBool(index)} />
                                         <div className="filter_box"></div>
 
                                         <div className="banner_text">
