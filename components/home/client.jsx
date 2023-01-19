@@ -223,12 +223,11 @@ const App = (props) => {
                                 }
 
                                 .client_items{
-                                    display: flex;
-                                    flex-direction: row;
-                                    justify-content: center;
-                                    align-items: center;
+                                    white-space: nowrap;
+                                    font-size: 0px;
 
                                     .client_item{
+                                        display: inline-block;
                                         touch-action: pan-y;
 
                                         .client_group{

@@ -10,6 +10,9 @@ const nextConfig = {
     i18n: {
         locales: ["zh-TW", "en-US"],
         defaultLocale: "zh-TW"
+    },
+    images: {
+        minimumCacheTTL: 60 * 60 * 24
     }
 };
 
