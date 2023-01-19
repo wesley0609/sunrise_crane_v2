@@ -34,9 +34,7 @@ const App = (props) => {
 
     useEffect(() => {
         glide.current = new Glide(serviceListSectionRef.current, {
-            // because it is used together with next/image, the clone's image will not be loaded
-            // type: "carousel",
-            bound: true,
+            type: "carousel",
             perView: perView,
             gap: 0
         });
@@ -80,7 +78,11 @@ const App = (props) => {
                                             <a className="service_item glide__slide" title={item.title} target="_self" onClick={(event) => serviceItemClickHandler(event, item)}>
                                                 <div className="poster_section">
                                                     <div className="padding_box"></div>
-                                                    <Image src={`/image/service/${item.src}`} alt={item.title} placeholder="blur" blurDataURL={sunrise.config.imagePlaceholder} layout="fill" />
+
+                                                    <picture className="img_section">
+                                                        <source srcSet={`/image/service/${item.src}`} />
+                                                        <img className="image" src={`/image/service/${item.src}`} alt={item.title} loading="lazy" />
+                                                    </picture>
                                                 </div>
                                                 
                                                 <h3 className="des_section">{item.title}</h3>
@@ -208,12 +210,11 @@ const App = (props) => {
                                 }
 
                                 .service_items{
-                                    display: flex;
-                                    flex-direction: row;
-                                    justify-content: center;
-                                    align-items: center;
+                                    white-space: nowrap;
+                                    font-size: 0px;
 
                                     .service_item{
+                                        display: inline-block;
                                         touch-action: pan-y;
 
                                         @media screen and (min-width: 769px){
@@ -231,6 +232,18 @@ const App = (props) => {
 
                                             .padding_box{
                                                 padding-bottom: 100%;
+                                            }
+
+                                            .img_section{
+                                                position: absolute;
+                                                top: 0;
+                                                left: 0;
+                                                width: 100%;
+                                                height: 100%;
+
+                                                .image{
+                                                    display: block;
+                                                }
                                             }
                                         }
 
