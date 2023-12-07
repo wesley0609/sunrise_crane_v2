@@ -107,7 +107,7 @@ const App = (props) => {
                     </div>
                 </div>
 
-                <div className="copy_right_section">Copyright © 2016-{year} {sunrise.seo.default.siteName} All Rights Reserved</div>
+                <div className="copy_right_section">Copyright © 2015-{year} {sunrise.seo.default.siteName} All Rights Reserved</div>
 
                 <div className="gotop_section">
                     <Gotop />
