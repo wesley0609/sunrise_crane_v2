@@ -211,7 +211,9 @@ const App = (props) => {
                                                 }
                                             }
 
-                                            .content{                                                
+                                            .content{
+                                                flex: 1;
+                                                
                                                 @media screen and (max-width: 414px){
                                                     font-size: 14px;
                                                 }
